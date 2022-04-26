@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Signup page</title>
+<meta name="description" content="Source code generated using layoutit.com">
+
+<link href="{% static 'assets/login.css' %}" rel="stylesheet">
+<script src="{% static 'assets/js/signin.js' %}"></script>
+
+<link rel="shortcut icon" type="image/png" href="{% static 'assets/main/favicon.png'%}">
+
+<body>
+    <div class="container-fluid bg">
+        <div class="row">
+            <div class="col-lg-7 col-md-7">
+                <div class="logo">
+                    <img src="{% static '' %}" alt="logo" class="img">
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                {% include 'messages.html' %}
+                <section class="contact-us-section">
+                    <div class="contact-us-right">
+                        <div class="contact-us-form-holder">
+                            <p class="heading">Create Your Free Account</p>
+
+                            <form action="{% url 'register' %}" method="POST" class="needs-validation" novalidate>
+                                {% csrf_token %}
+                                {% if username %}
+                                <label for="username" class="form-label">Username</label>
+                                <input
+                                    class="form-control"
+                                    id="username"
+                                    type="text"
+                                    placeholder="Username"
+                                    name="username"
+                                    value={{username}}
+                                    required
+                                >
+                                <div class="invalid-feedback">Please choose a username.</div>
+                                {% else %}
+                                <label for="username" class="form-label">Username</label>
+                                <input
+                                    class="form-control"
+                                    id="username"
+                                    type="text"
+                                    placeholder="Username"
+                                    name="username"
+                                    required
+                                >
+                                <div class="invalid-feedback">Please choose a username.</div>
+                                {% endif %}
+
+                                {% if email %}
+                                <label for="validationCustom01" class="form-label">Email Address</label>
+                                <input
+                                    class="form-control"
+                                    type="email"
+                                    placeholder="Email"
+                                    name="email"
+                                    value={{email}}
+                                    required
+                                    id="email"
+                                >
+                                <div class="invalid-feedback">Please provide a valid email.</div>
+                                {% else %}
+                                <label for="validationCustom01" class="form-label">Email Address</label>
+                                <input
+                                    class="form-control"
+                                    type="email"
+                                    placeholder="Email"
+                                    name="email"
+                                    required
+                                    id="email"
+                                >
+                                <div class="invalid-feedback">Please provide a valid email.</div>
+                                {% endif %}
+
+                                <label for="password" class="form-label">Password</label>
+                                <input
+                                    class="form-control"
+                                    type="password"
+                                    placeholder="Password"
+                                    name="password"
+                                    id="password"
+                                    required
+                                >
+                                <div class="invalid-feedback">Please provide a valid Password.</div>
+
+                                <button type="submit">Start Learning For Free</button>
+                                <p class="terms">By continuing, you accept our Terms of Use, our Privacy Policy. You confirm you are at least 16 years old (13 if you are an authorized Classrooms user).</p>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-md-12">
+                <section class="contact-us-section">
+                    <div class="contact-us-right contact-us-right-bottom">
+                        <div class="contact-us-form-holder">
+                            <div class="contact-us-footer">
+                                <p>
+                                    Have Account ?
+                                    <a href="{% url 'login' %}">Login Here</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
