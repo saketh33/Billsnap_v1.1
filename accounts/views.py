@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.views import View
-from django.contrib.auth.models import User, auth
+from django.contrib.auth.models import User
+from django.contrib import auth
 from django.contrib import messages
 from django.core.mail import EmailMessage
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
@@ -29,28 +30,9 @@ class RegistrationView(View):
 
                 user = User.objects.create_user(username=username, email=email)
                 user.set_password(password)
-                user.is_active = False
                 user.save()
-
-                uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
-                domain = get_current_site(request).domain
-                link = reverse('activate', kwargs={
-                            'uidb64': uidb64, 'token': token_generator.make_token(user)})
-                email_subject="Activate your Account"
-                activate_url = 'http://'+domain+link
-                email_body = 'Hi, ' + user.username + \
-                    ' Please use this link to verify your account\n' + activate_url
-                email = EmailMessage(
-                    email_subject,
-                    email_body,
-                    'from@example.com',
-                    [email],
-                )
-                email.send(fail_silently=False)
-                messages.success(
-                    request, 'Account successfully created! Check your Email for Account Activation')
+                messages.success(request, 'Account successfully created! login into your account')
                 return redirect('register')
-
             messages.warning(request, "This Email already exists!")
             return render(request, 'register.html', context)
         else:
@@ -126,9 +108,9 @@ class LoginView(View):
                 'user_found': True,
                 'user_name': username
             }
-            messages.error(request, 'Invalid credentials, try again')
+            messages.error(request, 'wrong password, try again')
             return render(request, 'login.html', context)
-
+        
         return render(request, "login.html")
 
 def logout(request):

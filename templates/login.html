@@ -1,14 +1,94 @@
-<h1>Login!</h1>
-<form method = "POST" action="">
-    {% csrf_token %}
-    username:
-    <br/>
-    <input type="text" name="username" />
-    <br/>
-    Password:
-    <br/>
-    <input type="password" name="password" />
-    <br/>
-    <input class ="btn btn-primary" type="submit" value= "Login" />
-    <br/>
-</form>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Login page</title>
+
+<script src="{% static 'account/signin.js' %}"></script>
+<link href="{% static 'account/login.css' %}" rel="stylesheet">
+<link rel="shortcut icon" type="image/png" href="">
+
+</head>
+<body>
+<div class="container-fluid bg">
+    <div class="row">
+        <div class="col-md-12">
+            {% include 'messages.html' %}
+            <section class="contact-us-section">
+                <div class="contact-us-right">
+                    <div class="contact-us-form-holder">
+                        <p class="heading">
+                            Welcome Back!
+                        </p>
+                        <form action="{% url 'login' %}" method="POST" class="needs-validation"novalidate>
+                        {% csrf_token %}
+                            <label for="username" class="form-label">Username or Email Address</label>
+                            {% if user_name %}
+                            <input
+                                class="form-control"
+                                type="text"
+                                placeholder="username"
+                                name="username"
+                                value={{user_name}}
+                                required
+                            >
+                            {% else %}
+                            <input
+                                class="form-control"
+                                type="text"
+                                placeholder="username"
+                                name="username"
+                                required
+                            >
+                            {% endif %}
+                                    <div class="invalid-feedback">
+                                        Please choose a username.
+                                    </div>
+
+                            <label for="password" class="form-label">Password</label>
+                            <input
+                                class="form-control"
+                                type="password"
+                                placeholder="password"
+                                name="password"
+                                required
+                            >
+                                    <div class="invalid-feedback">
+                                        Please provide a valid Password.
+                                    </div>
+
+                            {% if request.GET.next %}
+                            <input type="hidden" name="next" value="{{request.GET.next}}">
+                            {% endif %}
+                            <button class="button" name="login_page" type="submit">Login</button>
+                            <br>
+
+                        <label><a id="forget_pass" href="">Forgot your password?</a></label>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="col-md-12">
+            <section class="contact-us-section">
+                <div class="contact-us-right contact-us-right-bottom">
+                    <div class="contact-us-form-holder">
+                        <div class="contact-us-footer">
+                            <p>
+                                Or
+                                <a href="{% url 'register' %}">Click Here</a>
+                                to create a free account
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+</body>
+</html>
