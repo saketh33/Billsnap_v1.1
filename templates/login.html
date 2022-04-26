@@ -1,17 +1,5 @@
-
-{% block content %}
-
-
-{% if error %}
-{{ error }}
-
-<br/>
-<br/>
-{% endif %}
-
 <h1>Login!</h1>
-
-<form method = "POST" action="{% url 'login' %}">
+<form method = "POST" action="">
     {% csrf_token %}
     username:
     <br/>
@@ -23,8 +11,4 @@
     <br/>
     <input class ="btn btn-primary" type="submit" value= "Login" />
     <br/>
-
 </form>
-
-
-{% endblock %}
