@@ -57,6 +57,80 @@ class RegistrationView(View):
             messages.warning(request, "This username already exists!")
             return render(request, 'register.html', context)
 
+class VerificationView(View):
+    def get(self, request, uidb64, token, backend='django.contrib.auth.backends.ModelBackend'):
+        try:
+            uid = force_text(urlsafe_base64_decode(uidb64))
+            user = User.objects.get(pk=uid)
+        except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+            user = None
+
+        if user is not None and token_generator.check_token(user, token):
+            user.is_active = True
+            user.profile.email_confirmed = True
+            user.save()
+            auth.login(request, user,
+                    backend='django.contrib.auth.backends.ModelBackend')
+            return redirect('index')
+        else:
+            return render(request, 'login.html')
+
+class LoginView(View):
+    def get(self, request):
+        return render(request, 'login.html')
+
+    def post(self, request):
+        if 'login_page' in request.POST:
+            next = request.POST.get('next')
+            username = request.POST['username']
+            password = request.POST['password']
+            context = {
+                'user_found': True,
+                'user_name': username
+            }
+            if username and password:
+                if User.objects.filter(username=username).exists():
+                    user = auth.authenticate(
+                        username=username, password=password)
+                    if user:
+                        if user.is_active:
+                            auth.login(request, user)
+                            if next:
+                                return redirect(next)
+                            return redirect("index")
+
+                        messages.error(
+                            request, "Account is not active,please check your email"
+                        )
+
+                elif User.objects.filter(email=username).exists():
+                    user = User.objects.get(email=username)
+                    user = auth.authenticate(
+                        username=user.username, password=password)
+                    if user:
+                        if user.is_active:
+                            auth.login(request, user)
+                            if next:
+                                return redirect(next)
+                            return redirect("index")
+
+                        messages.error(
+                            request, "Account is not active,please check your email"
+                        )
+                elif (User.objects.filter(email=username).exists() or User.objects.filter(username=username).exists() == False):
+                    messages.error(
+                        request, "The username or Email you have entered does not exist.")
+                    return render(request, 'login.html', context)
+
+            context = {
+                'user_found': True,
+                'user_name': username
+            }
+            messages.error(request, 'Invalid credentials, try again')
+            return render(request, 'login.html', context)
+
+        return render(request, "login.html")
+
 def logout(request):
     auth.logout(request)
     return redirect('index')
