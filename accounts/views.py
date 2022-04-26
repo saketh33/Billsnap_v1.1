@@ -3,6 +3,11 @@ from django.views import View
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.core.mail import EmailMessage
+from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
+from django.contrib.sites.shortcuts import get_current_site
+from django.urls import reverse
+from django.utils.encoding import force_bytes, force_text, DjangoUnicodeDecodeError
+from .utils import token_generator
 
 class RegistrationView(View):
     def get(self, request):
