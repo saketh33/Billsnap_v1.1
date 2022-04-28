@@ -28,7 +28,7 @@
   }
 
   .bg {
-    background-image: url("https://www.techsnap.in/media/storage/Group_218.png");
+    background-image: url("https://as1.ftcdn.net/v2/jpg/02/30/80/96/1000_F_230809642_7WBypWIcM09LAVwn5z8fpLelVTVvAhZ8.jpg");
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -212,7 +212,7 @@
       width: 95vw;
       height: auto;
     }
-    
+
     html,body {
       width: 100%;
       height: 100%;
@@ -220,7 +220,7 @@
       padding: 0px;
       overflow-x: hidden;
   }
- 
+
     #forget_pass {
       text-decoration: none;
       float: right;

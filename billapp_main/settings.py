@@ -14,7 +14,7 @@ SECRET_KEY = 'k5u&##$!&2q66!kf#u&hi17*n9(e*_3rtwp0u02=!=dy&f12m^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost','192.168.1.41']
 
 
 # Application definition
@@ -129,8 +129,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'newslettertechsnap@gmail.com'
-EMAIL_HOST_PASSWORD = 'Murali@2000'
+EMAIL_HOST_USER = 'jr1636569@gmail.com'
+EMAIL_HOST_PASSWORD = 'Ruchiramesh9@'
 
 SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.social_details',
