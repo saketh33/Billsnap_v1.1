@@ -16,6 +16,8 @@ class RegistrationView(View):
         return render(request, 'register.html')
 
     def post(self, request):
+        # create a user account
+
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
@@ -31,9 +33,28 @@ class RegistrationView(View):
 
                 user = User.objects.create_user(username=username, email=email)
                 user.set_password(password)
+                user.is_active = False
                 user.save()
-                messages.success(request, 'Account successfully created! login into your account')
+
+                uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
+                domain = get_current_site(request).domain
+                link = reverse('activate', kwargs={
+                            'uidb64': uidb64, 'token': token_generator.make_token(user)})
+                email_subject="Activate your Account"
+                activate_url = 'http://'+domain+link
+                email_body = 'Hi, ' + user.username + \
+                    ' Please use this link to verify your account\n' + activate_url
+                email = EmailMessage(
+                    email_subject,
+                    email_body,
+                    'from@example.com',
+                    [email],
+                )
+                email.send(fail_silently=False)
+                messages.success(
+                    request, 'Account successfully created! Check your Email for Account Activation')
                 return redirect('register')
+
             messages.warning(request, "This Email already exists!")
             return render(request, 'register.html', context)
         else:
@@ -50,13 +71,14 @@ class VerificationView(View):
 
         if user is not None and token_generator.check_token(user, token):
             user.is_active = True
-            user.profile.email_confirmed = True
+            user.email_confirmed = True
             user.save()
             auth.login(request, user,
                     backend='django.contrib.auth.backends.ModelBackend')
             return redirect('index')
         else:
             return render(request, 'login.html')
+
 
 class LoginView(View):
     def get(self, request):
@@ -109,8 +131,9 @@ class LoginView(View):
                 'user_found': True,
                 'user_name': username
             }
-            messages.error(request, 'wrong password, try again')
+            messages.error(request, 'Invalid credentials, try again')
             return render(request, 'login.html', context)
+
         return render(request, "login.html")
 
 def logout(request):
@@ -165,7 +188,7 @@ class PasswordResetView(PasswordContextMixin, FormView):
     success_url = reverse_lazy("password_reset_done")
     template_name = "password_reset_form.html"
     title = _("Password reset")
-    token_generator = default_token_generator     
+    token_generator = default_token_generator
 
     @method_decorator(csrf_protect)
     def dispatch(self, *args, **kwargs):
