@@ -33,7 +33,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
 
     # personal details
-    profile_pic = models.ImageField(upload_to='profile_pics', null=True, blank=True)
+    
     full_name               =       models.CharField(max_length=100, blank=True, null=True)
     state                   =       models.CharField(max_length=40, null=True, blank=True)
     city                    =       models.CharField(max_length=40, null=True, blank=True)

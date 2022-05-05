@@ -234,74 +234,14 @@ from .forms import ProfileForm
 def update_profile(request, slug):
     profile = get_object_or_404(Profile, slug=slug)
     if request.method == "POST":
-        bio = request.POST.get('bio')
-        profile_pic = request.FILES.get('profile_pic')
         full_name = request.POST.get('full_name')
-        gender = request.POST.get('gender')
-        country = request.POST.get('country')
-        state = request.POST.get('state')
-        city = request.POST.get('city')
-        linkedin = request.POST.get('linkedin')
-        github = request.POST.get('github')
         email = request.POST.get('email')
         ph_num = request.POST.get('ph_no')
-        skills = request.POST.get('skills')
-        languages = request.POST.get('langs')
-        default_coding_lang = request.POST.get('d_c_l')
-        resume = request.FILES.get('resume')
-        institute_name = request.POST.get('institute_name')
-        institute_country = request.POST.get('country_')
-        institute_location = request.POST.get('location')
-        yearOfPassing = request.POST.get('yearOfPassing')
-        btech_percentage = request.POST.get('btech_percentage')
-        workexp = request.POST.get('workexp')
-        current_ctc = request.POST.get('current_ctc')
-        notice_period = request.POST.get('period')
-        scale = request.POST.get('scale')
-        willing_to_relocate = request.POST.get('willing')
-        if willing_to_relocate=='True':
-            profile.willing_to_relocate = True
-        elif willing_to_relocate=='False':
-            profile.willing_to_relocate = False
-        expected_ctc = request.POST.get('expected_ctc')
-        current_com = request.POST.get('current_com')
-        dream_com = request.POST.get('dream_com')
-        designation = request.POST.get('desg')
-        profile.bio = bio
-        profile.institute_country = institute_country
-        profile.institute_location = institute_location
-        profile.Scale_Btech_percentage = scale
-        profile.notice_period = notice_period
-        profile.willing_to_relocate = willing_to_relocate
-        if profile.profile_pic and profile_pic:
-            profile.profile_pic = profile_pic
-        elif profile.profile_pic is not None and profile_pic:
-            profile.profile_pic = profile_pic
+
         profile.full_name = full_name
-        profile.gender = gender
-        profile.country = country
-        profile.state = state
-        profile.city = city
-        profile.linkedin = linkedin
-        profile.github = github
         profile.email = email
         profile.ph_num = ph_num
-        profile.skills = skills
-        profile.languages = languages
-        profile.default_coding_lang = default_coding_lang
-        if profile.resume and resume:
-            profile.resume = resume
-        elif profile.resume is not None and resume:
-            profile.resume = resume
-        profile.institute_name = institute_name
-        profile.yearOfPassing = yearOfPassing
-        profile.Btech_percentage = btech_percentage
-        profile.workExp = workexp
-        profile.current_CTC = current_ctc
-        profile.expected_CTC = expected_ctc
-        profile.current_company = current_com
-        profile.dream_company = dream_com
-        profile.designation = designation
+
         profile.save()
         return HttpResponseRedirect(reverse('show_profile', kwargs={'slug':slug}))
     else:
