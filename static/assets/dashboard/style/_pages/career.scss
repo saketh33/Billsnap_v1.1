@@ -1,0 +1,156 @@
+.color{
+	background: rgb(142, 81, 255);
+}
+.all_title {
+	width: 94%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px 10px;
+	p {
+		font-size: 1.3rem;
+		font-weight: 600;
+	}
+	span {
+		font-size: 0.8rem;
+	}
+}
+.career_section {
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	flex-wrap: wrap;
+	padding: 0 30px;
+}
+
+.career_path_card {
+	width: 30%;
+	background: rgb(255, 255, 255);
+	border-radius: 10px;
+	margin: 25px 15px;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	flex-direction: column;
+	h1 {
+		font-size: 1.2rem;
+	}
+	@media (max-width: 900px) {
+		width: 90%;
+	}
+
+	& .trending_third_card_header {
+		width: 100%;
+		padding: 10px 12px;
+		height: 110px;
+		background: #e85b60;
+		display: flex;
+		justify-content: space-around;
+		align-items: flex-start;
+		flex-direction: column;
+		box-sizing: border-box;
+		position: relative;
+		& .tag {
+			position: absolute;
+			top: 20px;
+			right: 10px;
+			width: 50px;
+			height: 20px;
+			background: white;
+			color: #e85b60;
+			font-weight: 600;
+			font-size: 0.7rem;
+			display: grid;
+			place-items: center;
+		}
+	}
+	& .my_progess_trending_card_options_holder {
+		width: 100%;
+		height: 35px;
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+	}
+	& .career_path_cards_body {
+		width: 100%;
+		padding: 20px 10px 10px 10px;
+		box-sizing: border-box;
+
+		p {
+			font-family: 'Montserrat', sans-serif;
+			font-size: 13px;
+			line-height: 20px;
+			font-weight: 500;
+			letter-spacing: 0.5px;
+			color: rgb(59, 59, 59);
+		}
+	}
+	& .my_progess_trending_card_option {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		margin-right: 10px;
+		& .white {
+			color: white;
+		}
+		img {
+			width: 20px;
+			height: 20px;
+		}
+		p {
+			font-size: 0.7rem;
+			color: rgb(68, 68, 68);
+			margin-left: 6px;
+			font-weight: 600;
+			white-space: nowrap;
+		}
+	}
+	& .my_progress_tick_holder {
+		width: 100%;
+		height: 100px;
+		padding: 0px 20px;
+		box-sizing: border-box;
+		display: flex;
+		justify-content: flex-start;
+		align-items: flex-start;
+		flex-direction: column;
+		& .tick {
+			width: 100%;
+			display: flex;
+			justify-content: flex-start;
+			align-items: flex-start;
+			margin: 3px 0;
+
+			span {
+				color: #7933ff;
+				margin-right: 10px;
+			}
+			p {
+				font-size: 0.9rem;
+				font-weight: 500;
+				font-family: 'Montserrat', sans-serif;
+			}
+		}
+	}
+}
+.my_progress_trending_card_footer {
+	width: 100%;
+	height: 70px;
+	display: grid;
+	place-items: center;
+
+	button {
+		width: 90%;
+		height: 35px;
+		border: 1px solid rgb(0, 0, 0);
+		outline: none;
+		background: none;
+		border-radius: 5px;
+		color: #000;
+		font-weight: 600;
+		font-size: 1rem;
+		cursor: pointer;
+	}
+}

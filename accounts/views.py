@@ -207,3 +207,125 @@ class PasswordResetView(PasswordContextMixin, FormView):
         }
         form.save(**opts)
         return super().form_valid(form)
+
+from decimal import Context
+from django.contrib.auth.decorators import login_required
+from django.http.response import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views import View
+from django.contrib.auth.models import User, auth
+from django.views.generic import UpdateView, DetailView
+from django.contrib import messages
+from django.core.mail import EmailMessage
+from django.urls import reverse
+from django.utils.encoding import force_bytes, force_text, DjangoUnicodeDecodeError
+from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
+from django.contrib.sites.shortcuts import get_current_site
+from .utils import token_generator
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+
+# Create your views here.
+
+from .models import Profile, Notifications
+from .forms import ProfileForm
+
+# Create your views here.
+def update_profile(request, slug):
+    profile = get_object_or_404(Profile, slug=slug)
+    if request.method == "POST":
+        bio = request.POST.get('bio')
+        profile_pic = request.FILES.get('profile_pic')
+        full_name = request.POST.get('full_name')
+        gender = request.POST.get('gender')
+        country = request.POST.get('country')
+        state = request.POST.get('state')
+        city = request.POST.get('city')
+        linkedin = request.POST.get('linkedin')
+        github = request.POST.get('github')
+        email = request.POST.get('email')
+        ph_num = request.POST.get('ph_no')
+        skills = request.POST.get('skills')
+        languages = request.POST.get('langs')
+        default_coding_lang = request.POST.get('d_c_l')
+        resume = request.FILES.get('resume')
+        institute_name = request.POST.get('institute_name')
+        institute_country = request.POST.get('country_')
+        institute_location = request.POST.get('location')
+        yearOfPassing = request.POST.get('yearOfPassing')
+        btech_percentage = request.POST.get('btech_percentage')
+        workexp = request.POST.get('workexp')
+        current_ctc = request.POST.get('current_ctc')
+        notice_period = request.POST.get('period')
+        scale = request.POST.get('scale')
+        willing_to_relocate = request.POST.get('willing')
+        if willing_to_relocate=='True':
+            profile.willing_to_relocate = True
+        elif willing_to_relocate=='False':
+            profile.willing_to_relocate = False
+        expected_ctc = request.POST.get('expected_ctc')
+        current_com = request.POST.get('current_com')
+        dream_com = request.POST.get('dream_com')
+        designation = request.POST.get('desg')
+        profile.bio = bio
+        profile.institute_country = institute_country
+        profile.institute_location = institute_location
+        profile.Scale_Btech_percentage = scale
+        profile.notice_period = notice_period
+        profile.willing_to_relocate = willing_to_relocate
+        if profile.profile_pic and profile_pic:
+            profile.profile_pic = profile_pic
+        elif profile.profile_pic is not None and profile_pic:
+            profile.profile_pic = profile_pic
+        profile.full_name = full_name
+        profile.gender = gender
+        profile.country = country
+        profile.state = state
+        profile.city = city
+        profile.linkedin = linkedin
+        profile.github = github
+        profile.email = email
+        profile.ph_num = ph_num
+        profile.skills = skills
+        profile.languages = languages
+        profile.default_coding_lang = default_coding_lang
+        if profile.resume and resume:
+            profile.resume = resume
+        elif profile.resume is not None and resume:
+            profile.resume = resume
+        profile.institute_name = institute_name
+        profile.yearOfPassing = yearOfPassing
+        profile.Btech_percentage = btech_percentage
+        profile.workExp = workexp
+        profile.current_CTC = current_ctc
+        profile.expected_CTC = expected_ctc
+        profile.current_company = current_com
+        profile.dream_company = dream_com
+        profile.designation = designation
+        profile.save()
+        return HttpResponseRedirect(reverse('show_profile', kwargs={'slug':slug}))
+    else:
+        if request.user == profile.user:
+            return render(request, 'editprofile.html', {'profile': profile})
+        else:
+            return HttpResponse('siggu undali....')
+
+class UpdateProfile(UpdateView):
+    model = Profile
+    template_name = 'editprofile.html'
+    form_class = ProfileForm
+    success_url = '/'
+
+class ShowProfile(DetailView):
+    model = Profile
+    template_name = 'myprofile.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(ShowProfile, self).get_context_data(*args, **kwargs)
+        page_profile = get_object_or_404(Profile, slug=self.kwargs['slug'])
+        context['page_profile'] = page_profile
+        if self.request.user==page_profile.user:
+            self.template_name = 'myprofile.html'
+        elif self.request.user!=page_profile.user or self.request.user.is_anonymous:
+            self.template_name = 'myprofile.html'
+        return context

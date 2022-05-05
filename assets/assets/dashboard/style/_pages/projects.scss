@@ -1,0 +1,54 @@
+.color {
+	background: rgb(61, 247, 216);
+}
+
+.project_card {
+	height: 485px;
+}
+.author_tag {
+	height: 40px;
+	display: flex;
+	align-items: center;
+	p {
+		color: rgb(117, 117, 117);
+		font-weight: 600;
+		font-size: 0.8rem;
+	}
+	.name {
+		display: flex;
+		align-items: center;
+		margin-left: 10px;
+		img {
+			width: 15px;
+		}
+		h3 {
+			font-size: 0.9rem;
+			font-weight: 600;
+		}
+	}
+}
+.card_tags {
+	p {
+		color: rgba(5, 0, 255, 1);
+		font-weight: 600;
+		font-size: 0.7rem;
+	}
+}
+.tags_box {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	margin: 5px 0;
+
+	.tags {
+		display: grid;
+		place-items: center;
+		background-color: #eb99ff;
+		padding: 2px;
+		margin-left: 5px;
+		p {
+			font-size: 0.7rem;
+			font-weight: 600;
+		}
+	}
+}

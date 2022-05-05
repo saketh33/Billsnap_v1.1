@@ -1,0 +1,781 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'assets/dashboard/style/_pages/edit_profile.css'%}" />
+		<link rel="stylesheet" href="{% static 'assets/dashboard/style/_headers/headers.css'%}" />
+		<link rel="stylesheet" href="{% static 'assets/dashboard/style/_pages/my_profile.css'%}" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <title>My profile</title>
+	<link rel="shortcut icon" type="image/png" href="{% static 'assets/main/favicon.png'%}"/>
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-L4D2PNVR8Z"></script>
+		<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'G-L4D2PNVR8Z');
+		</script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+	<header>
+        <div class="sub_header">
+            <div class="Header_icon">
+                <div class="ham" onclick="slideMenu()">
+                    <img
+                        id="ham_icon"
+                        src="https://img.icons8.com/android/96/000000/menu.png"
+                    />
+                </div>
+                <img src="{% static 'assets/dashboard/assets/icon.svg'%}" alt="Logo" />
+            </div>
+
+            <div class="Header_Profile">
+                <div class="Icons">
+                    <div class="points" onclick="goalsDrop()">
+                        <p><span>🔥 </span>0</p>
+                        <p><span>🎯 </span> 0</p>
+                    </div>
+                    <div class="score">
+                        <p class="shock" onclick="powerhandler()"><span>⚡ {{user.profile.xp}}</span></p>
+                        <p class="coin" onclick="Coinhandler()">
+                            <span>
+                                <img src="{% static 'assets/dashboard/assets/coin (3).png'%}" alt="notifiction"
+                            /></span>
+                            {{user.profile.techsnap_cash}}
+                        </p>
+                    </div>
+                </div>
+
+                <img
+                    src="{% static 'assets/dashboard/assets/bell.svg'%}"
+                    alt="notifiction"
+                    class="notification_bell"
+                />
+
+                <div class="notification_dropdown">
+                    <div class="notification_item">
+                        <div class="notification_item_icon">
+                            <div class="icon_holder" style="background:black;!important">
+                                <img src="{% static 'assets/notify1.jpg'%}" alt="prifle" />
+                            </div>
+                        </div>
+                        <div class="notification_content">
+                            <p>
+                                Welcome to techsnap, take test and get better suggestions and recommendations
+                            </p>
+                            <button>Tale test</button>
+                        </div>
+                        <div class="time">
+                            <p>2h</p>
+                            <h1 class="notification_dots">...</h1>
+                        </div>
+                    </div>
+                    <div class="notification_item">
+                        <div class="notification_item_icon">
+                            <div class="icon_holder" style="background:black;!important">
+                                <img src="{% static 'assets/notify2.jpg'%}" alt="prifle" />
+                            </div>
+                        </div>
+                        <div class="notification_content">
+                            <p>
+                                Improve your coding skills with our tutorials and also get certified
+                            </p>
+                            <button>Explore all</button>
+                        </div>
+                        <div class="time">
+                            <p>2h</p>
+                            <h1 class="notification_dots">...</h1>
+                        </div>
+                    </div>
+                    <div class="notification_item">
+                        <div class="notification_item_icon">
+                            <div class="icon_holder" style="background:black;!important">
+                                <img src="{% static 'assets/coin (4).png'%}" alt="prifle" />
+                            </div>
+                        </div>
+                        <div class="notification_content">
+                            <p>
+                                Now can convert your XP to coins and Enjoy all your free courses,projects etc.
+                            </p>
+                            <button>Redeem now</button>
+                        </div>
+                        <div class="time">
+                            <p>2h</p>
+                            <h1 class="notification_dots">...</h1>
+                        </div>
+                    </div>
+                    <div class="see_all_notifications">
+                        <a href=""><p>See all notifications</p></a>
+                    </div>
+                </div>
+                {% if user.profile.profile_pic %}
+                <img class="profile_pic avatar" src="{{user.profile.profile_pic.url}}"alt="avatar"/>
+                {% else %}
+                <img class="profile_pic avatar" src="https://www.participate.nyc.gov/assets/decidim/default-avatar-43686fd5db4beed0141662a012321bbccd154ee1d9188b0d1f41e37b710af3cb.svg"alt="avatar"/>
+                {% endif %}
+                <div class="profile_dropDown">
+                    <a href="#" class="profile_dropDown_item">
+                        <span
+                            ><img
+                                src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-vitaly-gorbachev/60/000000/external-dashboard-blogger-vitaliy-gorbachev-lineal-vitaly-gorbachev.png"
+                        /></span>
+                        <p>Community</p>
+                    </a>
+                    <a href="#" class="profile_dropDown_item">
+                        <span
+                            ><img src="https://img.icons8.com/ios/50/000000/user.png"
+                        /></span>
+                        <p>Resources</p>
+                    </a>
+                    <a href="#" class="profile_dropDown_item">
+                        <span
+                            ><img
+                                src="https://img.icons8.com/ios/50/000000/user-not-found.png"
+                        /></span>
+                        <p>Forum</p>
+                    </a>
+                    <a href="{% url 'logout' %}" class="profile_dropDown_item">
+                        <span
+                            ><img src="https://img.icons8.com/windows/32/000000/exit.png"
+                        /></span>
+                        <p>Logout</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="goals_DropDown">
+            <div class="title">
+                <h2>Daily Goals</h2>
+                <p>Edit Goals</p>
+            </div>
+            <div class="info_text">
+                <p>How does streak work , know more obout here</p>
+                <span onclick="closeInfo()">X</span>
+            </div>
+            <div class="goals_section">
+                <div class="left_section">
+                    <div class="total_streak_day">
+                        <div class="title">
+                            <p>Total Streak</p>
+                            <img
+                                src="https://img.icons8.com/color/48/000000/share--v1.png"
+                            />
+                        </div>
+                        <div class="streak_body">
+                            <img
+                                src="https://img.icons8.com/external-vitaliy-gorbachev-flat-vitaly-gorbachev/58/000000/external-fire-blogger-vitaliy-gorbachev-flat-vitaly-gorbachev.png"
+                            />
+                            <div class="body_details">
+                                <p>0</p>
+                                <span>Day Streak</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="total_streak_freeeze">
+                        <div class="streak_body">
+                            <img
+                                src="https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/64/000000/external-fire-kitchen-kiranshastry-lineal-color-kiranshastry.png"
+                            />
+                            <div class="body_details">
+                                <p>0</p>
+                                <span>Streak Freeze</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right_section">
+                    <div class="right_box">
+                        <div class="title">
+                            <p>Daily Goal</p>
+                            <div class="time_box">
+                                <span>11:34:13</span>
+                            </div>
+                            <div class="streak_body">
+                                <img
+                                    src="data:image/png;base64,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"
+                                />
+                                <div class="body_details">
+                                    <p>10/200</p>
+                                    <span>Points</span>
+                                </div>
+                            </div>
+                            <div class="progress_streak">
+                                <div class="progress_bar">
+                                    <div class="bar" style="width: 10%"></div>
+                                </div>
+                                <button>Achieve Score</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="power_dropDown">
+            <div class="power_item">
+                <p>Highest xp : 100</p>
+            </div>
+                <div class="power_item">
+                <p>Curent xp :{{user.profile.xp}}</p>
+            </div>
+            <div class="buttons">
+                <button>Reedem</button>
+            </div>
+        </div>
+        <div class="coin_dropDown">
+            <div class="coin_item">
+                <p>Highest coins : 999</p>
+            </div>
+            <div class="coin_item">
+                <p>Curent coins :{{user.profile.techsnap_cash}}</p>
+            </div>
+            <div class="buttons">
+                <button>History</button>
+            </div>
+        </div>
+    </header>
+    <div class="wholeBody">
+        <!-- //------------------------sidenav--------------------------- -->
+        <aside class="sideMenu">
+
+
+            <button>Contact us</button>
+        </aside>
+<!-- //------------------------sidenav---------------------------
+
+
+			<div class="my_profile_holder">
+				<div class="my_profile_banner"></div>
+				<div class="my_profile_bar">
+					<div class="my_profile_dp"></div>
+					<div class="my_profile_name">
+						<h1>{{page_profile.full_name}}</h1>
+						<p>@{{user.username}}</p>
+					</div>
+				</div>
+				<div class="my_profile_three_cards_section">
+						<div class="my_profile_three_card">
+							<div class="card_heading">
+								<h1>Profile Information</h1>
+							</div>
+							<div class="form_details big_answer">
+
+								<h1 class="answer">{{page_profile.bio}}</h1>
+							</div>
+							<div class="form_details">
+								<h1 class="question">Mobile :</h1>
+								<h1 class="answer">{{page_profile.ph_num}}</h1>
+							</div>
+							<div class="form_details">
+								<h1 class="question">Email :</h1>
+								<h1 class="answer">{{page_profile.email}}</h1>
+							</div>
+							<div class="form_details">
+								<h1 class="question">Country :</h1>
+								<h1 class="answer">{{page_profile.country}}</h1>
+							</div>
+							<div class="form_details">
+								<h1 class="question">Linkdin :</h1>
+								<h1 class="answer">{{page_profile.linkedin}}</h1>
+							</div>
+
+							<div class="form_details">
+								<h1 class="question">Skills :</h1>
+								<h1 class="answer">{{page_profile.skills}}</h1>
+							</div>
+							<div class="form_details">
+								<h1 class="question">Languages :</h1>
+								<h1 class="answer">{{page_profile.languages}}</h1>
+							</div>
+
+						</div>
+						<div class="my_profile_three_card">
+							<div class="card_heading">
+								<h1>Educational Information</h1>
+							</div>
+
+
+
+						</div>
+						<div class="my_profile_three_card">
+							<div class="card_heading">
+								<h1>Teammates</h1>
+							</div>
+							<div class="my_profile_teammate_card">
+								<div class="teammate_dp">
+									<img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="teammate" />
+								</div>
+								<div class="teammate_details">
+									<h1>Alan Biju</h1>
+									<p>Lorem ipsum dolor, sit </p>
+								</div>
+								<h6>View profile</h6>
+							</div>
+							<div class="my_profile_teammate_card">
+								<div class="teammate_dp">
+									<img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="teammate" />
+								</div>
+								<div class="teammate_details">
+									<h1>Alan Biju</h1>
+									<p>Lorem ipsum dolor, sit </p>
+								</div>
+								<h6>View profile</h6>
+							</div>
+							<div class="my_profile_teammate_card">
+								<div class="teammate_dp">
+									<img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="teammate" />
+								</div>
+								<div class="teammate_details">
+									<h1>Alan Biju</h1>
+									<p>Lorem ipsum dolor, sit </p>
+								</div>
+								<h6>View profile</h6>
+							</div>
+						</div>
+					</div>
+					<div class="my_profile_blogs_section">
+						<h1>Blogs</h1>
+						<div class="blogs_card_holder">
+							<div class="blogs_card">
+								<div class="blog_image">
+									<img src="https://miro.medium.com/max/820/1*Y4Td-XMRtuFAW_8CpO7KyA.png" alt="blogs" />
+								</div>
+								<h1>Blogs 1</h1>
+								<h2>Introduction to front-end</h2>
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam optio animi debitis tenetur pariatur quo deleniti architecto consequuntur molestiae ipsum</p>
+								<button>View Blog</button>
+							</div>
+							<div class="blogs_card">
+								<div class="blog_image">
+									<img src="https://miro.medium.com/max/820/1*Y4Td-XMRtuFAW_8CpO7KyA.png" alt="blogs" />
+								</div>
+								<h1>Blogs 1</h1>
+								<h2>Introduction to front-end</h2>
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam optio animi debitis tenetur pariatur quo deleniti architecto consequuntur molestiae ipsum</p>
+								<button>View Blog</button>
+							</div>
+							<div class="blogs_card">
+								<div class="blog_image">
+									<img src="https://miro.medium.com/max/820/1*Y4Td-XMRtuFAW_8CpO7KyA.png" alt="blogs" />
+								</div>
+								<h1>Blogs 1</h1>
+								<h2>Introduction to front-end</h2>
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam optio animi debitis tenetur pariatur quo deleniti architecto consequuntur molestiae ipsum</p>
+								<button>View Blog</button>
+							</div>
+							<div class="blogs_card">
+								<div class="blog_image">
+									<img src="https://miro.medium.com/max/820/1*Y4Td-XMRtuFAW_8CpO7KyA.png" alt="blogs" />
+								</div>
+								<h1>Blogs 1</h1>
+								<h2>Introduction to front-end</h2>
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam optio animi debitis tenetur pariatur quo deleniti architecto consequuntur molestiae ipsum</p>
+								<button>View Blog</button>
+							</div>
+							<div class="blogs_card add_blog">
+								<h1>+</h1>
+								<h2>Add new blog</h2>
+							</div>
+
+						</div>
+					</div>
+			</div>  -->
+			<div class="my_profile_holder">
+				<div class="my_profile_banner"></div>
+				<div class="my_profile_bar">
+					{% if user.profile.profile_pic %}
+					<div class="my_profile_dp" style="background-image:url('{{user.profile.profile_pic.url}}')"></div>
+				{% else %}
+				<div class="my_profile_dp" style="background-image:url('https://www.participate.nyc.gov/assets/decidim/default-avatar-43686fd5db4beed0141662a012321bbccd154ee1d9188b0d1f41e37b710af3cb.svg')"></div>
+				{% endif %}
+					<div class="my_profile_name">
+						<h1>{{page_profile.full_name}}</h1>
+						<p>@{{page_profile.user.username}}</p>
+					</div>
+				</div>
+				<div class="white_ban">
+			  	<div class="tabs_wrap">
+					<ul>
+						<li
+							class="slideProfileLinks"
+							id="defaultProfileLinks"
+									onclick="slideProfile(event,'Personal')"
+						>
+						<span><img src="{% static 'assets/dashboard/assets/bell.svg'%}" alt="icon" ></span>
+							Personal Information
+						</li>
+						<li
+							class="slideProfileLinks"
+							onclick="slideProfile(event,'Education')"
+						>	<span><img src="{% static 'assets/dashboard/assets/bell.svg'%}" alt="icon" ></span>
+							Education and Experience
+						</li>
+						<li
+							class="slideProfileLinks"
+							onclick="slideProfile(event,'Blogs')"
+						>	<span><img src="{% static 'assets/dashboard/assets/bell.svg'%}" alt="icon" ></span>
+							Blogs
+						</li>
+						<li
+							class="slideProfileLinks"
+							onclick="slideProfile(event,'Teammates')"
+						>
+						<span><img src="{% static 'assets/dashboard/assets/bell.svg'%}" alt="icon" ></span>
+							Teammates
+						</li>
+						<li
+							class="slideProfileLinks"
+							onclick="slideProfile(event,'Posts')"
+						>	<span><img src="{% static 'assets/dashboard/assets/bell.svg'%}" alt="icon" ></span>
+							Posts
+						</li>
+					</ul>
+				</div>
+		  </div>
+<div class="slideProfileContent" id="Personal">
+							<div class="my_profile_content_holder">
+							<div class="card_heading">
+								<h1>Profile Information</h1>
+							</div>
+							<div class="form_details big_answer">
+
+								<h1 class="answer">{{page_profile.bio}}</h1>
+							</div>
+							<div class="form_details">
+								<h1 class="question">Mobile :</h1>
+								<h1 class="answer">{{page_profile.ph_num}}</h1>
+							</div>
+							<div class="form_details">
+								<h1 class="question">Email :</h1>
+								<h1 class="answer">{{page_profile.email}}</h1>
+							</div>
+							<div class="form_details">
+								<h1 class="question">Country :</h1>
+								<h1 class="answer">{{page_profile.country}}</h1>
+							</div>
+							<div class="form_details">
+								<h1 class="question">Linkdin :</h1>
+								<h1 class="answer">{{page_profile.linkedin}}</h1>
+							</div>
+
+							<div class="form_details">
+								<h1 class="question">Skills :</h1>
+								<h1 class="answer">{{page_profile.skills}}</h1>
+							</div>
+							<div class="form_details">
+								<h1 class="question">Languages :</h1>
+								<h1 class="answer">{{page_profile.languages}}</h1>
+							</div>
+
+						</div>
+							</div>
+							<div class="slideProfileContent" id="Education">
+							<div class="my_profile_content_holder">
+							<div class="card_heading">
+								<h1>Education And Experience</h1>
+							</div>
+							<div class="form_details big_answer">
+
+								<h1 class="answer">Lorem ipsum dolor sit amet consectetur, adipisicing elit. A, earum placeat. Accsciunt vel deleniti sit, perspiciatis necessitatibus praesentium voluptates velit dolorem minima?</h1>
+							</div>
+							<div class="form_details">
+								<h1 class="question">Mobile :</h1>
+								<h1 class="answer">97319</h1>
+							</div>
+							<div class="form_details">
+								<h1 class="question">Email :</h1>
+								<h1 class="answer">akhilsv@gmail.com</h1>
+							</div>
+							<div class="form_details">
+								<h1 class="question">Country :</h1>
+								<h1 class="answer">India</h1>
+							</div>
+							<div class="form_details">
+								<h1 class="question">Linkdin :</h1>
+								<h1 class="answer">India</h1>
+							</div>
+
+							<div class="form_details">
+								<h1 class="question">Skills :</h1>
+								<h1 class="answer">Html &nbsp Css &nbsp Python &nbsp Reactjs &nbsp Nodejs</h1>
+							</div>
+							<div class="form_details">
+								<h1 class="question">Languages :</h1>
+								<h1 class="answer">Kannada</h1>
+							</div>
+
+						</div>
+							</div>
+							<div class="slideProfileContent" id="Blogs">
+								<div class="my_profile_blogs_section">
+						<div class="blogs_card_holder">
+							<div class="blogs_card">
+								<div class="blog_image">
+									<img src="https://miro.medium.com/max/820/1*Y4Td-XMRtuFAW_8CpO7KyA.png" alt="blogs" />
+								</div>
+								<h1>Blogs 1</h1>
+								<h2>Introduction to front-end</h2>
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam optio animi debitis tenetur pariatur quo deleniti architecto consequuntur molestiae ipsum</p>
+								<button>View Blog</button>
+							</div>
+							<div class="blogs_card">
+								<div class="blog_image">
+									<img src="https://miro.medium.com/max/820/1*Y4Td-XMRtuFAW_8CpO7KyA.png" alt="blogs" />
+								</div>
+								<h1>Blogs 1</h1>
+								<h2>Introduction to front-end</h2>
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam optio animi debitis tenetur pariatur quo deleniti architecto consequuntur molestiae ipsum</p>
+								<button>View Blog</button>
+							</div>
+							<div class="blogs_card">
+								<div class="blog_image">
+									<img src="https://miro.medium.com/max/820/1*Y4Td-XMRtuFAW_8CpO7KyA.png" alt="blogs" />
+								</div>
+								<h1>Blogs 1</h1>
+								<h2>Introduction to front-end</h2>
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam optio animi debitis tenetur pariatur quo deleniti architecto consequuntur molestiae ipsum</p>
+								<button>View Blog</button>
+							</div>
+							<div class="blogs_card">
+								<div class="blog_image">
+									<img src="https://miro.medium.com/max/820/1*Y4Td-XMRtuFAW_8CpO7KyA.png" alt="blogs" />
+								</div>
+								<h1>Blogs 1</h1>
+								<h2>Introduction to front-end</h2>
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam optio animi debitis tenetur pariatur quo deleniti architecto consequuntur molestiae ipsum</p>
+								<button>View Blog</button>
+							</div>
+							<div class="blogs_card add_blog">
+								<h1>+</h1>
+								<h2>Add new blog</h2>
+							</div>
+
+						</div>
+					</div>
+							</div>
+							<div class="slideProfileContent" id="Teammates">
+								<div class="my_profile_content_holder">
+							<div class="card_heading">
+								<h1>Teammates</h1>
+							</div>
+							<div class="my_profile_teammate_card">
+								<div class="teammate_dp">
+									<img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="teammate" />
+								</div>
+								<div class="teammate_details">
+									<h1>Alan Biju</h1>
+									<p>Lorem ipsum dolor, sit </p>
+								</div>
+								<h6>View profile</h6>
+							</div>
+							<div class="my_profile_teammate_card">
+								<div class="teammate_dp">
+									<img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="teammate" />
+								</div>
+								<div class="teammate_details">
+									<h1>Alan Biju</h1>
+									<p>Lorem ipsum dolor, sit </p>
+								</div>
+								<h6>View profile</h6>
+							</div>
+							<div class="my_profile_teammate_card">
+								<div class="teammate_dp">
+									<img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="teammate" />
+								</div>
+								<div class="teammate_details">
+									<h1>Alan Biju</h1>
+									<p>Lorem ipsum dolor, sit </p>
+								</div>
+								<h6>View profile</h6>
+							</div>
+							<div class="my_profile_teammate_card">
+								<div class="teammate_dp">
+									<img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="teammate" />
+								</div>
+								<div class="teammate_details">
+									<h1>Alan Biju</h1>
+									<p>Lorem ipsum dolor, sit </p>
+								</div>
+								<h6>View profile</h6>
+							</div>
+							<div class="my_profile_teammate_card">
+								<div class="teammate_dp">
+									<img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="teammate" />
+								</div>
+								<div class="teammate_details">
+									<h1>Alan Biju</h1>
+									<p>Lorem ipsum dolor, sit </p>
+								</div>
+								<h6>View profile</h6>
+							</div>
+							<div class="my_profile_teammate_card">
+								<div class="teammate_dp">
+									<img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="teammate" />
+								</div>
+								<div class="teammate_details">
+									<h1>Alan Biju</h1>
+									<p>Lorem ipsum dolor, sit </p>
+								</div>
+								<h6>View profile</h6>
+							</div>
+						</div>
+							</div>
+							<div class="slideProfileContent" id="Posts">
+								<div class="post_section">
+						<div class="post_box">
+							<div class="avater_section">
+								<div class="profile">
+									<img src="" alt="profile" />
+									<div class="name">
+										<p>Alan Biju</p>
+										<span>TechSnap DevOps</span>
+									</div>
+								</div>
+							</div>
+							<div class="para">
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti reprehenderit minima dolorem deleniti consequatur quas, alias quis. Quam quo harum inventore, hic rerum ab. Laudantium numquam inventore iste provident labore!</p>
+							</div>
+							<div class="photo">
+								<img src="{% static 'assets/dashboard/assets/banner.png'%}" alt="banner" >
+							</div>
+							<div class="post_tages">
+								<div class="tags_box">
+									<div class="tags">
+										React Js
+									</div>
+									<div class="tags">
+										React Js
+									</div>
+								</div>
+								<div class="time">
+									<p>posted 3 Jan</p>
+								</div>
+							</div>
+							<div class="post_icons">
+<img src="https://img.icons8.com/ios/50/000000/like--v1.png"/>
+<img src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/64/000000/external-comment-chat-flatart-icons-outline-flatarticons-2.png"/>
+							</div>
+						</div>
+						<div class="post_box">
+							<div class="avater_section">
+								<div class="profile">
+									<img src="" alt="profile" />
+									<div class="name">
+										<p>Alan Biju</p>
+										<span>TechSnap DevOps</span>
+									</div>
+								</div>
+							</div>
+							<div class="para">
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti reprehenderit minima dolorem deleniti consequatur quas, alias quis. Quam quo harum inventore, hic rerum ab. Laudantium numquam inventore iste provident labore!</p>
+							</div>
+							<div class="photo">
+								<img src="{% static 'assets/dashboard/assets/banner.png'%}" alt="banner" >
+							</div>
+							<div class="post_tages">
+								<div class="tags_box">
+									<div class="tags">
+										React Js
+									</div>
+									<div class="tags">
+										React Js
+									</div>
+								</div>
+								<div class="time">
+									<p>posted 3 Jan</p>
+								</div>
+							</div>
+							<div class="post_icons">
+<img src="https://img.icons8.com/ios/50/000000/like--v1.png"/>
+<img src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/64/000000/external-comment-chat-flatart-icons-outline-flatarticons-2.png"/>
+							</div>
+						</div>
+						<div class="post_box">
+							<div class="avater_section">
+								<div class="profile">
+									<img src="" alt="profile" />
+									<div class="name">
+										<p>Alan Biju</p>
+										<span>TechSnap DevOps</span>
+									</div>
+								</div>
+							</div>
+							<div class="para">
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti reprehenderit minima dolorem deleniti consequatur quas, alias quis. Quam quo harum inventore, hic rerum ab. Laudantium numquam inventore iste provident labore!</p>
+							</div>
+							<div class="photo">
+								<img src="" alt="banner" >
+							</div>
+							<div class="post_tages">
+								<div class="tags_box">
+									<div class="tags">
+										React Js
+									</div>
+									<div class="tags">
+										React Js
+									</div>
+								</div>
+								<div class="time">
+									<p>posted 3 Jan</p>
+								</div>
+							</div>
+							<div class="post_icons">
+<img src="https://img.icons8.com/ios/50/000000/like--v1.png"/>
+<img src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/64/000000/external-comment-chat-flatart-icons-outline-flatarticons-2.png"/>
+							</div>
+						</div>
+					</div>
+							</div>
+
+				<!-- <div class="my_profile_three_cards_section">
+
+						<div class="my_profile_three_card">
+							<div class="card_heading">
+								<h1>Educational Information</h1>
+							</div>
+
+
+
+						</div>
+
+					</div> -->
+
+			</div>
+
+            <script src="{% static 'assets/dashboard/app.js'%}"></script>
+			<script>
+				document.getElementById('defaultProfileLinks').click();
+
+			function slideProfile(evt, cityName) {
+				console.log(cityName);
+				let i, tabcontent, tablinks;
+				tabcontent = document.getElementsByClassName('slideProfileContent');
+				for (i = 0; i < tabcontent.length; i++) {
+					tabcontent[i].style.display = 'none';
+				}
+				tablinks = document.getElementsByClassName('slideProfileLinks');
+				for (i = 0; i < tablinks.length; i++) {
+					tablinks[i].className = tablinks[i].className.replace(
+						'activeSlide',
+						'',
+					);
+				}
+				document.getElementById(cityName).style.display = 'flex';
+				evt.currentTarget.className += ' activeSlide';
+			}
+			</script>
+</body>
+</html>

@@ -94,3 +94,11 @@ class PasswordResetForm(forms.Form):
                     user_email,
                     html_email_template_name=html_email_template_name,
                 )
+
+from .models import Profile
+from django import forms
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        exclude = ('user', 'xp', 'techsnap_cash')
