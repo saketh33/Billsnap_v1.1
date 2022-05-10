@@ -13,7 +13,7 @@
 {% endif %}
 
 <br></br>
-<form method="POST" action="{% url 'addapp' %}">
+<form method="POST" action="{% url 'addapp' %}" enctype="multipart/form-data">
     {% csrf_token %}
     </br></br>
         <label for="app name" class="form__label">App Name</label>
