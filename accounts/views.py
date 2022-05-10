@@ -11,6 +11,7 @@ from django.urls import reverse
 from django.utils.encoding import force_bytes, force_text, DjangoUnicodeDecodeError
 
 
+
 class RegistrationView(View):
     def get(self, request):
         return render(request, 'register.html')

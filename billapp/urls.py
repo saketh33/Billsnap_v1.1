@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 from accounts import views as acc_views
 from django.contrib.auth import views as a_views
@@ -15,4 +15,6 @@ urlpatterns = [
     path('reset_password_complete/', a_views.PasswordResetCompleteView.as_view(template_name='password_reset_done.html'), name='password_reset_complete'),
     path('<slug>/edit/', acc_views.update_profile, name='update'),
     path('<slug>/', acc_views.ShowProfile.as_view(), name='show_profile'),
+    path('apps/', include('apps.urls')),
+    
 ]
