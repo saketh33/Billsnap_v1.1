@@ -11,3 +11,28 @@ class applists(models.Model):
 
     def save(self, *args, **kwargs):
         super(applists, self).save()
+
+
+class customer(models.Model):
+
+    #utility details
+    utility_name = models.CharField(max_length=200, null=True, blank=True)
+    utility_short_name= models.CharField(max_length=50, null=True, blank=True)
+    utility_state= models.CharField(max_length=50, null=True, blank=True)
+    utility_district= models.CharField(max_length=50, null=True, blank=True)
+    utility_country= models.CharField(max_length=50, null=True, blank=True)
+    utility_postalcode= models.CharField(max_length=20, null=True, blank=True)
+
+    #contact details
+    person= models.CharField(max_length=200, null=True, blank=True)
+    email = models.EmailField(max_length=50, null=True, blank=True)
+    ph_num = models.CharField(max_length=15, null=True, blank=True)
+    designation= models.CharField(max_length=100, null=True, blank=True)
+
+    #contact details
+
+    info_created_at = models.DateTimeField(auto_now_add=True)
+    info_updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
