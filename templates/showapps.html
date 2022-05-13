@@ -2,6 +2,7 @@
 <html>
 <body>
 <h1>show apps</h1>
+<button><a href="{% url 'customerlist'%}">view customer list directly</a></button>
     {% for i in showapp %}
         <h2>no apps found</h2>
         <h2>{{i.appname}}<h2>

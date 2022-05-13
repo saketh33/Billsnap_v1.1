@@ -9,5 +9,5 @@ urlpatterns = [
     path('customerlist',views.customerlis,name='customerlist'),
     path('addcust', views.addcustomer, name='addcust'),
     path('deletecustomer/<utility_name>',views.deletecust,name='deletecustomer'),
-    path('update/<slug>', views.CustomerUpdate.as_view(), name='customer-update'),
+    path('update/<int:id>', views.updaterecord, name='updaterecord'),
 ]

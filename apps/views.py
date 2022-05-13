@@ -71,6 +71,7 @@ def customerlis(request):
     cols=[f.name for f in customer._meta.get_fields()]
     dets=customer.objects.all()
     return render(request,'customerlist.html',{'details':dets,'columns':cols})
+
     #return render(request,'customerlist.html',{'data':zip(dets,cols)})
 
 def deletecust(request,utility_name):
@@ -78,9 +79,13 @@ def deletecust(request,utility_name):
     deli.delete()
     return redirect('customerlist')
 
+from django.template import loader, Context
+from django.http import HttpResponse
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
-'''def updatecust(request,utility_name):
-    instance=customer.objects.get(utility_name=utility_name)
+def updaterecord(request,id):
+    inst=customer.objects.get(id=id)
     if request.method=='POST':
         utility_name = request.POST.get('utility_name')
         utility_short_name= request.POST.get('utility_short_name')
@@ -95,6 +100,7 @@ def deletecust(request,utility_name):
         contact_designation= request.POST.get('contact_designation')
         office_address=request.POST.get('office_address')
 
+        instance=customer.objects.get(id=id)
         #contact details
         instance.utility_name =utility_name
         instance.utility_short_name = utility_short_name
@@ -107,15 +113,15 @@ def deletecust(request,utility_name):
         instance.contact_phnum=contact_phnum
         instance.contact_designation=contact_designation
         instance.office_address=office_address
-
         instance.save()
-        return render(request,'editcustomer.html',{'showap':instance})
-    else:
-        return render(request, 'editcustomer.html')
-'''
 
-class CustomerUpdate(PermissionRequiredMixin, UpdateView):
+        return redirect('customerlist')
+    else:
+        return render(request, 'editcustomer.html',{'profile': inst})
+
+
+'''class CustomerUpdate(PermissionRequiredMixin, UpdateView):
     permission_required = 'customers.can_manage_customers'
     model = customer
     fields = [f.name for f in customer._meta.get_fields()]
-    print(fields)
+    print(fields)'''
