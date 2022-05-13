@@ -1,4 +1,15 @@
+from unittest.util import _MAX_LENGTH
 from django.db import models
+from django.urls import reverse
+import hashlib
+from django.core import validators
+from django.db import models
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.utils.text import slugify
+import datetime
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 class applists(models.Model):
     appname=models.CharField(verbose_name='App name',primary_key=True,max_length=50,unique=True,null=False)
@@ -14,7 +25,6 @@ class applists(models.Model):
 
 
 class customer(models.Model):
-
     #utility details
     utility_name = models.CharField(max_length=200, null=True, blank=True)
     utility_short_name= models.CharField(max_length=50, null=True, blank=True)
@@ -24,15 +34,18 @@ class customer(models.Model):
     utility_postalcode= models.CharField(max_length=20, null=True, blank=True)
 
     #contact details
-    person= models.CharField(max_length=200, null=True, blank=True)
-    email = models.EmailField(max_length=50, null=True, blank=True)
-    ph_num = models.CharField(max_length=15, null=True, blank=True)
-    designation= models.CharField(max_length=100, null=True, blank=True)
+    contact_person= models.CharField(max_length=200, null=True, blank=True)
+    contact_email = models.EmailField(max_length=50, null=True, blank=True)
+    contact_phnum = models.CharField(max_length=15, null=True, blank=True)
+    contact_designation= models.CharField(max_length=100, null=True, blank=True)
+    office_address=models.TextField(max_length=200,null=True,blank=True)
 
     #contact details
 
     info_created_at = models.DateTimeField(auto_now_add=True)
     info_updated_at = models.DateTimeField(auto_now=True)
+    slug = models.SlugField(max_length=16, null=True, unique=True, editable=False)
+
 
     def __str__(self):
-        return self.name
+        return self.utility_name
