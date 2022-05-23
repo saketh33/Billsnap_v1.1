@@ -22,7 +22,9 @@ def addapp(request):
 
 def showapps(request):
     appli=applists.objects.all()
-    return render(request,'showapps.html',{'showapp':appli})
+    leni=len(appli)
+    return render(request,'showapps.html',{'showapp':appli,'leni':leni})
+
 
 def deleteapp(request,appname):
     deli=applists.objects.get(appname=appname)

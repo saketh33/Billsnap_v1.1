@@ -11,16 +11,25 @@ from django.utils.text import slugify
 import datetime
 from django.core.validators import MaxValueValidator, MinValueValidator
 
+
+def get_unique_string(body, time):
+    s = str(body)+str(time)
+    result_str = hashlib.sha1(s.encode()).hexdigest()[:10]
+    return result_str
+
 class applists(models.Model):
     appname=models.CharField(verbose_name='App name',primary_key=True,max_length=50,unique=True,null=False)
     appimg=models.ImageField(upload_to = 'app_images',null=True,blank=True)
     created_at = models.DateTimeField(verbose_name='created date',auto_now_add=True,editable=False,null=True,blank=True)
     updated_at = models.DateTimeField(verbose_name='updated date',null=True,blank=True)
+    slug = models.SlugField(max_length=255, null=True, unique=True, editable=False)
 
     def __str__(self):
         return str(self.appname)
 
     def save(self, *args, **kwargs):
+        super(applists, self).save()
+        self.slug = slugify(self.appname)
         super(applists, self).save()
 
 
@@ -44,8 +53,8 @@ class customer(models.Model):
 
     info_created_at = models.DateTimeField(auto_now_add=True)
     info_updated_at = models.DateTimeField(auto_now=True)
-    slug = models.SlugField(max_length=16, null=True, unique=True, editable=False)
-
 
     def __str__(self):
         return self.utility_name
+
+
