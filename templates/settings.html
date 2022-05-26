@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>settings page</h1>
+<img src="https://laravelnews.imgix.net/images/global-settings-featured.png?ixlib=php-3.3.1" alt="Italian Trulli" width=300></img><br>
+
+{% if user.is_authenticated %}
+    <h4>user details </h4>
+    <p>Hi, {{user.username}}</p>
+    <a href="{% url 'update' user.profile.slug %}">Edit</a>
+    <a href="{% url 'showapps'%}">view apps</a>
+    <button type="button"><a href="{%url 'logout' %}">LogOut</a></button>
+{% else %}
+    <button><a href="{%url 'register'%}">Register</a></button>
+    <p>OR</p>
+    <button><a href="{%url 'login'%}">LogIn</a></button>
+{% endif %}
+
+</body>
+</html>
