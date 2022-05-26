@@ -6,8 +6,8 @@
     <meta charset="UTF-8">
     {% block css %}
     <link rel="stylesheet" href="{% static 'dashboard/dashboard.css' %}">
-    {% endblock css %}
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    {% endblock css %}
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>{% block title %}Dashboard{% endblock title %}</title>
    </head>
@@ -33,6 +33,17 @@
         <p>joined on{{user.date_joined}}</p><br>
 </div>
   </section>
+  <script>
+    let sidebar = document.querySelector(".sidebar");
+ let sidebarBtn = document.querySelector(".sidebarBtn");
+ sidebarBtn.onclick = function() {
+   sidebar.classList.toggle("active");
+   if(sidebar.classList.contains("active")){
+   sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+ }else
+   sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+ }
+  </script>
   {% endblock body %}
 </body>
 </html>
