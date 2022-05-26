@@ -5,3 +5,6 @@ def index(request):
 
 def sett_ings(request):
     return render(request, 'settings.html')
+
+def dashboard(request):
+    return render(request, 'dashboard.html')
