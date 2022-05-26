@@ -57,4 +57,24 @@ class customer(models.Model):
     def __str__(self):
         return self.utility_name
 
+class csvs(models.Model):
+    LatD=models.CharField(max_length=50, null=True, blank=True)
+    LatM=models.CharField(max_length=50, null=True, blank=True)
+    LatS=models.CharField(max_length=50, null=True, blank=True)
+    NS=models.CharField(max_length=50, null=True, blank=True)
+    LonD=models.CharField(max_length=50, null=True, blank=True)
+    LonM=models.CharField(max_length=50, null=True, blank=True)
+    LonS=models.CharField(max_length=50, null=True, blank=True)
+    EW=models.CharField(max_length=50, null=True, blank=True)
+    City=models.CharField(max_length=50, null=True, blank=True)
+    State=models.CharField(max_length=50, null=True, blank=True)
 
+    def __str__(self):
+        return str(self.State)
+
+class settings(models.Model):
+    custlis=models.CharField(max_length=200, null=True, blank=True)
+
+
+    def __str__(self):
+        return str(self.State)
