@@ -18,6 +18,7 @@ def get_unique_string(body, time):
     return result_str
 
 class applists(models.Model):
+
     appname=models.CharField(verbose_name='App name',primary_key=True,max_length=50,unique=True,null=False)
     appimg=models.ImageField(upload_to = 'app_images',null=True,blank=True)
     created_at = models.DateTimeField(verbose_name='created date',auto_now_add=True,editable=False,null=True,blank=True)
@@ -34,6 +35,9 @@ class applists(models.Model):
 
 
 class customer(models.Model):
+
+    appname= models.ManyToManyField(applists)
+    
     #utility details
     utility_name = models.CharField(max_length=200, null=True, blank=True)
     utility_short_name= models.CharField(max_length=50, null=True, blank=True)

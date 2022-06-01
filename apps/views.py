@@ -1,3 +1,4 @@
+from debug_toolbar import APP_NAME
 from django.shortcuts import render, redirect, get_object_or_404
 import pandas
 from .models import applists,customer,csvs
@@ -28,6 +29,9 @@ def showapps(request):
     appli=applists.objects.all()
     leni=len(appli)
     return render(request,'showapps.html',{'showapp':appli,'leni':leni})
+
+def appdash(request,appname):
+    return render(request,'dashboard.html')
 
 @login_required
 def deleteapp(request,appname):
@@ -95,6 +99,7 @@ def addcustomer(request):
 def customerlis(request):
     cols=[f.name for f in customer._meta.get_fields()]
     dets=customer.objects.all()
+    print(dets)
     return render(request,'customerlist.html',{'details':dets,'columns':cols})
 
     #return render(request,'customerlist.html',{'data':zip(dets,cols)})
@@ -143,7 +148,6 @@ import pandas as pd
 def bulk_upload(request):
     if request.method=='POST':
         csvfile=request.FILES.get('csvfile')
-
         df=pd.read_csv(csvfile)
         l=list(df.columns)
         if l==['LatD', ' "LatM"', ' "LatS"', ' "NS"', ' "LonD"', ' "LonM"', ' "LonS"', ' "EW"', ' "City"', ' "State"']:

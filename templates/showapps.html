@@ -8,7 +8,7 @@
 {% if leni != 0 %}
     {% for i in showapp %}
         <h2>{{i.appname}}<h2>
-        <img src="{{i.appimg.url}}" width="200px">
+            <a href="{% url 'appdash' i.appname%}"><img src="{{i.appimg.url}}" width="200px"></a>
         <h3>{{i.updated_at}}
         <button><a href="{% url 'deleteapp' i.appname%}">delete</a></button>
     {%endfor%}
