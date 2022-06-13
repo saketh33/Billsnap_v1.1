@@ -1,12 +1,20 @@
 from debug_toolbar import APP_NAME
 from django.shortcuts import render, redirect, get_object_or_404
-import pandas
 from .models import applists,customer,csvs
 from datetime import datetime
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from logging.handlers import TimedRotatingFileHandler
+import logging
+logger=logging.getLogger()
+logging.basicConfig(
+        handlers=[ TimedRotatingFileHandler('logs.log', when="midnight", interval=1)],
+        level=logging.DEBUG,
+        format="[%(asctime)s] %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s",
+        datefmt='%Y-%m-%dT%H:%M:%S')
+
 
 @login_required
 def addapp(request):
@@ -20,14 +28,18 @@ def addapp(request):
         applis.appimg= app_im
         applis.updated_at=last_date
         applis.save()
+
+        logger.info(request.user.username+"_added an app")
         return redirect('showapps')
     else:
         return render(request, 'applist.html')
+
 
 @login_required
 def showapps(request):
     appli=applists.objects.all()
     leni=len(appli)
+    logger.info(request.user.username+"_seen teh whole applist")
     return render(request,'showapps.html',{'showapp':appli,'leni':leni})
 
 def appdash(request,appname):
@@ -37,6 +49,7 @@ def appdash(request,appname):
 def deleteapp(request,appname):
     deli=applists.objects.get(appname=appname)
     deli.delete()
+    logger.info(request.user.username+"_deleted an app")
     return redirect('showapps')
 
 
@@ -100,6 +113,7 @@ def customerlis(request):
     cols=[f.name for f in customer._meta.get_fields()]
     dets=customer.objects.all()
     print(dets)
+    logger.info(request.user.username+"_seen the customer list")
     return render(request,'customerlist.html',{'details':dets,'columns':cols})
 
     #return render(request,'customerlist.html',{'data':zip(dets,cols)})
@@ -107,6 +121,7 @@ def customerlis(request):
 def deletecust(request,utility_name):
     deli=customer.objects.get(utility_name=utility_name)
     deli.delete()
+    logger.info(request.user.username+"_deleted the"+deli.utility_name)
     return redirect('customerlist')
 
 def updaterecord(request,id):
