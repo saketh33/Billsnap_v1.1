@@ -1,4 +1,3 @@
-from debug_toolbar import APP_NAME
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import applists,customer,csvs
 from datetime import datetime
@@ -15,6 +14,7 @@ logging.basicConfig(
         format="[%(asctime)s] %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s",
         datefmt='%Y-%m-%dT%H:%M:%S')
 
+#jdbhcjksvllenv
 
 @login_required
 def addapp(request):
@@ -22,11 +22,10 @@ def addapp(request):
     if request.method=='POST':
         app_name = request.POST.get('app_name')
         app_im= request.FILES.get('app_im')
-        last_date= datetime.now()
+
 
         applis.appname=app_name
         applis.appimg= app_im
-        applis.updated_at=last_date
         applis.save()
 
         logger.info(request.user.username+"_added an app")
