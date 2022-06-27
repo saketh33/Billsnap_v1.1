@@ -8,6 +8,27 @@
 <title>Login page</title>
 
 <script src="{% static 'account/signin.js' %}"></script>
+<script>
+    function myFunction() {
+      document.getElementById("myBtn").disabled = true;
+
+    }
+    </script>
+    <style>
+        button:disabled {
+  cursor: not-allowed;
+  pointer-events: all !important;
+}
+
+
+li.disabled {
+  cursor: not-allowed;
+}
+li.disabled a {
+  pointer-events: none;
+}
+
+    </style>
 <link href="{% static 'account/login.css' %}" rel="stylesheet">
 <link rel="shortcut icon" type="image/png" href="">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -74,9 +95,8 @@
                             {% if request.GET.next %}
                             <input type="hidden" name="next" value="{{request.GET.next}}">
                             {% endif %}
-                            <button class="button" name="login_page" type="submit">Login</button>
+                            <button id="myBtn" class="button" name="login_page" type="submit">login</button>
                             <br>
-
                         <label><a id="forget_pass" href="{% url 'reset_password' %}">Forgot your password?</a></label>
                         </form>
                     </div>

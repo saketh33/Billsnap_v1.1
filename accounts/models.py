@@ -1,7 +1,4 @@
-from cv2 import illuminationChange
 from django.db import models
-
-# Create your models here.
 import hashlib
 from django.core import validators
 from django.db import models
@@ -33,7 +30,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
 
     # personal details
-    
+
     full_name               =       models.CharField(max_length=100, blank=True, null=True)
     state                   =       models.CharField(max_length=40, null=True, blank=True)
     city                    =       models.CharField(max_length=40, null=True, blank=True)

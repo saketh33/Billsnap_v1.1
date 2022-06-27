@@ -1,24 +1,27 @@
-import email
 from django.shortcuts import render,redirect
 from django.views import View
 from django.contrib.auth.models import User
-from django.contrib import auth
-from django.contrib import messages
+from django.contrib import auth, messages
 from django.core.mail import EmailMessage
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
 from django.utils.encoding import force_bytes, force_text, DjangoUnicodeDecodeError
 
-
+from logging.handlers import TimedRotatingFileHandler
+import logging
+logger=logging.getLogger()
+logging.basicConfig(
+        handlers=[ TimedRotatingFileHandler('logs.log', when="midnight", interval=1)],
+        level=logging.DEBUG,
+        format="[%(asctime)s] %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s",
+        datefmt='%Y-%m-%dT%H:%M:%S')
 
 class RegistrationView(View):
     def get(self, request):
         return render(request, 'register.html')
 
     def post(self, request):
-        # create a user account
-
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
@@ -103,6 +106,7 @@ class LoginView(View):
                             auth.login(request, user)
                             if next:
                                 return redirect(next)
+                            logger.info(request.user.username+"logged in")
                             return redirect("showapps")
 
                         messages.error(
@@ -138,14 +142,10 @@ class LoginView(View):
         return render(request, "login.html")
 
 def logout(request):
+    logger.info(request.user.username+"logged out")
     auth.logout(request)
     return redirect('index')
 
-from urllib.parse import urlparse, urlunparse
-
-from django.conf import settings
-
-# Avoid shadowing the login() and logout() views below.
 from django.contrib.auth import REDIRECT_FIELD_NAME, get_user_model
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
@@ -153,17 +153,12 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.sites.shortcuts import get_current_site
-from django.core.exceptions import ImproperlyConfigured, ValidationError
-from django.http import HttpResponseRedirect, QueryDict
-from django.shortcuts import resolve_url
+from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.utils.http import url_has_allowed_host_and_scheme, urlsafe_base64_decode
 from django.utils.translation import gettext_lazy as _
-from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
-from django.views.decorators.debug import sensitive_post_parameters
-from django.views.generic.base import TemplateView
 from django.views.generic.edit import FormView
 from .utils import token_generator
 
@@ -223,12 +218,8 @@ from django.utils.encoding import force_bytes, force_text, DjangoUnicodeDecodeEr
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.contrib.sites.shortcuts import get_current_site
 from .utils import token_generator
-from django.contrib.auth.mixins import LoginRequiredMixin
 
-
-# Create your views here.
-
-from .models import Profile, Notifications
+from .models import Profile
 from .forms import ProfileForm
 
 # Create your views here.

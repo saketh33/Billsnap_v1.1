@@ -1,3 +1,4 @@
+from django.db import models
 from unittest.util import _MAX_LENGTH
 from django.db import models
 from django.urls import reverse
@@ -11,28 +12,7 @@ from django.utils.text import slugify
 import datetime
 from django.core.validators import MaxValueValidator, MinValueValidator
 
-
-def get_unique_string(body, time):
-    s = str(body)+str(time)
-    result_str = hashlib.sha1(s.encode()).hexdigest()[:10]
-    return result_str
-
-class applists(models.Model):
-
-    appname=models.CharField(verbose_name='App name',primary_key=True,max_length=50,unique=True,null=False)
-    appimg=models.ImageField(upload_to = 'app_images',null=True,blank=True)
-    date_published= models.DateTimeField(auto_now_add=True)
-    date_modified = models.DateTimeField(auto_now=True)
-    slug = models.SlugField(max_length=255, null=True, unique=True, editable=False)
-
-    def __str__(self):
-        return str(self.slug)
-
-    def save(self, *args, **kwargs):
-        super(applists, self).save()
-        self.slug = slugify(self.appname)
-        super(applists, self).save()
-
+# Create your models here.
 class Meta:
     abstract = True
 
