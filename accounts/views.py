@@ -8,6 +8,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
 from django.utils.encoding import force_bytes, force_text, DjangoUnicodeDecodeError
 
+
 from logging.handlers import TimedRotatingFileHandler
 import logging
 logger=logging.getLogger()
@@ -106,7 +107,7 @@ class LoginView(View):
                             auth.login(request, user)
                             if next:
                                 return redirect(next)
-                            logger.info(request.user.username+"logged in")
+                            logger.info(request.user.username+"_ logged in")
                             return redirect("showapps")
 
                         messages.error(
@@ -142,7 +143,7 @@ class LoginView(View):
         return render(request, "login.html")
 
 def logout(request):
-    logger.info(request.user.username+"logged out")
+    logger.info(request.user.username+"_ logged out")
     auth.logout(request)
     return redirect('index')
 
@@ -235,6 +236,7 @@ def update_profile(request, slug):
         profile.ph_num = ph_num
 
         profile.save()
+        logger.info(request.user.username+"_ updated profile")
         return HttpResponseRedirect(reverse('show_profile', kwargs={'slug':slug}))
     else:
         if request.user == profile.user:

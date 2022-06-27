@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html>
 <body>
-<h1>show apps</h1>
-<button><a href="{% url 'customerlist'%}">view customer list directly</a></button>
-</br></br>
-
 {% if leni != 0 %}
+<h1>All apps</h1>
     {% for i in showapp %}
         <h2>{{i.appname}}<h2>
-            <a href="{% url 'appdash' i.appname%}"><img src="{{i.appimg.url}}" width="200px"></a>
-        <h3>{{i.date_modified}}
-            {{i.date_published}}</h3>
-        <button><a href="{% url 'deleteapp' i.appname%}">delete</a></button>
+            <a href=""><img src="{{i.appimg.url}}" width="200px"></a>
+        <h5>{{i.date_modified}}
+            {{i.date_published}}&nbsp;&nbsp;
+            <button><a href="{% url 'deleteapp' i.slug %}">delete</a></button>
+        </h5>
     {%endfor%}
-    </br></br>
+    <h1>Add apps</h1>
     <button><a href="{% url 'addapp'%}">addapp</a></button>
 {% else %}
+<h1>Add apps</h1>
     <h2>no apps found</h2>
     <button><a href="{% url 'addapp'%}">addapp</a></button>
 {% endif%}

@@ -14,8 +14,6 @@ logging.basicConfig(
         format="[%(asctime)s] %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s",
         datefmt='%Y-%m-%dT%H:%M:%S')
 
-#jdbhcjksvllenv
-
 @login_required
 def addapp(request):
     applis= applists()
@@ -37,18 +35,12 @@ def addapp(request):
 def showapps(request):
     appli=applists.objects.all()
     leni=len(appli)
-    logger.info(request.user.username+"_seen teh whole applist")
+    logger.info(request.user.username+"_seen the whole applist")
     return render(request,'showapps.html',{'showapp':appli,'leni':leni})
 
-def appdash(request,appname):
-    return render(request,'dashboard.html')
-
 @login_required
-def deleteapp(request,appname):
-    deli=applists.objects.get(appname=appname)
+def deleteapp(request,aslug):
+    deli=applists.objects.get(slug=aslug)
     deli.delete()
     logger.info(request.user.username+"_deleted an app")
     return redirect('showapps')
-
-class Meta:
-    abstract = True
