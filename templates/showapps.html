@@ -5,7 +5,7 @@
 <h1>All apps</h1>
     {% for i in showapp %}
         <h2>{{i.appname}}<h2>
-            <a href=""><img src="{{i.appimg.url}}" width="200px"></a>
+            <a href="{% url 'dashboard' i.slug %}"><img src="{{i.appimg.url}}" width="200px"></a>
         <h5>{{i.date_modified}}
             {{i.date_published}}&nbsp;&nbsp;
             <button><a href="{% url 'deleteapp' i.slug %}">delete</a></button>

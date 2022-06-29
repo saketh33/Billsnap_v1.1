@@ -1,7 +1,5 @@
 from django.contrib import admin
 
-from .models import applists, csvs, customer
+from .models import applists
 
 admin.site.register(applists)
-admin.site.register(customer)
-admin.site.register(csvs)

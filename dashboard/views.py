@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import applists,customer,csvs
+from .models import customer,csvs
 from datetime import datetime
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -15,11 +15,15 @@ logging.basicConfig(
         format="[%(asctime)s] %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s",
         datefmt='%Y-%m-%dT%H:%M:%S')
 
+from django.contrib.auth.models import User
+from apps.models import applists
+
 # Create your views here.
-def addcustomer(request):
+def addcustomer(request,slug):
+    app=applists.objects.get(slug=slug)
     addcus=customer()
     if request.method=='POST':
-
+        app=app
         utility_name = request.POST.get('utility_name')
         utility_short_name= request.POST.get('utility_short_name')
         utility_state= request.POST.get('utility_state')
@@ -159,3 +163,7 @@ def uploadlis(request):
 def settings(request):
     if request.method=='POST':
         custlis=request.POST.get('custlis')
+
+
+def dashboard(request, slug):
+    return render(request, 'dashboard.html')

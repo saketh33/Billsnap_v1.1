@@ -11,14 +11,14 @@ from django.dispatch import receiver
 from django.utils.text import slugify
 import datetime
 from django.core.validators import MaxValueValidator, MinValueValidator
-
+from apps.models import applists
 # Create your models here.
 class Meta:
     abstract = True
 
 class customer(models.Model):
 
-    appname= models.ManyToManyField(applists)
+    app = models.ForeignKey(applists, on_delete=models.CASCADE)
 
     #utility details
     utility_name = models.CharField(max_length=200, null=True, blank=True)

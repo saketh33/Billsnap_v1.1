@@ -14,16 +14,10 @@
 <body>
 {% block body %}
   <section class="home-section">
-    <nav>
-      <div class="sidebar-button">
-      <i class='bx bx-menu sidebarBtn'></i>
-        <span class="dashboard"> Dashboard</span>
-      </div>
-      <button type="button"><a href="{%url 'logout' %}">LogOut</a></button>
-    </nav>
+    
 
     <div class="home-content">
-        <h2> Welcome  {{user.username}}</p></h2>
+        <h2> Welcome {{user.username}}</p></h2>
         <a href="{% url 'update' user.profile.slug %}">Edit</a>
         </br>
         <a href="{% url 'showapps'%}">view apps</a>
@@ -31,7 +25,8 @@
         <h4>session details</h4>
         <p>last login {{user.last_login}}</p>
         <p>joined on{{user.date_joined}}</p><br>
-</div>
+    </div>
+
   </section>
   <script>
     let sidebar = document.querySelector(".sidebar");
