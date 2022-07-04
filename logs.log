@@ -267,3 +267,18 @@ django.urls.exceptions.NoReverseMatch: Reverse for 'customerlist' with arguments
 [2022-07-04T15:33:04] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\dashboard\views.py changed, reloading.
 [2022-07-04T15:34:24] INFO [root.showapps:40] admin_seen the whole applist
 [2022-07-04T15:36:00] INFO [root.showapps:40] admin_seen the whole applist
+[2022-07-04T15:56:06] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\dashboard\views.py changed, reloading.
+[2022-07-04T15:56:09] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\dashboard\views.py changed, reloading.
+[2022-07-04T15:56:13] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\dashboard\views.py changed, reloading.
+[2022-07-04T15:56:18] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\dashboard\views.py changed, reloading.
+[2022-07-04T15:56:21] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\dashboard\views.py changed, reloading.
+[2022-07-04T15:57:45] INFO [root.logout:146] admin_ logged out
+[2022-07-04T15:58:20] INFO [root.logout:146] admin_ logged out
+[2022-07-04T15:58:24] INFO [root.post:110] admin_ logged in
+[2022-07-04T15:58:24] INFO [root.showapps:40] admin_seen the whole applist
+[2022-07-04T15:58:29] INFO [root.showapps:40] admin_seen the whole applist
+[2022-07-04T15:58:56] INFO [root.showapps:40] admin_seen the whole applist
+[2022-07-04T15:59:02] WARNING [django.request.log_response:224] Not Found: /apps/
+[2022-07-04T15:59:10] WARNING [django.request.log_response:224] Not Found: /app/
+[2022-07-04T15:59:31] WARNING [django.request.log_response:224] Not Found: /favicon.ico/
+[2022-07-04T15:59:47] INFO [root.logout:146] admin_ logged out

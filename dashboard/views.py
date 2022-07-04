@@ -75,6 +75,8 @@ from apps.models import applists
     else:
         return render(request, 'addcustomer.html',{'slug':slug})'''
 from .forms import CustomerCreateForm
+
+@login_required
 def addcustomer(request,slug):
     app = applists.objects.get(slug=slug)
     if request.method == 'POST':
@@ -110,19 +112,19 @@ def addcustomer(request,slug):
         form = CustomerCreateForm()
     return render(request, 'addcustomer.html', {'form' :form})
 
-
+@login_required
 def customerlis(request,slug):
     app=applists.objects.get(slug=slug)
     columns=[field.name for field in customer._meta.get_fields()]
     details = customer.objects.all().filter(app=app)
     return render(request, 'customerlist.html', {'columns':columns, 'details':details,'slug':slug})
-
+@login_required
 def deletecust(request,utility_name):
     deli=customer.objects.get(utility_name=utility_name)
     deli.delete()
     logger.info(request.user.username+"_deleted the"+deli.utility_name)
     return redirect('customerlist')
-
+@login_required
 def updaterecord(request,id):
     inst=customer.objects.get(id=id)
     if request.method=='POST':
@@ -159,6 +161,7 @@ def updaterecord(request,id):
         return render(request, 'editcustomer.html',{'profile': inst})
 
 import pandas as pd
+@login_required
 def bulk_upload(request,slug):
     if request.method=='POST':
         csvfile=request.FILES.get('csvfile')
@@ -186,12 +189,12 @@ def bulk_upload(request,slug):
     else:
         stat=00
         return render(request, 'bulkupload.html',{'stat':stat})
-
+@login_required
 def uploadlis(request):
     cols=[f.name for f in csvs._meta.get_fields()]
     dets=csvs.objects.all()
     return render(request,'uploadlist.html',{'details':dets,'columns':cols})
 
-
+@login_required
 def dashboard(request, slug):
     return render(request, 'dashboard.html', {'slug' : slug})
