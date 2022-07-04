@@ -20,9 +20,11 @@ def addapp(request):
     if request.method=='POST':
         app_name = request.POST.get('app_name')
         app_im= request.FILES.get('app_im')
+        auth=request.user
 
         applis.appname=app_name
         applis.appimg= app_im
+        applis.author= auth
         applis.save()
 
         logger.info(request.user.username+"_added an app")

@@ -45,8 +45,7 @@
                     <td>{{ i.emergency_altofficeaddress }} </td>
                     <td>{{ i.info_created_at }}</td>
                     <td>{{ i.info_updated_at }}</td>
-                    <td><button><a href="{% url 'deletecustomer' i.utility_name %}">delete</a></button></td>
-                    <td><button><a href="{% url 'updaterecord' i.id %}">edit</a></button></td>
+
                 </tr>
                 {%endfor%}
               </tbody>

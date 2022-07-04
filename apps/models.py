@@ -19,6 +19,7 @@ def get_unique_string(body, time):
 
 class applists(models.Model):
 
+    author= models.ForeignKey(User, on_delete=models.CASCADE)
     appname=models.CharField(verbose_name='App name',primary_key=True,max_length=50,unique=True,null=False)
     appimg=models.ImageField(upload_to = 'app_images',null=True,blank=True)
     date_published= models.DateTimeField(auto_now_add=True)

@@ -1,162 +1,14 @@
-[2022-06-27T14:46:03] WARNING [django.request.log_response:224] Not Found: /favicon.ico/
-[2022-06-27T14:46:15] INFO [root.post:112] bcslogged in
-[2022-06-27T14:46:15] INFO [root.showapps:41] bcs_seen teh whole applist
-[2022-06-27T14:46:21] INFO [root.deleteapp:51] bcs_deleted an app
-[2022-06-27T14:46:21] INFO [root.showapps:41] bcs_seen teh whole applist
-[2022-06-27T14:47:24] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\views.py changed, reloading.
-[2022-06-27T14:47:29] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\views.py changed, reloading.
-[2022-06-27T14:47:35] INFO [root.showapps:42] bcs_seen teh whole applist
-[2022-06-27T14:47:47] INFO [root.addapp:31] bcs_added an app
-[2022-06-27T14:47:47] INFO [root.showapps:42] bcs_seen teh whole applist
-[2022-06-27T14:49:34] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\views.py changed, reloading.
-[2022-06-27T14:54:35] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\views.py changed, reloading.
-[2022-06-27T14:58:07] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\accounts\views.py changed, reloading.
-[2022-06-27T14:58:19] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\accounts\views.py changed, reloading.
-[2022-06-27T14:58:30] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\accounts\views.py changed, reloading.
-[2022-06-27T14:58:51] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\accounts\views.py changed, reloading.
-[2022-06-27T14:58:55] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\accounts\views.py changed, reloading.
-[2022-06-27T15:01:12] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\accounts\views.py changed, reloading.
-[2022-06-27T15:02:04] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\accounts\models.py changed, reloading.
-[2022-06-27T15:02:07] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\accounts\models.py changed, reloading.
-[2022-06-27T15:02:11] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\accounts\models.py changed, reloading.
-[2022-06-27T15:03:35] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\views.py changed, reloading.
-[2022-06-27T15:03:37] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\views.py changed, reloading.
-[2022-06-27T15:05:00] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\views.py changed, reloading.
-[2022-06-27T15:05:08] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\views.py changed, reloading.
-[2022-06-27T15:09:35] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\urls.py changed, reloading.
-[2022-06-27T15:09:37] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\urls.py changed, reloading.
-[2022-06-27T15:10:55] INFO [root.showapps:40] bcs_seen teh whole applist
-[2022-06-27T15:10:56] ERROR [django.request.log_response:224] Internal Server Error: /apps/applist
+[2022-07-04T15:04:57] WARNING [django.request.log_response:224] Not Found: /apps/
+[2022-07-04T15:05:03] INFO [root.showapps:40] admin_seen the whole applist
+[2022-07-04T15:05:38] WARNING [django.request.log_response:224] Not Found: /apps/instagram/create
+[2022-07-04T15:09:52] ERROR [django.request.log_response:224] Internal Server Error: /apps/instagram/customerlist/
 Traceback (most recent call last):
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
     response = get_response(request)
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
-    return view_func(request, *args, **kwargs)
-  File "C:\Users\saketh\Documents\billapp\apps\views.py", line 41, in showapps
-    return render(request,'showapps.html',{'showapp':appli,'leni':leni})
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
-    content = loader.render_to_string(template_name, context, request, using=using)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 62, in render_to_string
-    return template.render(context, request)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\backends\django.py", line 61, in render
-    return self.template.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 170, in render
-    return self._render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 162, in _render
-    return self.nodelist.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
-    bit = node.render_annotated(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
-    return self.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 449, in render
-    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\base.py", line 86, in reverse
-    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\resolvers.py", line 698, in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for 'customerlist' not found. 'customerlist' is not a valid view function or pattern name.
-[2022-06-27T15:12:14] INFO [root.post:109] adminlogged in
-[2022-06-27T15:12:14] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:12:14] ERROR [django.request.log_response:224] Internal Server Error: /apps/applist
-Traceback (most recent call last):
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
-    response = get_response(request)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
-    return view_func(request, *args, **kwargs)
-  File "C:\Users\saketh\Documents\billapp\apps\views.py", line 41, in showapps
-    return render(request,'showapps.html',{'showapp':appli,'leni':leni})
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
-    content = loader.render_to_string(template_name, context, request, using=using)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 62, in render_to_string
-    return template.render(context, request)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\backends\django.py", line 61, in render
-    return self.template.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 170, in render
-    return self._render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 162, in _render
-    return self.nodelist.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
-    bit = node.render_annotated(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
-    return self.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 449, in render
-    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\base.py", line 86, in reverse
-    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\resolvers.py", line 698, in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for 'customerlist' not found. 'customerlist' is not a valid view function or pattern name.
-[2022-06-27T15:12:39] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\urls.py changed, reloading.
-[2022-06-27T15:12:42] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\urls.py changed, reloading.
-[2022-06-27T15:12:54] WARNING [django.request.log_response:224] Not Found: /apps/
-[2022-06-27T15:12:57] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:12:57] ERROR [django.request.log_response:224] Internal Server Error: /apps/all
-Traceback (most recent call last):
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
-    response = get_response(request)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
-    return view_func(request, *args, **kwargs)
-  File "C:\Users\saketh\Documents\billapp\apps\views.py", line 41, in showapps
-    return render(request,'showapps.html',{'showapp':appli,'leni':leni})
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
-    content = loader.render_to_string(template_name, context, request, using=using)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 62, in render_to_string
-    return template.render(context, request)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\backends\django.py", line 61, in render
-    return self.template.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 170, in render
-    return self._render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 162, in _render
-    return self.nodelist.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
-    bit = node.render_annotated(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
-    return self.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 449, in render
-    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\base.py", line 86, in reverse
-    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\resolvers.py", line 698, in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for 'customerlist' not found. 'customerlist' is not a valid view function or pattern name.
-[2022-06-27T15:13:29] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:13:29] WARNING [django.request.log_response:224] Not Found: /media/app_images/Kanban-Board-vs-Scrum-Board.webp
-[2022-06-27T15:13:47] INFO [root.deleteapp:50] admin_deleted an app
-[2022-06-27T15:13:47] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:14:12] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:14:37] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:14:57] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:15:12] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:15:36] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:15:46] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:16:31] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:16:48] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:17:08] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:17:27] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:17:41] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:17:55] INFO [root.deleteapp:50] admin_deleted an app
-[2022-06-27T15:17:55] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:17:56] INFO [root.deleteapp:50] admin_deleted an app
-[2022-06-27T15:17:56] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:17:59] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:18:13] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:18:24] INFO [root.addapp:30] admin_added an app
-[2022-06-27T15:18:24] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:18:47] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:18:51] ERROR [django.request.log_response:224] Internal Server Error: /apps/vimiiii/
-Traceback (most recent call last):
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
-    response = get_response(request)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Users\saketh\Documents\billapp\apps\views.py", line 44, in appdash
-    return render(request,'dashboard.html')
+  File "C:\Users\saketh\Documents\billapp\dashboard\views.py", line 118, in customerlis
+    return render(request, 'customerlist.html', {'columns':columns, 'details':details})
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
     content = loader.render_to_string(template_name, context, request, using=using)
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 62, in render_to_string
@@ -185,15 +37,15 @@ Traceback (most recent call last):
     return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\resolvers.py", line 698, in _reverse_with_prefix
     raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for 'addcust' not found. 'addcust' is not a valid view function or pattern name.
-[2022-06-27T15:18:51] ERROR [django.request.log_response:224] Internal Server Error: /apps/vimiiii/
+django.urls.exceptions.NoReverseMatch: Reverse for 'addcust' with arguments '('',)' not found. 1 pattern(s) tried: ['apps/(?P<slug>[^/]+)/addcust/\\Z']
+[2022-07-04T15:11:22] ERROR [django.request.log_response:224] Internal Server Error: /apps/instagram/customerlist/
 Traceback (most recent call last):
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
     response = get_response(request)
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Users\saketh\Documents\billapp\apps\views.py", line 44, in appdash
-    return render(request,'dashboard.html')
+  File "C:\Users\saketh\Documents\billapp\dashboard\views.py", line 118, in customerlis
+    return render(request, 'customerlist.html', {'columns':columns, 'details':details})
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
     content = loader.render_to_string(template_name, context, request, using=using)
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 62, in render_to_string
@@ -222,15 +74,17 @@ Traceback (most recent call last):
     return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\resolvers.py", line 698, in _reverse_with_prefix
     raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for 'addcust' not found. 'addcust' is not a valid view function or pattern name.
-[2022-06-27T15:18:51] ERROR [django.request.log_response:224] Internal Server Error: /apps/vimiiii/
+django.urls.exceptions.NoReverseMatch: Reverse for 'addcust' with arguments '('',)' not found. 1 pattern(s) tried: ['apps/(?P<slug>[^/]+)/addcust/\\Z']
+[2022-07-04T15:16:38] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\dashboard\views.py changed, reloading.
+[2022-07-04T15:16:47] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\dashboard\urls.py changed, reloading.
+[2022-07-04T15:16:56] ERROR [django.request.log_response:224] Internal Server Error: /apps/instagram/customerlist/
 Traceback (most recent call last):
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
     response = get_response(request)
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Users\saketh\Documents\billapp\apps\views.py", line 44, in appdash
-    return render(request,'dashboard.html')
+  File "C:\Users\saketh\Documents\billapp\dashboard\views.py", line 118, in customerlis
+    return render(request, 'customerlist.html', {'columns':columns, 'details':details})
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
     content = loader.render_to_string(template_name, context, request, using=using)
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 62, in render_to_string
@@ -259,15 +113,15 @@ Traceback (most recent call last):
     return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\resolvers.py", line 698, in _reverse_with_prefix
     raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for 'addcust' not found. 'addcust' is not a valid view function or pattern name.
-[2022-06-27T15:18:51] ERROR [django.request.log_response:224] Internal Server Error: /apps/vimiiii/
+django.urls.exceptions.NoReverseMatch: Reverse for 'addcust' with arguments '('',)' not found. 1 pattern(s) tried: ['apps/(?P<slug>[^/]+)/addcust/\\Z']
+[2022-07-04T15:16:57] ERROR [django.request.log_response:224] Internal Server Error: /apps/instagram/customerlist/
 Traceback (most recent call last):
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
     response = get_response(request)
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Users\saketh\Documents\billapp\apps\views.py", line 44, in appdash
-    return render(request,'dashboard.html')
+  File "C:\Users\saketh\Documents\billapp\dashboard\views.py", line 118, in customerlis
+    return render(request, 'customerlist.html', {'columns':columns, 'details':details})
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
     content = loader.render_to_string(template_name, context, request, using=using)
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 62, in render_to_string
@@ -296,15 +150,15 @@ Traceback (most recent call last):
     return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\resolvers.py", line 698, in _reverse_with_prefix
     raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for 'addcust' not found. 'addcust' is not a valid view function or pattern name.
-[2022-06-27T15:18:51] ERROR [django.request.log_response:224] Internal Server Error: /apps/vimiiii/
+django.urls.exceptions.NoReverseMatch: Reverse for 'addcust' with arguments '('',)' not found. 1 pattern(s) tried: ['apps/(?P<slug>[^/]+)/addcust/\\Z']
+[2022-07-04T15:16:57] ERROR [django.request.log_response:224] Internal Server Error: /apps/instagram/customerlist/
 Traceback (most recent call last):
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
     response = get_response(request)
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Users\saketh\Documents\billapp\apps\views.py", line 44, in appdash
-    return render(request,'dashboard.html')
+  File "C:\Users\saketh\Documents\billapp\dashboard\views.py", line 118, in customerlis
+    return render(request, 'customerlist.html', {'columns':columns, 'details':details})
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
     content = loader.render_to_string(template_name, context, request, using=using)
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 62, in render_to_string
@@ -333,15 +187,15 @@ Traceback (most recent call last):
     return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\resolvers.py", line 698, in _reverse_with_prefix
     raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for 'addcust' not found. 'addcust' is not a valid view function or pattern name.
-[2022-06-27T15:18:51] ERROR [django.request.log_response:224] Internal Server Error: /apps/vimiiii/
+django.urls.exceptions.NoReverseMatch: Reverse for 'addcust' with arguments '('',)' not found. 1 pattern(s) tried: ['apps/(?P<slug>[^/]+)/addcust/\\Z']
+[2022-07-04T15:21:03] ERROR [django.request.log_response:224] Internal Server Error: /apps/instagram/customerlist/
 Traceback (most recent call last):
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
     response = get_response(request)
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Users\saketh\Documents\billapp\apps\views.py", line 44, in appdash
-    return render(request,'dashboard.html')
+  File "C:\Users\saketh\Documents\billapp\dashboard\views.py", line 118, in customerlis
+    return render(request, 'customerlist.html', {'columns':columns, 'details':details})
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
     content = loader.render_to_string(template_name, context, request, using=using)
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 62, in render_to_string
@@ -370,15 +224,15 @@ Traceback (most recent call last):
     return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\resolvers.py", line 698, in _reverse_with_prefix
     raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for 'addcust' not found. 'addcust' is not a valid view function or pattern name.
-[2022-06-27T15:18:51] ERROR [django.request.log_response:224] Internal Server Error: /apps/vimiiii/
+django.urls.exceptions.NoReverseMatch: Reverse for 'addcust' with arguments '('',)' not found. 1 pattern(s) tried: ['apps/(?P<slug>[^/]+)/addcust/\\Z']
+[2022-07-04T15:21:27] ERROR [django.request.log_response:224] Internal Server Error: /apps/instagram/customerlist/
 Traceback (most recent call last):
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
     response = get_response(request)
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Users\saketh\Documents\billapp\apps\views.py", line 44, in appdash
-    return render(request,'dashboard.html')
+  File "C:\Users\saketh\Documents\billapp\dashboard\views.py", line 118, in customerlis
+    return render(request, 'customerlist.html', {'columns':columns, 'details':details})
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
     content = loader.render_to_string(template_name, context, request, using=using)
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 62, in render_to_string
@@ -407,614 +261,9 @@ Traceback (most recent call last):
     return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
   File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\resolvers.py", line 698, in _reverse_with_prefix
     raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for 'addcust' not found. 'addcust' is not a valid view function or pattern name.
-[2022-06-27T15:18:52] ERROR [django.request.log_response:224] Internal Server Error: /apps/vimiiii/
-Traceback (most recent call last):
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
-    response = get_response(request)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Users\saketh\Documents\billapp\apps\views.py", line 44, in appdash
-    return render(request,'dashboard.html')
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
-    content = loader.render_to_string(template_name, context, request, using=using)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 62, in render_to_string
-    return template.render(context, request)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\backends\django.py", line 61, in render
-    return self.template.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 170, in render
-    return self._render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 162, in _render
-    return self.nodelist.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
-    bit = node.render_annotated(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
-    return self.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 150, in render
-    return compiled_parent._render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 162, in _render
-    return self.nodelist.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
-    bit = node.render_annotated(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
-    return self.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 449, in render
-    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\base.py", line 86, in reverse
-    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\resolvers.py", line 698, in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for 'addcust' not found. 'addcust' is not a valid view function or pattern name.
-[2022-06-27T15:18:52] ERROR [django.request.log_response:224] Internal Server Error: /apps/all
-Traceback (most recent call last):
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 454, in parse
-    command = token.contents.split()[0]
-IndexError: list index out of range
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
-    response = get_response(request)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
-    return view_func(request, *args, **kwargs)
-  File "C:\Users\saketh\Documents\billapp\apps\views.py", line 41, in showapps
-    return render(request,'showapps.html',{'showapp':appli,'leni':leni})
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
-    content = loader.render_to_string(template_name, context, request, using=using)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 61, in render_to_string
-    template = get_template(template_name, using=using)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 15, in get_template
-    return engine.get_template(template_name)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\backends\django.py", line 34, in get_template
-    return Template(self.engine.get_template(template_name), self)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\engine.py", line 143, in get_template
-    template, origin = self.find_template(template_name)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\engine.py", line 125, in find_template
-    template = loader.get_template(name, skip=skip)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loaders\base.py", line 29, in get_template
-    return Template(
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 155, in __init__
-    self.nodelist = self.compile_nodelist()
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 193, in compile_nodelist
-    return parser.parse()
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
-    raise self.error(token, e)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
-    compiled_result = compile_func(self, token)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 968, in do_if
-    nodelist = parser.parse(('elif', 'else', 'endif'))
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
-    raise self.error(token, e)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
-    compiled_result = compile_func(self, token)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 817, in do_for
-    nodelist_loop = parser.parse(('empty', 'endfor',))
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 456, in parse
-    raise self.error(token, 'Empty block tag on line %d' % token.lineno)
-django.template.exceptions.TemplateSyntaxError: Empty block tag on line 8
-[2022-06-27T15:19:00] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:19:00] ERROR [django.request.log_response:224] Internal Server Error: /apps/all
-Traceback (most recent call last):
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 454, in parse
-    command = token.contents.split()[0]
-IndexError: list index out of range
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
-    response = get_response(request)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
-    return view_func(request, *args, **kwargs)
-  File "C:\Users\saketh\Documents\billapp\apps\views.py", line 41, in showapps
-    return render(request,'showapps.html',{'showapp':appli,'leni':leni})
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
-    content = loader.render_to_string(template_name, context, request, using=using)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 61, in render_to_string
-    template = get_template(template_name, using=using)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 15, in get_template
-    return engine.get_template(template_name)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\backends\django.py", line 34, in get_template
-    return Template(self.engine.get_template(template_name), self)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\engine.py", line 143, in get_template
-    template, origin = self.find_template(template_name)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\engine.py", line 125, in find_template
-    template = loader.get_template(name, skip=skip)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loaders\base.py", line 29, in get_template
-    return Template(
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 155, in __init__
-    self.nodelist = self.compile_nodelist()
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 193, in compile_nodelist
-    return parser.parse()
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
-    raise self.error(token, e)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
-    compiled_result = compile_func(self, token)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 968, in do_if
-    nodelist = parser.parse(('elif', 'else', 'endif'))
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
-    raise self.error(token, e)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
-    compiled_result = compile_func(self, token)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 817, in do_for
-    nodelist_loop = parser.parse(('empty', 'endfor',))
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 456, in parse
-    raise self.error(token, 'Empty block tag on line %d' % token.lineno)
-django.template.exceptions.TemplateSyntaxError: Empty block tag on line 8
-[2022-06-27T15:19:01] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:19:02] ERROR [django.request.log_response:224] Internal Server Error: /apps/all
-Traceback (most recent call last):
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 454, in parse
-    command = token.contents.split()[0]
-IndexError: list index out of range
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
-    response = get_response(request)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
-    return view_func(request, *args, **kwargs)
-  File "C:\Users\saketh\Documents\billapp\apps\views.py", line 41, in showapps
-    return render(request,'showapps.html',{'showapp':appli,'leni':leni})
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
-    content = loader.render_to_string(template_name, context, request, using=using)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 61, in render_to_string
-    template = get_template(template_name, using=using)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 15, in get_template
-    return engine.get_template(template_name)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\backends\django.py", line 34, in get_template
-    return Template(self.engine.get_template(template_name), self)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\engine.py", line 143, in get_template
-    template, origin = self.find_template(template_name)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\engine.py", line 125, in find_template
-    template = loader.get_template(name, skip=skip)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loaders\base.py", line 29, in get_template
-    return Template(
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 155, in __init__
-    self.nodelist = self.compile_nodelist()
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 193, in compile_nodelist
-    return parser.parse()
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
-    raise self.error(token, e)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
-    compiled_result = compile_func(self, token)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 968, in do_if
-    nodelist = parser.parse(('elif', 'else', 'endif'))
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
-    raise self.error(token, e)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
-    compiled_result = compile_func(self, token)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 817, in do_for
-    nodelist_loop = parser.parse(('empty', 'endfor',))
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 456, in parse
-    raise self.error(token, 'Empty block tag on line %d' % token.lineno)
-django.template.exceptions.TemplateSyntaxError: Empty block tag on line 8
-[2022-06-27T15:19:14] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:19:15] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:19:16] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:19:16] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:19:16] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:19:16] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:19:17] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:19:17] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:19:17] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:19:17] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:19:18] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:19:18] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:19:18] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:19:18] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:19:18] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:19:19] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:19:40] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\views.py changed, reloading.
-[2022-06-27T15:19:44] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\urls.py changed, reloading.
-[2022-06-27T15:19:52] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\views.py changed, reloading.
-[2022-06-27T15:20:02] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\views.py changed, reloading.
-[2022-06-27T15:20:07] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\views.py changed, reloading.
-[2022-06-27T15:20:12] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\views.py changed, reloading.
-[2022-06-27T15:20:14] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\views.py changed, reloading.
-[2022-06-27T15:20:18] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\views.py changed, reloading.
-[2022-06-27T15:20:20] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\views.py changed, reloading.
-[2022-06-27T15:20:44] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:20:45] ERROR [django.request.log_response:224] Internal Server Error: /apps/deleteapp/vimiiii
-Traceback (most recent call last):
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
-    response = get_response(request)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
-    return view_func(request, *args, **kwargs)
-TypeError: deleteapp() got an unexpected keyword argument 'appname'
-[2022-06-27T15:21:52] ERROR [django.request.log_response:224] Internal Server Error: /apps/deleteapp/vimiiii
-Traceback (most recent call last):
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
-    response = get_response(request)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
-    return view_func(request, *args, **kwargs)
-TypeError: deleteapp() got an unexpected keyword argument 'appname'
-[2022-06-27T15:22:05] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\urls.py changed, reloading.
-[2022-06-27T15:22:06] ERROR [django.request.log_response:224] Internal Server Error: /apps/deleteapp/vimiiii
-Traceback (most recent call last):
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
-    response = get_response(request)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
-    return view_func(request, *args, **kwargs)
-TypeError: deleteapp() got an unexpected keyword argument 'slug'
-[2022-06-27T15:22:14] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\urls.py changed, reloading.
-[2022-06-27T15:22:16] INFO [root.deleteapp:47] admin_deleted an app
-[2022-06-27T15:22:16] INFO [root.showapps:40] admin_seen teh whole applist
-[2022-06-27T15:25:28] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\views.py changed, reloading.
-[2022-06-27T15:25:40] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\views.py changed, reloading.
-[2022-06-27T15:26:17] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\accounts\views.py changed, reloading.
-[2022-06-27T15:26:21] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\accounts\views.py changed, reloading.
-[2022-06-27T15:26:23] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\accounts\views.py changed, reloading.
-[2022-06-27T15:27:09] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\accounts\views.py changed, reloading.
-[2022-06-27T15:27:11] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\accounts\views.py changed, reloading.
-[2022-06-27T15:27:23] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\accounts\views.py changed, reloading.
-[2022-06-27T15:27:39] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\accounts\views.py changed, reloading.
-[2022-06-27T15:27:46] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\accounts\views.py changed, reloading.
-[2022-06-27T15:27:55] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\accounts\views.py changed, reloading.
-[2022-06-27T15:27:59] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\accounts\views.py changed, reloading.
-[2022-06-27T15:28:04] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\accounts\views.py changed, reloading.
-[2022-06-29T11:08:26] WARNING [django.request.log_response:224] Not Found: /apps/addapp/
-[2022-06-29T11:08:26] WARNING [django.request.log_response:224] Not Found: /apps/addapp/
-[2022-06-29T11:08:27] WARNING [django.request.log_response:224] Not Found: /apps/addapp/
-[2022-06-29T11:08:27] WARNING [django.request.log_response:224] Not Found: /apps/addapp/
-[2022-06-29T11:08:27] WARNING [django.request.log_response:224] Not Found: /apps/addapp/
-[2022-06-29T11:08:27] WARNING [django.request.log_response:224] Not Found: /apps/addapp/
-[2022-06-29T11:08:27] WARNING [django.request.log_response:224] Not Found: /apps/addapp/
-[2022-06-29T11:08:28] WARNING [django.request.log_response:224] Not Found: /apps/addapp/
-[2022-06-29T11:08:28] WARNING [django.request.log_response:224] Not Found: /apps/addapp/
-[2022-06-29T11:08:28] WARNING [django.request.log_response:224] Not Found: /apps/addapp/
-[2022-06-29T11:08:28] WARNING [django.request.log_response:224] Not Found: /apps/addapp/
-[2022-06-29T11:08:28] WARNING [django.request.log_response:224] Not Found: /apps/addapp/
-[2022-06-29T11:08:28] WARNING [django.request.log_response:224] Not Found: /apps/addapp/
-[2022-06-29T11:08:41] INFO [root.post:110] bcs_ logged in
-[2022-06-29T11:08:41] INFO [root.showapps:38] bcs_seen the whole applist
-[2022-06-29T11:08:41] WARNING [django.request.log_response:224] Not Found: /media/app_images/scrum_process_atlassian.svg
-[2022-06-29T11:08:46] INFO [root.deleteapp:45] bcs_deleted an app
-[2022-06-29T11:08:46] INFO [root.showapps:38] bcs_seen the whole applist
-[2022-06-29T11:08:54] WARNING [django.request.log_response:224] Not Found: /apps/addapp/
-[2022-06-29T11:09:01] WARNING [django.request.log_response:224] Not Found: /apps/addapp/
-[2022-06-29T11:09:09] INFO [root.showapps:38] bcs_seen the whole applist
-[2022-06-29T11:09:09] INFO [root.showapps:38] bcs_seen the whole applist
-[2022-06-29T11:09:09] INFO [root.showapps:38] bcs_seen the whole applist
-[2022-06-29T11:09:10] INFO [root.showapps:38] bcs_seen the whole applist
-[2022-06-29T11:09:10] INFO [root.showapps:38] bcs_seen the whole applist
-[2022-06-29T11:09:10] INFO [root.showapps:38] bcs_seen the whole applist
-[2022-06-29T11:09:11] INFO [root.showapps:38] bcs_seen the whole applist
-[2022-06-29T11:09:11] INFO [root.showapps:38] bcs_seen the whole applist
-[2022-06-29T11:09:11] INFO [root.showapps:38] bcs_seen the whole applist
-[2022-06-29T11:09:13] WARNING [django.request.log_response:224] Not Found: /apps/addapp/
-[2022-06-29T11:09:17] WARNING [django.request.log_response:224] Not Found: /apps/addapp/
-[2022-06-29T11:09:28] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\urls.py changed, reloading.
-[2022-06-29T11:09:30] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\urls.py changed, reloading.
-[2022-06-29T11:09:32] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\urls.py changed, reloading.
-[2022-06-29T11:09:44] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\urls.py changed, reloading.
-[2022-06-29T11:10:11] INFO [root.addapp:28] bcs_added an app
-[2022-06-29T11:10:11] INFO [root.showapps:38] bcs_seen the whole applist
-[2022-06-29T11:14:55] INFO [root.showapps:38] bcs_seen the whole applist
-[2022-06-29T11:14:57] INFO [root.showapps:38] bcs_seen the whole applist
-[2022-06-29T11:14:58] INFO [root.showapps:38] bcs_seen the whole applist
-[2022-06-29T11:14:58] INFO [root.showapps:38] bcs_seen the whole applist
-[2022-06-29T11:14:58] INFO [root.showapps:38] bcs_seen the whole applist
-[2022-06-29T11:16:02] INFO [root.showapps:38] bcs_seen the whole applist
-[2022-06-29T11:16:03] INFO [root.showapps:38] bcs_seen the whole applist
-[2022-06-29T11:18:06] INFO [root.showapps:38] bcs_seen the whole applist
-[2022-06-29T11:18:10] INFO [root.showapps:38] bcs_seen the whole applist
-[2022-06-29T11:18:10] INFO [root.showapps:38] bcs_seen the whole applist
-[2022-06-29T11:28:26] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\urls.py changed, reloading.
-[2022-06-29T11:28:36] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\urls.py changed, reloading.
-[2022-06-29T11:34:33] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\billapp_main\settings.py changed, reloading.
-[2022-06-29T11:34:37] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\billapp_main\settings.py changed, reloading.
-[2022-06-29T11:35:47] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\dashboard\views.py changed, reloading.
-[2022-06-29T11:35:54] WARNING [django.request.log_response:224] Not Found: /apps/
-[2022-06-29T11:35:59] INFO [root.showapps:38] admin_seen the whole applist
-[2022-06-29T11:36:05] INFO [root.showapps:38] admin_seen the whole applist
-[2022-06-29T11:36:06] INFO [root.showapps:38] admin_seen the whole applist
-[2022-06-29T11:36:06] INFO [root.showapps:38] admin_seen the whole applist
-[2022-06-29T11:36:06] INFO [root.showapps:38] admin_seen the whole applist
-[2022-06-29T11:36:06] INFO [root.showapps:38] admin_seen the whole applist
-[2022-06-29T11:36:06] INFO [root.showapps:38] admin_seen the whole applist
-[2022-06-29T11:36:07] INFO [root.showapps:38] admin_seen the whole applist
-[2022-06-29T11:36:07] INFO [root.showapps:38] admin_seen the whole applist
-[2022-06-29T11:36:07] INFO [root.showapps:38] admin_seen the whole applist
-[2022-06-29T11:36:07] INFO [root.showapps:38] admin_seen the whole applist
-[2022-06-29T11:36:08] INFO [root.showapps:38] admin_seen the whole applist
-[2022-06-29T11:36:08] INFO [root.showapps:38] admin_seen the whole applist
-[2022-06-29T11:36:08] INFO [root.showapps:38] admin_seen the whole applist
-[2022-06-29T11:36:08] INFO [root.showapps:38] admin_seen the whole applist
-[2022-06-29T11:36:08] INFO [root.showapps:38] admin_seen the whole applist
-[2022-06-29T11:36:09] INFO [root.showapps:38] admin_seen the whole applist
-[2022-06-29T11:36:09] INFO [root.showapps:38] admin_seen the whole applist
-[2022-06-29T11:36:09] INFO [root.showapps:38] admin_seen the whole applist
-[2022-06-29T11:36:09] INFO [root.showapps:38] admin_seen the whole applist
-[2022-06-29T11:36:09] INFO [root.showapps:38] admin_seen the whole applist
-[2022-06-29T11:36:10] INFO [root.showapps:38] admin_seen the whole applist
-[2022-06-29T11:36:10] INFO [root.showapps:38] admin_seen the whole applist
-[2022-06-29T11:36:10] INFO [root.showapps:38] admin_seen the whole applist
-[2022-06-29T11:36:10] INFO [root.showapps:38] admin_seen the whole applist
-[2022-06-29T11:36:11] INFO [root.showapps:38] admin_seen the whole applist
-[2022-06-29T11:36:11] INFO [root.showapps:38] admin_seen the whole applist
-[2022-06-29T11:36:11] INFO [root.showapps:38] admin_seen the whole applist
-[2022-06-29T11:37:06] INFO [root.showapps:38] admin_seen the whole applist
-[2022-06-29T11:37:07] ERROR [django.request.log_response:224] Internal Server Error: /apps/all/
-Traceback (most recent call last):
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
-    response = get_response(request)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
-    return view_func(request, *args, **kwargs)
-  File "C:\Users\saketh\Documents\billapp\apps\views.py", line 39, in showapps
-    return render(request,'showapps.html',{'showapp':appli,'leni':leni})
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
-    content = loader.render_to_string(template_name, context, request, using=using)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 62, in render_to_string
-    return template.render(context, request)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\backends\django.py", line 61, in render
-    return self.template.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 170, in render
-    return self._render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 162, in _render
-    return self.nodelist.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
-    bit = node.render_annotated(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
-    return self.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 315, in render
-    return nodelist.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
-    bit = node.render_annotated(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
-    return self.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 214, in render
-    nodelist.append(node.render_annotated(context))
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
-    return self.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 449, in render
-    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\base.py", line 86, in reverse
-    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\resolvers.py", line 698, in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for 'dashboard' with keyword arguments '{'slug': ''}' not found. 1 pattern(s) tried: ['apps/(?P<slug>[-a-zA-Z0-9_]+)/\\Z']
-[2022-06-29T11:37:35] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\views.py changed, reloading.
-[2022-06-29T11:37:50] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\views.py changed, reloading.
-[2022-06-29T11:38:05] INFO [root.showapps:38] admin_seen the whole applist
-[2022-06-29T11:38:05] ERROR [django.request.log_response:224] Internal Server Error: /apps/all/
-Traceback (most recent call last):
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
-    response = get_response(request)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
-    return view_func(request, *args, **kwargs)
-  File "C:\Users\saketh\Documents\billapp\apps\views.py", line 39, in showapps
-    return render(request,'showapps.html',{'showapp':appli,'leni':leni})
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
-    content = loader.render_to_string(template_name, context, request, using=using)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 62, in render_to_string
-    return template.render(context, request)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\backends\django.py", line 61, in render
-    return self.template.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 170, in render
-    return self._render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 162, in _render
-    return self.nodelist.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
-    bit = node.render_annotated(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
-    return self.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 315, in render
-    return nodelist.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
-    bit = node.render_annotated(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
-    return self.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 214, in render
-    nodelist.append(node.render_annotated(context))
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
-    return self.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 449, in render
-    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\base.py", line 86, in reverse
-    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\resolvers.py", line 698, in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for 'dashboard' with keyword arguments '{'slug': ''}' not found. 1 pattern(s) tried: ['apps/(?P<slug>[-a-zA-Z0-9_]+)/\\Z']
-[2022-06-29T11:40:37] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\views.py changed, reloading.
-[2022-06-29T11:40:44] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\views.py changed, reloading.
-[2022-06-29T11:40:46] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\views.py changed, reloading.
-[2022-06-29T11:40:53] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\views.py changed, reloading.
-[2022-06-29T11:41:44] INFO [root.showapps:38] admin_seen the whole applist
-[2022-06-29T11:41:45] ERROR [django.request.log_response:224] Internal Server Error: /apps/vmmi/
-Traceback (most recent call last):
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
-    response = get_response(request)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Users\saketh\Documents\billapp\dashboard\views.py", line 165, in dashboard
-    return render(request, 'dashboard.html')
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
-    content = loader.render_to_string(template_name, context, request, using=using)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 62, in render_to_string
-    return template.render(context, request)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\backends\django.py", line 61, in render
-    return self.template.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 170, in render
-    return self._render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 162, in _render
-    return self.nodelist.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
-    bit = node.render_annotated(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
-    return self.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 150, in render
-    return compiled_parent._render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 162, in _render
-    return self.nodelist.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
-    bit = node.render_annotated(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
-    return self.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 449, in render
-    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\base.py", line 86, in reverse
-    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\resolvers.py", line 698, in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for 'addcust' with no arguments not found. 1 pattern(s) tried: ['apps/(?P<slug>[-a-zA-Z0-9_]+)/addcust\\Z']
-[2022-06-29T11:47:43] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\urls.py changed, reloading.
-[2022-06-29T11:47:48] ERROR [django.request.log_response:224] Internal Server Error: /apps/vmmi/
-Traceback (most recent call last):
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
-    response = get_response(request)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Users\saketh\Documents\billapp\dashboard\views.py", line 165, in dashboard
-    return render(request, 'dashboard.html')
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
-    content = loader.render_to_string(template_name, context, request, using=using)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 62, in render_to_string
-    return template.render(context, request)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\backends\django.py", line 61, in render
-    return self.template.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 170, in render
-    return self._render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 162, in _render
-    return self.nodelist.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
-    bit = node.render_annotated(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
-    return self.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 150, in render
-    return compiled_parent._render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 162, in _render
-    return self.nodelist.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
-    bit = node.render_annotated(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
-    return self.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 449, in render
-    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\base.py", line 86, in reverse
-    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\resolvers.py", line 698, in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for 'addcust' with no arguments not found. 1 pattern(s) tried: ['apps/(?P<slug>[^/]+)/addcust\\Z']
-[2022-06-29T11:47:51] ERROR [django.request.log_response:224] Internal Server Error: /apps/vmmi/
-Traceback (most recent call last):
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
-    response = get_response(request)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Users\saketh\Documents\billapp\dashboard\views.py", line 165, in dashboard
-    return render(request, 'dashboard.html')
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
-    content = loader.render_to_string(template_name, context, request, using=using)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 62, in render_to_string
-    return template.render(context, request)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\backends\django.py", line 61, in render
-    return self.template.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 170, in render
-    return self._render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 162, in _render
-    return self.nodelist.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
-    bit = node.render_annotated(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
-    return self.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 150, in render
-    return compiled_parent._render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 162, in _render
-    return self.nodelist.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
-    bit = node.render_annotated(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
-    return self.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 449, in render
-    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\base.py", line 86, in reverse
-    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\resolvers.py", line 698, in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for 'addcust' with no arguments not found. 1 pattern(s) tried: ['apps/(?P<slug>[^/]+)/addcust\\Z']
-[2022-06-29T11:54:17] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\dashboard\views.py changed, reloading.
-[2022-06-29T12:04:08] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\dashboard\views.py changed, reloading.
-[2022-06-29T12:04:44] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\dashboard\views.py changed, reloading.
-[2022-06-29T12:04:50] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\dashboard\views.py changed, reloading.
-[2022-06-29T12:05:00] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\dashboard\views.py changed, reloading.
-[2022-06-29T12:05:05] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\dashboard\views.py changed, reloading.
-[2022-06-29T12:05:10] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\dashboard\views.py changed, reloading.
-[2022-06-29T12:05:51] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\dashboard\models.py changed, reloading.
-[2022-06-29T12:06:47] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\dashboard\views.py changed, reloading.
-[2022-06-29T12:06:50] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\dashboard\views.py changed, reloading.
-[2022-06-29T12:06:53] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\dashboard\views.py changed, reloading.
-[2022-06-29T12:07:04] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\dashboard\views.py changed, reloading.
-[2022-06-29T12:07:08] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\dashboard\views.py changed, reloading.
-[2022-06-29T12:07:15] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\dashboard\views.py changed, reloading.
-[2022-06-29T12:07:18] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\dashboard\views.py changed, reloading.
-[2022-06-29T12:10:52] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\admin.py changed, reloading.
-[2022-06-29T12:10:56] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\admin.py changed, reloading.
-[2022-06-29T12:11:12] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\apps\views.py changed, reloading.
-[2022-06-29T12:13:15] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\dashboard\urls.py changed, reloading.
-[2022-06-29T12:13:29] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\dashboard\views.py changed, reloading.
-[2022-06-29T12:14:09] ERROR [django.request.log_response:224] Internal Server Error: /apps/vmmi/
-Traceback (most recent call last):
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
-    response = get_response(request)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "C:\Users\saketh\Documents\billapp\dashboard\views.py", line 169, in dashboard
-    return render(request, 'dashboard.html')
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
-    content = loader.render_to_string(template_name, context, request, using=using)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 62, in render_to_string
-    return template.render(context, request)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\backends\django.py", line 61, in render
-    return self.template.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 170, in render
-    return self._render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 162, in _render
-    return self.nodelist.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
-    bit = node.render_annotated(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
-    return self.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 150, in render
-    return compiled_parent._render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 162, in _render
-    return self.nodelist.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
-    bit = node.render_annotated(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
-    return self.render(context)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 449, in render
-    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\base.py", line 86, in reverse
-    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\resolvers.py", line 698, in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for 'addcust' with no arguments not found. 1 pattern(s) tried: ['apps/(?P<slug>[^/]+)/addcust\\Z']
-[2022-06-29T12:15:39] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\dashboard\urls.py changed, reloading.
-[2022-06-29T12:15:44] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\dashboard\urls.py changed, reloading.
-[2022-06-29T12:18:20] WARNING [django.request.log_response:224] Not Found: /apps/
-[2022-06-29T12:18:25] INFO [root.showapps:38] admin_seen the whole applist
-[2022-06-29T12:18:25] WARNING [django.request.log_response:224] Not Found: /media/app_images/scrum_process_atlassian.svg
-[2022-06-29T15:06:56] WARNING [django.request.log_response:224] Not Found: /favicon.ico/
-[2022-06-29T15:07:00] INFO [root.post:110] admin_ logged in
-[2022-06-29T15:07:00] INFO [root.showapps:38] admin_seen the whole applist
-[2022-06-29T15:07:00] WARNING [django.request.log_response:224] Not Found: /media/app_images/scrum_process_atlassian.svg
-[2022-06-29T15:10:04] WARNING [django.request.log_response:224] Not Found: /apps/vmmi/create
+django.urls.exceptions.NoReverseMatch: Reverse for 'customerlist' with arguments '('',)' not found. 1 pattern(s) tried: ['apps/(?P<slug>[^/]+)/customerlist/\\Z']
+[2022-07-04T15:32:53] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\dashboard\views.py changed, reloading.
+[2022-07-04T15:33:01] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\dashboard\views.py changed, reloading.
+[2022-07-04T15:33:04] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\dashboard\views.py changed, reloading.
+[2022-07-04T15:34:24] INFO [root.showapps:40] admin_seen the whole applist
+[2022-07-04T15:36:00] INFO [root.showapps:40] admin_seen the whole applist

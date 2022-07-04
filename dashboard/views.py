@@ -19,7 +19,7 @@ from django.contrib.auth.models import User
 from apps.models import applists
 
 # Create your views here.
-def addcustomer(request,slug):
+'''def addcustomer(request,slug):
     app=applists.objects.get(slug=slug)
     addcus=customer()
     if request.method=='POST':
@@ -73,17 +73,49 @@ def addcustomer(request,slug):
         addcus.save()
         return redirect('customerlist')
     else:
-        return render(request, 'addcustomer.html')
+        return render(request, 'addcustomer.html',{'slug':slug})'''
+from .forms import CustomerCreateForm
+def addcustomer(request,slug):
+    app = applists.objects.get(slug=slug)
+    if request.method == 'POST':
+        form = CustomerCreateForm(request.POST)
+        if request.user == app.author:
+            if form.is_valid():
+                customer.objects.create(
+                    utility_name = request.POST.get('utility_name'),
+        utility_short_name= request.POST.get('utility_short_name'),
+        utility_state= request.POST.get('utility_state'),
+        utility_district= request.POST.get('utility_district'),
+        utility_country=request.POST.get('utility_country'),
+        utility_postalcode= request.POST.get('utility_postalcode'),
+        utility_address=request.POST.get('utility_address'),
+        contact_person= request.POST.get('contact_person'),
+        contact_email = request.POST.get('contact_email'),
+        contact_phnum =request.POST.get('contact_phnum'),
+        contact_mobile=request.POST.get('contact_mobile'),
+        contact_designation= request.POST.get('contact_designation'),
+        contact_landline=request.POST.get('contact_landline'),
+        emergency_person=request.POST.get('emerg_person'),
+        emergency_altperson=request.POST.get('emerg_altperson'),
+        emergency_mobile=request.POST.get('emerg_mobile'),
+        emergency_altmobile=request.POST.get('emerg_altmobile'),
+        emergency_officeaddress=request.POST.get('emerg_officeaddress'),
+        emergency_altofficeaddress=request.POST.get('emerg_altofficeaddress'),
+                    app = app
+                )
+                return redirect('customerlist', slug=slug)
+        else :
+            return redirect('home')
+    else :
+        form = CustomerCreateForm()
+    return render(request, 'addcustomer.html', {'form' :form})
 
 
-def customerlis(request):
-    cols=[f.name for f in customer._meta.get_fields()]
-    dets=customer.objects.all()
-    print(dets)
-    logger.info(request.user.username+"_seen the customer list")
-    return render(request,'customerlist.html',{'details':dets,'columns':cols})
-
-    #return render(request,'customerlist.html',{'data':zip(dets,cols)})
+def customerlis(request,slug):
+    app=applists.objects.get(slug=slug)
+    columns=[field.name for field in customer._meta.get_fields()]
+    details = customer.objects.all().filter(app=app)
+    return render(request, 'customerlist.html', {'columns':columns, 'details':details,'slug':slug})
 
 def deletecust(request,utility_name):
     deli=customer.objects.get(utility_name=utility_name)
@@ -127,7 +159,7 @@ def updaterecord(request,id):
         return render(request, 'editcustomer.html',{'profile': inst})
 
 import pandas as pd
-def bulk_upload(request):
+def bulk_upload(request,slug):
     if request.method=='POST':
         csvfile=request.FILES.get('csvfile')
         df=pd.read_csv(csvfile)
@@ -160,10 +192,6 @@ def uploadlis(request):
     dets=csvs.objects.all()
     return render(request,'uploadlist.html',{'details':dets,'columns':cols})
 
-def settings(request):
-    if request.method=='POST':
-        custlis=request.POST.get('custlis')
-
 
 def dashboard(request, slug):
-    return render(request, 'dashboard.html')
+    return render(request, 'dashboard.html', {'slug' : slug})

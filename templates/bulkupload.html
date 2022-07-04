@@ -1,11 +1,8 @@
-{% extends 'dashaside.html' %}
-{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
 </head>
 <body>
-  {% block body %}
   <div class="col-md-7  flex-md-fill m-3">
     <div class="col right create-customer ps-0 pe-4 me-2" id="">
       <div class="frag">
@@ -16,6 +13,7 @@
             <i class="fa-solid fa-circle-chevron-up d-none"></i>
           </div>
         </div>
+
 <form class="form row"method="POST" action="{% url 'bulkupload' %}" enctype="multipart/form-data">
     {% csrf_token %}
         <label for="csvfile" class="form-label">csv file</label>
@@ -31,9 +29,5 @@
 </div>
 </div>
 </div>
-{% endblock body %}
 </body>
-{% block script %}
-<script src="{% static 'dashboard/script.js' %}"></script>
-{% endblock script %}
 </html>

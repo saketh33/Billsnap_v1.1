@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'apps',
     'dashboard',
+    'crispy_forms',
 
 ]
 

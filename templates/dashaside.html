@@ -65,11 +65,11 @@
           <div class="customer-frag d-flex flex-column p-3 pt-1 gap-3">
             <div>
               <i class="fa-solid fa-user-plus"></i>
-              <a href="">&nbsp;Create</a>
+              <a href="{% url 'addcust' slug %}">&nbsp;Create</a>
             </div>
             <div>
               <i class="fa-solid fa-list"></i>
-              <a href="" id="active">&nbsp;Customer List</a>
+              <a href="{% url 'customerlist' slug %}" id="active">&nbsp;Customer List</a>
             </div>
             <div>
               <i class="fa-solid fa-upload"></i>
