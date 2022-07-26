@@ -2,15 +2,10 @@ from django.db import models
 from unittest.util import _MAX_LENGTH
 from django.db import models
 from django.urls import reverse
-import hashlib
-from django.core import validators
 from django.db import models
-from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.text import slugify
-import datetime
-from django.core.validators import MaxValueValidator, MinValueValidator
 from apps.models import applists
 # Create your models here.
 class Meta:

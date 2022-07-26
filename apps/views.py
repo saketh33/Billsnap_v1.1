@@ -32,13 +32,14 @@ def addapp(request):
     else:
         return render(request, 'applist.html')
 
-
+from django.contrib import messages
 @login_required
 def showapps(request):
     appli=applists.objects.all()
     leni=len(appli)
+    mssg="logged in sucessfully"
     logger.info(request.user.username+"_seen the whole applist")
-    return render(request,'showapps.html',{'showapp':appli,'leni':leni})
+    return render(request,'showapps.html',{'showapp':appli,'leni':leni,'msg':mssg})
 
 @login_required
 def deleteapp(request,aslug):

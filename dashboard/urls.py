@@ -8,5 +8,5 @@ urlpatterns = [
     path('update/<int:id>', views.updaterecord, name='updaterecord'),
     path('bulkupload/', views.bulk_upload, name='bulkupload'),
     path('uploadlist/', views.uploadlis, name='uploadlist'),
-    
+
 ]

@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.views import View
 from django.contrib.auth.models import User
+from accounts.models import Profile
 from django.contrib import auth, messages
 from django.core.mail import EmailMessage
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
@@ -105,10 +106,11 @@ class LoginView(View):
                     if user:
                         if user.is_active:
                             auth.login(request, user)
-                            if next:
-                                return redirect(next)
-                            logger.info(request.user.username+"_ logged in")
-                            return redirect("showapps")
+                            is_customer=Profile.objects.get(user=user).admin
+                            if is_customer:
+                                return redirect("showapps")
+                            else:
+                                return redirect("custdash")
 
                         messages.error(
                             request, "Account is not active,please check your email"
@@ -121,15 +123,17 @@ class LoginView(View):
                     if user:
                         if user.is_active:
                             auth.login(request, user)
-                            if next:
-                                return redirect(next)
-                            return redirect("index")
+                            is_customer=Profile.objects.get(user=user).admin
+                            if is_customer:
+                                return redirect("showapps")
+                            else:
+                                return redirect("custdash")
 
                         messages.error(
                             request, "Account is not active,please check your email"
                         )
                 elif (User.objects.filter(email=username).exists() or User.objects.filter(username=username).exists() == False):
-                    messages.error(
+                    messages.warning(
                         request, "The username or Email you have entered does not exist.")
                     return render(request, 'login.html', context)
 
@@ -137,7 +141,7 @@ class LoginView(View):
                 'user_found': True,
                 'user_name': username
             }
-            messages.error(request, 'Invalid credentials, try again')
+            messages.warning(request, 'Invalid credentials, try again')
             return render(request, 'login.html', context)
 
         return render(request, "login.html")

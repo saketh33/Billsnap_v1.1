@@ -12,6 +12,10 @@ def sett_ings(request):
 def dashboard(request):
     return render(request, 'dashboard.html')
 
+
+def dashcustomer(request):
+    return render(request,'customerdash.html')
+
 def sending(request):
     l=[]
     for i in range(10):

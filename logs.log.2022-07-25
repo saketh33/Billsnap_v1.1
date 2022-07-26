@@ -1,0 +1,500 @@
+[2022-07-25T11:16:33] WARNING [django.request.log_response:224] Not Found: /assets/main/index.css
+[2022-07-25T11:16:33] WARNING [django.request.log_response:224] Not Found: /assets/main/billing.png
+[2022-07-25T11:16:33] WARNING [django.request.log_response:224] Not Found: /favicon.ico/
+[2022-07-25T11:39:21] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\billapp_main\settings.py changed, reloading.
+[2022-07-25T11:40:34] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\billapp_main\settings.py changed, reloading.
+[2022-07-25T11:41:04] INFO [root.showapps:41] admin_seen the whole applist
+[2022-07-25T14:49:05] WARNING [django.request.log_response:224] Not Found: /favicon.ico/
+[2022-07-25T18:23:21] WARNING [django.request.log_response:224] Not Found: /style.css/
+[2022-07-25T18:23:22] WARNING [django.request.log_response:224] Not Found: /favicon.ico/
+[2022-07-25T18:23:52] WARNING [django.request.log_response:224] Not Found: /style.css/
+[2022-07-25T18:42:17] INFO [root.logout:150] admin_ logged out
+[2022-07-25T18:43:01] INFO [root.logout:150] admin_ logged out
+[2022-07-25T18:56:33] INFO [root.logout:150] admin_ logged out
+[2022-07-25T18:56:47] INFO [root.logout:150] admin_ logged out
+[2022-07-25T18:57:58] INFO [root.logout:150] admin_ logged out
+[2022-07-25T18:59:12] INFO [root.showapps:41] admin_seen the whole applist
+[2022-07-25T19:00:33] ERROR [django.request.log_response:224] Internal Server Error: /admin/auth/user/add/
+Traceback (most recent call last):
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.IntegrityError: (1062, "Duplicate entry '' for key 'auth_user.auth_user_email_1c89df09_uniq'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\sites.py", line 232, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\views\decorators\debug.py", line 89, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\auth\admin.py", line 99, in add_view
+    return self._add_view(request, form_url, extra_context)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\auth\admin.py", line 126, in _add_view
+    return super().add_view(request, form_url, extra_context)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\options.py", line 1657, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\options.py", line 1540, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\options.py", line 1586, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\options.py", line 1099, in save_model
+    obj.save()
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\auth\base_user.py", line 67, in save
+    super().save(*args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\base.py", line 739, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\base.py", line 776, in save_base
+    updated = self._save_table(
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\base.py", line 881, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\base.py", line 919, in _do_insert
+    return manager._insert(
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\query.py", line 1270, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\sql\compiler.py", line 1416, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+django.db.utils.IntegrityError: (1062, "Duplicate entry '' for key 'auth_user.auth_user_email_1c89df09_uniq'")
+[2022-07-25T19:00:33] ERROR [django.request.log_response:224] Internal Server Error: /admin/auth/user/add/
+Traceback (most recent call last):
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.IntegrityError: (1062, "Duplicate entry '' for key 'auth_user.auth_user_email_1c89df09_uniq'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\sites.py", line 232, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\views\decorators\debug.py", line 89, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\auth\admin.py", line 99, in add_view
+    return self._add_view(request, form_url, extra_context)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\auth\admin.py", line 126, in _add_view
+    return super().add_view(request, form_url, extra_context)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\options.py", line 1657, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\options.py", line 1540, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\options.py", line 1586, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\options.py", line 1099, in save_model
+    obj.save()
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\auth\base_user.py", line 67, in save
+    super().save(*args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\base.py", line 739, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\base.py", line 776, in save_base
+    updated = self._save_table(
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\base.py", line 881, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\base.py", line 919, in _do_insert
+    return manager._insert(
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\query.py", line 1270, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\sql\compiler.py", line 1416, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+django.db.utils.IntegrityError: (1062, "Duplicate entry '' for key 'auth_user.auth_user_email_1c89df09_uniq'")
+[2022-07-25T19:01:05] ERROR [django.request.log_response:224] Internal Server Error: /admin/auth/user/add/
+Traceback (most recent call last):
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.IntegrityError: (1062, "Duplicate entry '' for key 'auth_user.auth_user_email_1c89df09_uniq'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\sites.py", line 232, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\views\decorators\debug.py", line 89, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\auth\admin.py", line 99, in add_view
+    return self._add_view(request, form_url, extra_context)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\auth\admin.py", line 126, in _add_view
+    return super().add_view(request, form_url, extra_context)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\options.py", line 1657, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\options.py", line 1540, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\options.py", line 1586, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\options.py", line 1099, in save_model
+    obj.save()
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\auth\base_user.py", line 67, in save
+    super().save(*args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\base.py", line 739, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\base.py", line 776, in save_base
+    updated = self._save_table(
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\base.py", line 881, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\base.py", line 919, in _do_insert
+    return manager._insert(
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\query.py", line 1270, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\sql\compiler.py", line 1416, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+django.db.utils.IntegrityError: (1062, "Duplicate entry '' for key 'auth_user.auth_user_email_1c89df09_uniq'")
+[2022-07-25T19:02:04] ERROR [django.request.log_response:224] Internal Server Error: /admin/auth/user/add/
+Traceback (most recent call last):
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.IntegrityError: (1062, "Duplicate entry '' for key 'auth_user.auth_user_email_1c89df09_uniq'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\sites.py", line 232, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\views\decorators\debug.py", line 89, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\auth\admin.py", line 99, in add_view
+    return self._add_view(request, form_url, extra_context)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\auth\admin.py", line 126, in _add_view
+    return super().add_view(request, form_url, extra_context)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\options.py", line 1657, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\options.py", line 1540, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\options.py", line 1586, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\options.py", line 1099, in save_model
+    obj.save()
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\auth\base_user.py", line 67, in save
+    super().save(*args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\base.py", line 739, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\base.py", line 776, in save_base
+    updated = self._save_table(
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\base.py", line 881, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\base.py", line 919, in _do_insert
+    return manager._insert(
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\query.py", line 1270, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\sql\compiler.py", line 1416, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+django.db.utils.IntegrityError: (1062, "Duplicate entry '' for key 'auth_user.auth_user_email_1c89df09_uniq'")
+[2022-07-25T19:02:29] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\billapp_main\settings.py changed, reloading.
+[2022-07-25T19:02:57] ERROR [django.request.log_response:224] Internal Server Error: /admin/auth/user/add/
+Traceback (most recent call last):
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.IntegrityError: (1062, "Duplicate entry '' for key 'auth_user.auth_user_email_1c89df09_uniq'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\sites.py", line 232, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\views\decorators\debug.py", line 89, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\auth\admin.py", line 99, in add_view
+    return self._add_view(request, form_url, extra_context)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\auth\admin.py", line 126, in _add_view
+    return super().add_view(request, form_url, extra_context)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\options.py", line 1657, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\options.py", line 1540, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\options.py", line 1586, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\options.py", line 1099, in save_model
+    obj.save()
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\auth\base_user.py", line 67, in save
+    super().save(*args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\base.py", line 739, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\base.py", line 776, in save_base
+    updated = self._save_table(
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\base.py", line 881, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\base.py", line 919, in _do_insert
+    return manager._insert(
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\query.py", line 1270, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\sql\compiler.py", line 1416, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\mysql\base.py", line 73, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    res = self._query(query)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\MySQLdb\cursors.py", line 319, in _query
+    db.query(q)
+  File "C:\Users\saketh\AppData\Local\Programs\Python\Python39\lib\site-packages\MySQLdb\connections.py", line 254, in query
+    _mysql.connection.query(self, query)
+django.db.utils.IntegrityError: (1062, "Duplicate entry '' for key 'auth_user.auth_user_email_1c89df09_uniq'")
+[2022-07-25T19:04:42] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\dashboard\migrations\0001_initial.py changed, reloading.
+[2022-07-25T19:06:37] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\billapp_main\settings.py changed, reloading.
+[2022-07-25T19:07:53] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\accounts\models.py changed, reloading.
+[2022-07-25T19:10:08] INFO [root.logout:150] admin_ logged out
+[2022-07-25T19:11:24] INFO [root.showapps:41] saketh_seen the whole applist
+[2022-07-25T19:12:54] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\accounts\views.py changed, reloading.
+[2022-07-25T19:12:59] INFO [root.logout:154] saketh_ logged out
+[2022-07-25T19:13:05] INFO [root.showapps:41] admin_seen the whole applist
+[2022-07-25T19:13:10] INFO [root.logout:154] admin_ logged out
+[2022-07-25T19:13:23] INFO [root.showapps:41] saketh_seen the whole applist
+[2022-07-25T19:25:30] INFO [root.logout:154] admin_ logged out
+[2022-07-25T19:27:23] INFO [root.logout:154] admin_ logged out
+[2022-07-25T19:27:59] INFO [root.showapps:41] admin_seen the whole applist
+[2022-07-25T19:28:04] INFO [root.logout:154] admin_ logged out
+[2022-07-25T19:28:54] INFO [root.logout:154] admin_ logged out
+[2022-07-25T19:29:56] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\accounts\models.py changed, reloading.
+[2022-07-25T19:30:09] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\accounts\views.py changed, reloading.
+[2022-07-25T19:30:13] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\accounts\views.py changed, reloading.
+[2022-07-25T19:30:55] INFO [root.logout:154] admin_ logged out
+[2022-07-25T19:31:05] INFO [root.logout:154] admin_ logged out
+[2022-07-25T19:33:09] INFO [root.showapps:41] admin_seen the whole applist
+[2022-07-25T19:34:00] INFO [root.showapps:41] admin_seen the whole applist
+[2022-07-25T19:34:16] INFO [root.showapps:41] admin_seen the whole applist
+[2022-07-25T19:34:17] INFO [root.showapps:41] admin_seen the whole applist
+[2022-07-25T19:34:21] INFO [root.showapps:41] admin_seen the whole applist
+[2022-07-25T19:35:54] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\accounts\views.py changed, reloading.
+[2022-07-25T19:36:04] INFO [root.logout:150] admin_ logged out
+[2022-07-25T19:36:09] INFO [root.showapps:41] admin_seen the whole applist
+[2022-07-25T19:36:19] WARNING [django.security.csrf.log_response:224] Forbidden (CSRF token missing or incorrect.): /login/
+[2022-07-25T19:36:38] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\accounts\views.py changed, reloading.
+[2022-07-25T19:36:56] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\accounts\views.py changed, reloading.
+[2022-07-25T19:37:10] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\accounts\views.py changed, reloading.
+[2022-07-25T19:37:18] INFO [django.utils.autoreload.trigger_reload:251] C:\Users\saketh\Documents\billapp\accounts\views.py changed, reloading.

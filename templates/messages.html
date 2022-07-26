@@ -1,89 +1,103 @@
-<!-- JavaScript -->
-<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-<!-- CSS -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css">
-<!-- Default theme -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+
 <style>
-.alert {
-padding: 20px;
-background-color: #f44336;
-color: white;
-opacity: 1;
-margin-left: auto;
-margin-right: auto;
-width:40%;
-transition: opacity 0.6s;
-margin-bottom: 15px;
-}
-.alert.error {background-color: #f44336;}
-.alert.success {background-color: #04AA6D;}
-.alert.info {background-color: #2196F3;}
-.alert.warning {background-color: #ff9800;}
-
-.closebtn {
-margin-left: 15px;
-color: white;
-font-weight: bold;
-float: right;
-font-size: 22px;
-line-height: 20px;
-cursor: pointer;
-transition: 0.3s;
+  #toast-container > .toast {
+    background-image: none !important;
 }
 
-.closebtn:hover {
-color: black;
+#toast-container > .toast:before {
+    position: relative;
+    font-size: 24px;
+    line-height: 18px;
+    float: left;
+    margin-left: -1em;
+    color: #FFF;
+    padding-right: 0.5em;
+    margin-right: 0.5em;
+
+}
+#toast-container .toast{
+    background-color: #1b75bc !important;
+}
+#toast-container> .fa-check , .toast {
+    background-color: #328b17 !important;
+}
+#toast-container> .fa-trash , .toast  {
+    background-color: #590619 !important;
 }
 
-@media (max-width: 500px) {
-.alert{
-width:100%;
+
+.toast-message{
+    font-family: Calibri;
 }
-}
+
 </style>
 </head>
 <body>
-<!-- {% if messages %}
-{% for message in messages %}
-<div {% if message.tags %} class="alert {{ message.tags }}" {% endif %}>
-<span class="closebtn">&times;</span>
-{{ message }}
-</div>
-{% endfor %}
-{% endif %}
+    <script>
+        function myFunction(hh){
+      toastr.options = {
+        "positionClass" : "toast-top-center",
+                "closeButton" : true,
+                "debug" : false,
+                "newestOnTop" : false,
+                "progressBar" : true,
+                "preventDuplicates" : false,
+                "onclick" : null,
+                "showDuration" : "300",
+                "hideDuration" : "1000",
+                "timeOut" : "5000",
+                "extendedTimeOut" : "1000",
+                "showEasing" : "swing",
+                "hideEasing" : "linear",
+                "showMethod" : "fadeIn",
+                "hideMethod" : "fadeOut"
+}
+Command: toastr["success"](hh)
+}
+</script>
 
 <script>
-var close = document.getElementsByClassName("closebtn");
-var i;
+function notifyMe(hh) {
+  // Let's check if the browser supports notifications
+  if (!("Notification" in window)) {
+    alert("This browser does not support desktop notification");
+  }
 
-for (i = 0; i < close.length; i++) {
-close[i].onclick = function(){
-var div = this.parentElement;
-div.style.opacity = "0";
-setTimeout(function(){ div.style.display = "none"; }, 600);
+  // Let's check whether notification permissions have already been granted
+  else if (Notification.permission === "granted") {
+    // If it's okay let's create a notification
+
+    let notification = new Notification(hh);
+  }
+
+  // Otherwise, we need to ask the user for permission
+  else if (Notification.permission !== "denied") {
+    Notification.requestPermission().then(function (permission) {
+      // If the user accepts, let's create a notification
+      if (permission === "granted") {
+        let notification = new Notification(hh);
+      }
+    });
+  }
 }
-}
-</script> -->
+</script>
+
 {% if messages %}
     {% for message in messages %}
         {% if message.tags == "success" %}
             <script>
-            alertify.set('notifier','position', 'top-center');
-            alertify.success('{{message}}',0);
+            myFunction('{{message}}')
             </script>
         {% elif message.tags == "error" %}
-            <script>
-            alertify.set('notifier','position', 'top-center');
-            var msg= alertify.error('{{message}}',0);
-            $('body').one('click', function(){
-            msg.dismiss();
-            });
+        <script>
+            myFunction('{{message}}')
             </script>
         {% elif message.tags == "warning" %}
-            <script>
-            alertify.set('notifier','position', 'top-center');
-            alertify.warning('{{message}}',0);
+        <script>
+            myFunction('{{message}}')
             </script>
         {% endif %}
     {% endfor %}

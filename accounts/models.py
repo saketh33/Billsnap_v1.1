@@ -1,6 +1,5 @@
 from django.db import models
 import hashlib
-from django.core import validators
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
@@ -26,19 +25,22 @@ def get_unique_string(body, time):
 gender_choices = (('M', 'MALE'),
 ('F', 'FEMALE'),
 ('O', 'OTHER'))
+
+status_choices = [
+    ('a', 'admin'),
+    ('c', 'customer')
+]
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
-
-    # personal details
-
+    status = models.CharField(choices=status_choices, max_length=20, default='c')
     full_name               =       models.CharField(max_length=100, blank=True, null=True)
     state                   =       models.CharField(max_length=40, null=True, blank=True)
     city                    =       models.CharField(max_length=40, null=True, blank=True)
-    email = models.EmailField(max_length=50, null=True, blank=True)
     ph_num = models.CharField(max_length=15, null=True, blank=True)
-    xp = models.IntegerField(null=True, default=100, blank=True)
-    techsnap_cash = models.IntegerField(null=True, default=999, blank=True)
+    se_coins= models.IntegerField(null=True, default=999, blank=True)
     slug = models.SlugField(max_length=200, editable=False, null=True, blank=True)
+    
+    admin=models.BooleanField(default=False)
 
     def __str__(self):
         return str(self.user)
