@@ -4,3 +4,7 @@ from django.contrib import admin
 from .models import Profile,Notifications
 admin.site.register(Profile)
 admin.site.register(Notifications)
+
+class NotificationsInline(admin.StackedInline):
+    model = Notifications
+    extra = 1

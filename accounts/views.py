@@ -108,8 +108,10 @@ class LoginView(View):
                             auth.login(request, user)
                             is_customer=Profile.objects.get(user=user).admin
                             if is_customer:
+                                messages.success(request,"loggedin succesfully")
                                 return redirect("showapps")
                             else:
+                                messages.success(request,"loggedin succesfully")
                                 return redirect("custdash")
 
                         messages.error(
@@ -125,8 +127,10 @@ class LoginView(View):
                             auth.login(request, user)
                             is_customer=Profile.objects.get(user=user).admin
                             if is_customer:
+                                messages.success(request,"loggedin succesfully")
                                 return redirect("showapps")
                             else:
+                                messages.success(request,"loggedin succesfully")
                                 return redirect("custdash")
 
                         messages.error(

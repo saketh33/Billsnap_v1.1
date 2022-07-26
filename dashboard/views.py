@@ -1,5 +1,8 @@
+import profile
 from django.shortcuts import render
 from django.shortcuts import render, redirect, get_object_or_404
+
+from accounts.models import Profile
 from .models import customer,csvs
 from datetime import datetime
 from django.shortcuts import render, redirect
@@ -198,3 +201,11 @@ def uploadlis(request):
 @login_required
 def dashboard(request, slug):
     return render(request, 'dashboard.html', {'slug' : slug})
+
+
+
+def addingcustomer(request,slug):
+    prof=Profile.objects.get(user=request.user)
+    app=applists.objects.get(slug=slug)
+    prof.apps.add(app)
+    return redirect('customerlist',slug=slug)

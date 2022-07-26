@@ -30,16 +30,45 @@ status_choices = [
     ('a', 'admin'),
     ('c', 'customer')
 ]
+from apps.models import applists
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    apps=models.ManyToManyField(applists,related_name='apps')
     status = models.CharField(choices=status_choices, max_length=20, default='c')
-    full_name               =       models.CharField(max_length=100, blank=True, null=True)
-    state                   =       models.CharField(max_length=40, null=True, blank=True)
-    city                    =       models.CharField(max_length=40, null=True, blank=True)
-    ph_num = models.CharField(max_length=15, null=True, blank=True)
+    full_name = models.CharField(max_length=100, blank=True, null=True)
+
+    utility_name = models.CharField(max_length=200, null=True, blank=True)
+    utility_short_name= models.CharField(max_length=50, null=True, blank=True)
+    utility_state= models.CharField(max_length=50, null=True, blank=True)
+    utility_district= models.CharField(max_length=50, null=True, blank=True)
+    utility_country= models.CharField(max_length=50, null=True, blank=True)
+    utility_postalcode= models.CharField(max_length=20, null=True, blank=True)
+    utility_address=models.TextField(max_length=200, null=True, blank=True)
+
+    #contact details
+    contact_person= models.CharField(max_length=200, null=True, blank=True)
+    contact_email = models.EmailField(max_length=50, null=True, blank=True)
+    contact_phnum = models.CharField(max_length=15, null=True, blank=True)
+    contact_mobile= models.CharField(max_length=15, null=True, blank=True)
+    contact_designation= models.CharField(max_length=100, null=True, blank=True)
+    contact_landline= models.CharField(max_length=20, null=True, blank=True)
+
+    #emeergency contact details
+    emergency_person=models.CharField(max_length=200, null=True, blank=True)
+    emergency_altperson=models.CharField(max_length=200, null=True, blank=True)
+    emergency_mobile=models.CharField(max_length=200, null=True, blank=True)
+    emergency_altmobile=models.CharField(max_length=200, null=True, blank=True)
+    emergency_officeaddress=models.TextField(max_length=200,null=True,blank=True)
+    emergency_altofficeaddress=models.TextField(max_length=200,null=True,blank=True)
+
+
+    info_created_at = models.DateTimeField(auto_now_add=True)
+    info_updated_at = models.DateTimeField(auto_now=True)
+
     se_coins= models.IntegerField(null=True, default=999, blank=True)
     slug = models.SlugField(max_length=200, editable=False, null=True, blank=True)
-    
+
     admin=models.BooleanField(default=False)
 
     def __str__(self):

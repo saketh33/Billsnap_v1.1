@@ -3,36 +3,60 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
 
 <style>
-  #toast-container > .toast {
-    background-image: none !important;
-}
+  .toast-success {
 
-#toast-container > .toast:before {
-    position: relative;
-    font-size: 24px;
-    line-height: 18px;
-    float: left;
-    margin-left: -1em;
-    color: #FFF;
-    padding-right: 0.5em;
-    margin-right: 0.5em;
+    background: white;
+    border-left: 6px solid #3dcd58;
 
-}
-#toast-container .toast{
-    background-color: #1b75bc !important;
-}
-#toast-container> .fa-check , .toast {
-    background-color: #328b17 !important;
-}
-#toast-container> .fa-trash , .toast  {
-    background-color: #590619 !important;
-}
+    }
+    .toast-info {
+        background: wheat;
+        border-left: 6px solid #3498db;
+    }
+    .toast-error {
+      background-color: red;
+      border-left: 6px solid #3498db;
 
 
-.toast-message{
-    font-family: Calibri;
-}
+    }
+    .toast-warning {
+      background-color: #f89406;
+      border-left: 6px solid #3498db;
 
+    }
+
+    #toast-container > .toast-success {
+
+
+    color: black;
+
+    }
+
+    .toast-progress {
+
+    background-color:#85ff9c;
+    opacity: 1 !important;
+
+    }
+    .toast {
+      opacity: 1 !important;
+    }
+
+    #toast-container > div {
+      opacity: 1 !important;
+      height: 50px;
+    }
+
+    .toast-success .toast-progress {
+      background-color: #85ff9c;
+      opacity: 1 !important;
+
+    }
+
+    .toast-close-button {
+      color: black;
+      opacity: 0.9;
+    }
 </style>
 </head>
 <body>
@@ -43,13 +67,12 @@
                 "closeButton" : true,
                 "debug" : false,
                 "newestOnTop" : false,
-                "progressBar" : true,
                 "preventDuplicates" : false,
                 "onclick" : null,
-                "showDuration" : "300",
-                "hideDuration" : "1000",
-                "timeOut" : "5000",
-                "extendedTimeOut" : "1000",
+                "showDuration" : "300000",
+                "hideDuration" : "1000000",
+                "timeOut" : "5000000",
+                "extendedTimeOut" : "100000",
                 "showEasing" : "swing",
                 "hideEasing" : "linear",
                 "showMethod" : "fadeIn",
