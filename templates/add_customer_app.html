@@ -7,7 +7,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body class='w3-padding'>
-<div class='w3-green w3-round w3-margin-bottom w3-padding w3-large'>Add Customers to {{app.appname}}</div>
+<div class='w3-green w3-round w3-margin-bottom w3-padding w3-large'>Add Customers to {{app.appname}}
+    <a class='w3-button w3-small w3-round w3-white' href="{% url 'register' %}" >
+        Add new User
+    </a>
+</div>
 
 <div class='w3-half w3-container'>
 {% for profile in profiles %}

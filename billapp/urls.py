@@ -20,5 +20,5 @@ urlpatterns = [
     path('<slug>/edit/', acc_views.update_profile, name='update'),
     path('<slug>/', acc_views.ShowProfile.as_view(), name='show_profile'),
     path('apps/', include('apps.urls')),
-
+    path('dash/', include('dashboard.urls')),
 ]

@@ -7,6 +7,7 @@ from django.dispatch import receiver
 from django.utils.text import slugify
 import datetime
 from django.core.validators import MaxValueValidator, MinValueValidator
+from plans.models import *
 
 # Create your models here.
 User._meta.get_field('email')._unique = True
@@ -70,6 +71,7 @@ class Profile(models.Model):
     slug = models.SlugField(max_length=200, editable=False, null=True, blank=True)
 
     admin=models.BooleanField(default=False)
+    plan = models.ForeignKey(Plan, on_delete=models.DO_NOTHING, null=True)
 
     def __str__(self):
         return str(self.user)

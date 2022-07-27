@@ -6,6 +6,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from logging.handlers import TimedRotatingFileHandler
+from accounts.models import *
 import logging
 logger=logging.getLogger()
 logging.basicConfig(
@@ -47,3 +48,10 @@ def deleteapp(request,aslug):
     deli.delete()
     logger.info(request.user.username+"_deleted an app")
     return redirect('showapps')
+
+def remove_user(request, slug, userslug):
+    profile = Profile.objects.get(slug=userslug)
+    app = applists.objects.get(slug=slug)
+    profile.apps.remove(app)
+
+    return redirect('customerlist', slug=slug)

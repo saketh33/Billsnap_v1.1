@@ -80,8 +80,7 @@ from apps.models import applists
 from .forms import CustomerCreateForm
 
 @login_required
-def addcustomer(request,slug):
-    app = applists.objects.get(slug=slug)
+def addcustomer(request):
     if request.method == 'POST':
         form = CustomerCreateForm(request.POST)
         if request.user == app.author:
@@ -106,7 +105,6 @@ def addcustomer(request,slug):
         emergency_altmobile=request.POST.get('emerg_altmobile'),
         emergency_officeaddress=request.POST.get('emerg_officeaddress'),
         emergency_altofficeaddress=request.POST.get('emerg_altofficeaddress'),
-                    app = app
                 )
                 return redirect('customerlist', slug=slug)
         else :

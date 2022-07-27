@@ -7,6 +7,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('billapp.urls')),
     path('groups/', include('groups.urls')),
+    path('plans/', include('plans.urls')),
 ]
 
 if settings.DEBUG:
