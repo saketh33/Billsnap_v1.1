@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="{% static 'w3.css' %}" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <title>{% block title %} Customer list {% endblock title %}</title>
 </head>
 <body>
@@ -11,41 +13,23 @@
         <div class="col right" id="customer-list">
           <h2 class="ps-1 pt-3" style="color: blue">Customer List</h2>
           <div class="table-responsive">
-            <table class="table">
+            <table class="table w3-table w3-striped">
               <thead>
                 <tr>
-                  {% for i in columns %}
-                  <th scope="col">{{i}}</th>
-                  {% endfor %}
+                  <th scope="col">Id</th>
+                  <th scope="col">Username</th>
+                  <th scope="col">View Profile</th>
                 </tr>
               </thead>
 
               <tbody>
                 {% for i in details %}
                 <tr>
-                    <td>{{ i.id }}</td>
-                    <td>{{ i.utility_name }}</td>
-                    <td>{{ i.utility_short_name }}</td>
-                    <td>{{ i.utility_state }}</td>
-                    <td>{{ i.utility_district }}</td>
-                    <td>{{ i.utility_country }}</td>
-                    <td>{{ i.utility_postalcode }}</td>
-                    <td>{{ i.utility_address }}</td>
-                    <td>{{ i.contact_person }}</td>
-                    <td>{{ i.contact_email }}</td>
-                    <td>{{ i.contact_phnum }}</td>
-                    <td>{{ i.contact_mobile }} </td>
-                    <td>{{ i.contact_designation }}</td>
-                    <td>{{ i.contact_landline }} </td>
-                    <td>{{ i.emergency_person }} </td>
-                    <td>{{ i.emergency_altperson }} </td>
-                    <td>{{ i.emergency_mobile }} </td>
-                    <td>{{ i.emergency_altmobile }} </td>
-                    <td>{{ i.emergency_officeaddress }} </td>
-                    <td>{{ i.emergency_altofficeaddress }} </td>
-                    <td>{{ i.info_created_at }}</td>
-                    <td>{{ i.info_updated_at }}</td>
-
+                    <td>{{ i.2 }}</td>
+                    <td>{{ i.0 }}</td>
+                    <td>
+                      <a class='w3-button w3-small w3-round w3-green' href="{% url 'show_profile' i.1 %}" >Show Profile</a>
+                    </td>
                 </tr>
                 {%endfor%}
               </tbody>

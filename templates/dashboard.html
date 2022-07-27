@@ -127,11 +127,11 @@
         <div class="customer-frag d-flex flex-column p-3 pt-1 gap-3">
           <div>
             <i class='bx bx-box' ></i>
-            <a href="create.html">Create</a>
+            <a href="{% url 'add-customer-form' slug %}">Add Customer Form</a>
           </div>
           <div>
             <i class='bx bx-box' ></i>
-            <a href="customerlist.html">Customer List</a>
+            <a href="{% url 'customerlist' slug %}">Customer List</a>
           </div>
           <div>
             <i class='bx bx-log-out' ></i>
