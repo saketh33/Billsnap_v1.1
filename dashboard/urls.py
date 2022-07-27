@@ -10,4 +10,5 @@ urlpatterns = [
     path('uploadlist/', views.uploadlis, name='uploadlist'),
     path('add-customer-form/', views.add_customer_form, name='add-customer-form'),
     path('add-customer-app/', views.add_customer_app, name='add-customer-app'),
+    path('new-customer/', views.addcustomer, name='new-customer'),
 ]

@@ -29,41 +29,41 @@ def upgrade_to(request, slug):
     return redirect('accountsettings', slug=request.user.username)
 
 
-def plans_panel(request):
+def plans_panel(request, slug):
     if request.user.is_superuser:
         if request.method == 'GET':
-            default_plans = Plan.objects.filter(is_dummy=False)
-            dummy_plans = Plan.objects.filter(is_dummy=True)
+            plans = Plan.objects.filter(app__slug=slug)
             form = PlanForm()
             payload = {
-                'default_plans': default_plans, 
-                'dummy_plans': dummy_plans, 
-                'form': form
+                'plans': plans,
+                'form': form,
+                'slug': slug
             }
             return render(request, 'plans-panel/panel.html', payload)
         
         form = PlanForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('plans-panel')
+            plan = form.save(commit=False)
+            plan.app = applists.objects.get(slug=slug)
+            plan.save()
+            return redirect('plans-panel', slug)
         print(form.errors)
-        return redirect('plans-panel')
+        return redirect('plans-panel', slug)
     return redirect('index')
 
-def delete_plan(request, slug):
+def delete_plan(request, slug, appslug):
     plan = Plan.objects.get(slug__iexact=slug)
-    default_plan = Plan.objects.get(default_for_everyone=True)
+    default_plan = Plan.objects.get(default_for_customer=True)
     for user in Profile.objects.filter(plan=plan):
-        create_history(user=user.user, to_plan=plan, from_plan=user.plan, upgrade=True)
+        #create_history(user=user.user, to_plan=plan, from_plan=user.plan, upgrade=True)
         user.plan = default_plan
         user.save(update_fields=['plan'])
     plan.delete()
-    return redirect('plans-panel')
+    return redirect('plans-panel', appslug)
 
 def show_plan(request, slug):
     if request.user.is_superuser:
         if request.method == 'GET':
-            print(Profile.objects.get(user__username='hp').plan)
             plan = Plan.objects.filter(slug=slug).first()
             users = Profile.objects.filter(plan=plan)
             form = SubscribeForm()
@@ -71,7 +71,8 @@ def show_plan(request, slug):
                 'plan': plan,
                 'users': users,
                 'form': form,
-                'update_form': UpdateUserPlanForm()
+                'update_form': UpdateUserPlanForm(appslug=plan.app.slug),
+                'appslug': plan.app.slug
             }
             return render(request, 'plans-panel/plan.html', payload)
         
@@ -79,23 +80,23 @@ def show_plan(request, slug):
         form = SubscribeForm(request.POST)
         plan = Plan.objects.filter(slug=slug).first()
         if form.is_valid():
-            if form.cleaned_data.get("username")!='username':
-                student = Profile.objects.filter(user__username=form.cleaned_data.get("username"), is_student=True)
-                if student.exists():
-                    student = student.first()
-                    create_history(user=student.user, to_plan=plan, from_plan=student.plan, upgrade=True)
-                    student.plan = plan
-                    student.save(update_fields=['plan'])
-                return redirect('plan', slug)
+            #if form.cleaned_data.get("username")!='username':
+            customer = Profile.objects.filter(user__username=form.cleaned_data.get("username"))
+            if customer.exists():
+                customer = customer.first()
+                #create_history(user=customer.user, to_plan=plan, from_plan=customer.plan, upgrade=True)
+                customer.plan = plan
+                customer.save(update_fields=['plan'])
+            return redirect('plan', slug)
 
-            students = Profile.objects.filter(institute_name=form.cleaned_data.get("institution"), is_student=True)
+            """students = Profile.objects.filter(institute_name=form.cleaned_data.get("institution"), is_student=True)
             for student in students:
                 if student.plan==plan:
                     pass
                 create_history(user=student.user, to_plan=plan, from_plan=student.plan, upgrade=True)
                 student.plan = plan
                 student.save(update_fields=['plan'])
-            return redirect('plan', slug)
+            return redirect('plan', slug)"""
         print(forms.error)
         return redirect('plan', slug)
 
@@ -105,7 +106,11 @@ def update_user_plan(request, slug):
     current_plan = profile.plan
 
     form = UpdateUserPlanForm(request.POST)
-    if form.is_valid():
+    new_plan = Plan.objects.get(id=request.POST.get('update_to'))
+    profile.plan = new_plan
+    profile.save(update_fields=['plan'])
+    return redirect('plan', current_plan.slug)
+    """if form.is_valid():
         new_plan = Plan.objects.create(
             title=form.cleaned_data.get("title"),
             price=form.cleaned_data.get("price"),
@@ -113,11 +118,8 @@ def update_user_plan(request, slug):
             duration=current_plan.duration,
             is_dummy=True
         )
-        create_history(user=profile.user, to_plan=new_plan, from_plan=current_plan, upgrade=True)
-        profile.plan = new_plan
-        profile.save(update_fields=['plan'])
-        return redirect('plan', current_plan.slug)
-    return redirect('plan', current_plan.slug)
+        create_history(user=profile.user, to_plan=new_plan, from_plan=current_plan, upgrade=True)"""
+        
 
 
 

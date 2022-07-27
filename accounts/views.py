@@ -39,14 +39,14 @@ class RegistrationView(View):
 
                 user = User.objects.create_user(username=username, email=email)
                 user.set_password(password)
-                user.is_active = False
+                user.is_active = True
                 user.save()
 
                 uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
                 domain = get_current_site(request).domain
                 link = reverse('activate', kwargs={
                             'uidb64': uidb64, 'token': token_generator.make_token(user)})
-                email_subject="Activate your Account"
+                """email_subject="Activate your Account"
                 activate_url = 'http://'+domain+link
                 email_body = 'Hi, ' + user.username + \
                     ' Please use this link to verify your account\n' + activate_url
@@ -56,7 +56,7 @@ class RegistrationView(View):
                     'from@example.com',
                     [email],
                 )
-                email.send(fail_silently=False)
+                email.send(fail_silently=False)"""
                 messages.success(
                     request, 'Account successfully created! Check your Email for Account Activation')
                 return redirect('register')
