@@ -5,18 +5,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+	<link rel="stylesheet" href="{% static 'w3.css' %}" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
-<body>
-						<h1>{{page_profile.full_name}}</h1>
-						<p>@{{user.username}}</p>
-						<br>
-								<h1>Profile Information</h1>
-								<h1 class="question">Mobile :</h1>
-								<h3 class="answer">{{page_profile.ph_num}}</h3>
-								<br><br>
-								<h1 class="question">Email :</h1>
-								<h3 class="answer">{{page_profile.email}}</h3>
+<body class='w3-padding w3-margin'>
+	<h3 class='w3-black w3-padding w3-round'>Basic Details</h3>
+	<div>
+		<p>Username : {{profile.user.username}}</p>
+		<p>Full Name : {{profile.full_name}}</p>
+		<p>Status : {{profile.status}}</p>
+		<p>Info Updated at : {{profile.info_updated_at}}</p>
+		<p>SE coins : {{profile.se_coins}}</p>
+		{% for app in apps %}
+			<button class='w3-button w3-blue w3-round'>{{app.appname}}</button>
+		{% endfor %}
+	</div>
+	<h3 class='w3-black w3-padding w3-round'>Utility Details</h3>
+	<div>
+		<p>Utility State : {{ i.utility_state }}</p>
+		<p>Utility District : {{ i.utility_district }}</p>
+		<p>Utility Country : {{ i.utility_country }}</p>
+		<p>Utility Postal code : {{ i.utility_postalcode }}</p>
+		<p>Utility Address : {{ i.utility_address }}</p>
+	</div>
+	<h3 class='w3-black w3-padding w3-round'>Contact Details</h3>
+	<div>
+		<p>Contact Person : {{ i.contact_person }}</p>
+		<p>Contact Email :{{ i.contact_email }}</p>
+		<p>Contact Phone no. : {{ i.contact_phnum }}</p>
+		<p>Contact Mobile : {{ i.contact_mobile }} </p>
+		<p>Contact Designation : {{ i.contact_designation }}</p>
+		<p>Contact Landline : {{ i.contact_landline }} </p>
+	</div>
+	<h3 class='w3-black w3-padding w3-round'>Emergency Details</h3>
+	<div>
+		<p>Emergency Person : {{ i.emergency_person }} </p>
+		<p>Emergency Alt Person : {{ i.emergency_altperson }} </p>
+		<p>Emergency Mobile : {{ i.emergency_mobile }} </p>
+		<p>Emergency Alt Mobile : {{ i.emergency_altmobile }} </p>
+		<p>Emergency Office Address : {{ i.emergency_officeaddress }} </p>
+		<p>Emergency Alt Office Address : {{ i.emergency_altofficeaddress }} </p>
+	</div>
 
 </body>
 </html>

@@ -265,7 +265,8 @@ class ShowProfile(DetailView):
     def get_context_data(self, *args, **kwargs):
         context = super(ShowProfile, self).get_context_data(*args, **kwargs)
         page_profile = get_object_or_404(Profile, slug=self.kwargs['slug'])
-        context['page_profile'] = page_profile
+        context['profile'] = page_profile
+        context['apps'] = page_profile.apps.all()
         if self.request.user==page_profile.user:
             self.template_name = 'myprofile.html'
         elif self.request.user!=page_profile.user or self.request.user.is_anonymous:

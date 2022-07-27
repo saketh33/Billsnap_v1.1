@@ -116,17 +116,18 @@ def addcustomer(request,slug):
     return render(request, 'addcustomer.html', {'form' :form})
 
 @login_required
-def customerlis(request,slug):
+def customerlist(request,slug):
     app=applists.objects.get(slug=slug)
-    columns=[field.name for field in customer._meta.get_fields()]
-    details = customer.objects.all().filter(app=app)
-    return render(request, 'customerlist.html', {'columns':columns, 'details':details,'slug':slug})
+    details = Profile.objects.filter(apps=app).values_list('user__username', 'slug', 'id')
+    return render(request, 'customerlist.html', {'details':details, 'slug':slug})
+    
 @login_required
 def deletecust(request,utility_name):
     deli=customer.objects.get(utility_name=utility_name)
     deli.delete()
     logger.info(request.user.username+"_deleted the"+deli.utility_name)
     return redirect('customerlist')
+
 @login_required
 def updaterecord(request,id):
     inst=customer.objects.get(id=id)
@@ -143,7 +144,6 @@ def updaterecord(request,id):
         contact_phnum =request.POST.get('contact_phnum')
         contact_designation= request.POST.get('contact_designation')
         office_address=request.POST.get('office_address')
-
         instance=customer.objects.get(id=id)
         #contact details
         instance.utility_name =utility_name
@@ -202,7 +202,17 @@ def uploadlis(request):
 def dashboard(request, slug):
     return render(request, 'dashboard.html', {'slug' : slug})
 
+def add_customer_form(request, slug):
+    profiles = Profile.objects.filter(admin=False).exclude(apps__slug=slug)
+    app = applists.objects.get(slug=slug)
+    return render(request, 'add_customer_app.html', {'profiles': profiles, 'app': app})
 
+def add_customer_app(request, slug):
+    username = request.GET.get('username')
+    profile = Profile.objects.get(user__username=username)
+    app = applists.objects.get(slug=slug)
+    profile.apps.add(app)
+    return redirect('customerlist',slug=slug)
 
 def addingcustomer(request,slug):
     prof=Profile.objects.get(user=request.user)

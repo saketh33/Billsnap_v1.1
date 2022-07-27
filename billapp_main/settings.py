@@ -31,7 +31,8 @@ INSTALLED_APPS = [
     'apps',
     'dashboard',
     'crispy_forms',
-
+    'plans',
+    'groups',
 ]
 
 MIDDLEWARE = [
@@ -70,26 +71,8 @@ WSGI_APPLICATION = 'billapp_main.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'billapp',
-        'USER': 'root',
-        'PASSWORD': 'Saketh@123',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-        }
-    },
-    'vimplus': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'vimplus',
-        'USER': 'root',
-        'PASSWORD': 'Saketh@123',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-        }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
