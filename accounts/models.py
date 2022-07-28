@@ -72,6 +72,7 @@ class Profile(models.Model):
 
     admin=models.BooleanField(default=False)
     plan = models.ForeignKey(Plan, on_delete=models.DO_NOTHING, null=True)
+    plan_active = models.BooleanField(default=False)
 
     def __str__(self):
         return str(self.user)
@@ -111,3 +112,28 @@ def create_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
+class TransactionHistory(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    date = models.DateField(auto_now_add=True)
+    log = models.CharField(max_length=300)
+    amount = models.IntegerField(default=0)
+    code = models.CharField(max_length=100, null=True)
+
+    def __str__(self):
+        return f"USER [{self.user.username}] LOG [{self.log}] DATE [{self.date}] AMOUNT [{self.amount}]"
+
+# Create your views here.
+def create_history(user, to_plan, from_plan=None, upgrade=False):
+    if upgrade:
+        history = TransactionHistory.objects.get(user=user, code=from_plan.slug)
+        today = datetime.date.today()
+        completed_days = (today - history.date).days
+        payment_per_day = from_plan.price / from_plan.duration
+        payment_adv = (from_plan.duration - completed_days)*payment_per_day
+        price_to_pay = to_plan.price - payment_adv
+        
+        log = f"User [{user.username}] Upgraded to Plan [{to_plan}] from Plan [{from_plan}]"
+        TransactionHistory.objects.create(user=user, log=log, amount=price_to_pay, code=to_plan.slug)
+    else :
+        log = f"User [{user.username}] Subscribed to Plan [{to_plan}]"
+        TransactionHistory.objects.create(user=user, log=log, amount=to_plan.price, code=to_plan.slug)

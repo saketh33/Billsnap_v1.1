@@ -9,7 +9,7 @@ urlpatterns = [
     path('send/',views.sending,name='send'),
     path('settings/', views.sett_ings, name='settings'),
     path('dashboard/', views.dashboard, name='dash'),
-    path('register', acc_views.RegistrationView.as_view(), name='register'),
+    path('register/<str:appslug>', acc_views.RegistrationView.as_view(), name='register'),
     path('login/', acc_views.LoginView.as_view(), name='login'),
     path('logout/', acc_views.logout, name='logout'),
     path('activate/<uidb64>/<token>', acc_views.VerificationView.as_view(), name='activate'),
@@ -18,7 +18,7 @@ urlpatterns = [
     path('reset/<uidb64>/<token>/', a_views.PasswordResetConfirmView.as_view(template_name='password_reset_form.html'), name='password_reset_confirm'),
     path('reset_password_complete/', a_views.PasswordResetCompleteView.as_view(template_name='password_reset_done.html'), name='password_reset_complete'),
     path('<slug>/edit/', acc_views.update_profile, name='update'),
-    path('<slug>/', acc_views.ShowProfile.as_view(), name='show_profile'),
+    path('<slug>/<str:appslug>', acc_views.ShowProfile.as_view(), name='show_profile'),
     path('apps/', include('apps.urls')),
     path('dash/', include('dashboard.urls')),
 ]

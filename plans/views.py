@@ -11,7 +11,8 @@ def subscribe(request, slug):
     plan = Plan.objects.get(slug=slug)
     profile = Profile.objects.get(user=request.user)
     profile.plan = plan
-    profile.save(update_fields=['plan'])
+    profile.plan_active = True
+    profile.save(update_fields=['plan', 'plan_active'])
     # Creating transaction historh
     create_history(user=request.user, to_plan=plan)
     return redirect('index')
@@ -24,7 +25,8 @@ def upgrade_to(request, slug):
     create_history(user=request.user, to_plan=upgrading_to, from_plan=current_plan, upgrade=True)
     profile = Profile.objects.get(user=request.user)
     profile.plan = upgrading_to
-    profile.save(update_fields=['plan'])
+    profile.plan_active = True
+    profile.save(update_fields=['plan', 'plan_active'])
 
     return redirect('accountsettings', slug=request.user.username)
 
@@ -57,7 +59,8 @@ def delete_plan(request, slug, appslug):
     for user in Profile.objects.filter(plan=plan):
         #create_history(user=user.user, to_plan=plan, from_plan=user.plan, upgrade=True)
         user.plan = default_plan
-        user.save(update_fields=['plan'])
+        user.plan_active = True
+        user.save(update_fields=['plan', 'plan_active'])
     plan.delete()
     return redirect('plans-panel', appslug)
 
@@ -86,7 +89,8 @@ def show_plan(request, slug):
                 customer = customer.first()
                 #create_history(user=customer.user, to_plan=plan, from_plan=customer.plan, upgrade=True)
                 customer.plan = plan
-                customer.save(update_fields=['plan'])
+                customer.plan_active = True
+                customer.save(update_fields=['plan', 'plan_active'])
             return redirect('plan', slug)
 
             """students = Profile.objects.filter(institute_name=form.cleaned_data.get("institution"), is_student=True)
@@ -108,8 +112,9 @@ def update_user_plan(request, slug):
     form = UpdateUserPlanForm(request.POST)
     new_plan = Plan.objects.get(id=request.POST.get('update_to'))
     profile.plan = new_plan
-    profile.save(update_fields=['plan'])
-    return redirect('plan', current_plan.slug)
+    profile.plan_active = True
+    profile.save(update_fields=['plan', 'plan_active'])
+    return redirect('plans-panel', current_plan.app.slug)
     """if form.is_valid():
         new_plan = Plan.objects.create(
             title=form.cleaned_data.get("title"),
