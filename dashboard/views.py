@@ -11,6 +11,8 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from logging.handlers import TimedRotatingFileHandler
 import logging
+from plans.models import *
+
 logger=logging.getLogger()
 logging.basicConfig(
         handlers=[ TimedRotatingFileHandler('logs.log', when="midnight", interval=1)],
@@ -201,9 +203,13 @@ def dashboard(request, slug):
     return render(request, 'dashboard.html', {'slug' : slug})
 
 def add_customer_form(request, slug):
+    app = applists.objects.get(slug=slug)
+    return render(request, 'add_customer_app.html', {'app': app})
+
+def add_existing_user(request, slug):
     profiles = Profile.objects.filter(admin=False).exclude(apps__slug=slug)
     app = applists.objects.get(slug=slug)
-    return render(request, 'add_customer_app.html', {'profiles': profiles, 'app': app})
+    return render(request, 'add_existing_user.html', {'profiles': profiles, 'app': app})
 
 def add_customer_app(request, slug):
     username = request.GET.get('username')
@@ -217,3 +223,22 @@ def addingcustomer(request,slug):
     app=applists.objects.get(slug=slug)
     prof.apps.add(app)
     return redirect('customerlist',slug=slug)
+
+def update_profile_plan(request, slug):
+    profile = Profile.objects.get(slug__iexact=slug)
+
+    new_plan = Plan.objects.get(id=request.POST.get('update_to'))
+    new_paid_status = True if request.POST.get('paid')=='on' else False
+    new_active_status = True if request.POST.get('plan_active')=='on' else False
+
+    pre_plan = profile.plans.filter(app__appname=new_plan.app.appname)
+    if pre_plan:
+        pre_plan=pre_plan.first()
+        profile.plans.remove(pre_plan)
+        
+    profile.plans.add(new_plan)
+    profile.plan_active = new_active_status
+    profile.paid = new_paid_status
+    print(new_active_status, new_plan, new_paid_status)
+    profile.save(update_fields=['plan', 'plan_active', 'paid'])
+    return redirect('show_profile', profile.slug, new_plan.app.slug)

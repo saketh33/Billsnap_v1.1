@@ -9,7 +9,8 @@ urlpatterns = [
     path('send/',views.sending,name='send'),
     path('settings/', views.sett_ings, name='settings'),
     path('dashboard/', views.dashboard, name='dash'),
-    path('register/<str:appslug>', acc_views.RegistrationView.as_view(), name='register'),
+    path('register/', acc_views.RegistrationView.as_view(), name='register'),
+    path('register/<str:appslug>', acc_views.app_registration, name='register-app'),
     path('login/', acc_views.LoginView.as_view(), name='login'),
     path('logout/', acc_views.logout, name='logout'),
     path('activate/<uidb64>/<token>', acc_views.VerificationView.as_view(), name='activate'),
@@ -21,4 +22,5 @@ urlpatterns = [
     path('<slug>/<str:appslug>', acc_views.ShowProfile.as_view(), name='show_profile'),
     path('apps/', include('apps.urls')),
     path('dash/', include('dashboard.urls')),
+    path('create-notification/<str:slug>/', acc_views.create_notification, name='create-notification'),
 ]

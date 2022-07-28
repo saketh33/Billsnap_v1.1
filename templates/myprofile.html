@@ -10,6 +10,9 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body class='w3-padding w3-margin'>
+	<button onclick='showForm(this);' class='w3-button w3-blue' >Change Plan Details</button>
+	<button onclick='showForm(this);' class='w3-button w3-green' >Change Profile Details</button>
+	<button onclick='showNotificationForm(this);' class='w3-button w3-purple' >Send Notification</button>
 	<h3 class='w3-black w3-padding w3-round'>Basic Details</h3>
 	<div>
 		<p>Username : {{profile.user.username}}</p>
@@ -17,18 +20,47 @@
 		<p>Status : {{profile.status}}</p>
 		<p>Info Updated at : {{profile.info_updated_at}}</p>
 		<p>SE coins : {{profile.se_coins}}</p>
-		<p>Current Plan : {{profile.plan}} 
+		<p>Current Plan : {{plan}} 
 			{% if profile.plan_active %}
-			<e class='w3-text-green'>Active</e>
+			<e class='w3-green w3-padding w3-round'>Active</e>
 			{% else %}
-			<e class='w3-text-red'>Expired</e>
+			<e class='w3-red w3-padding w3-round'>Expired</e>
+			{% endif %}
+
+			{% if profile.paid %}
+			<e class='w3-green w3-padding w3-round'>Paid</e>
+			{% else %}
+			<e class='w3-red w3-padding w3-round'>Not Paid</e>
 			{% endif %}
 		</p>
-		<form  enctype='multipart/form-data' method='POST' action="{% url 'update-plan' profile.slug %}">
-			{% csrf_token %}
-			{{ form|crispy }}
-			<button type='submit' class='w3-margin w3-round-large w3-green w3-button' >Update to</button>
-		</form>
+		<div id="plan-change" style='display:none;' class="w3-modal">
+            <div class="w3-display-middle w3-padding" >
+				<button class='w3-right w3-button w3-round-large w3-red w3-padding' onclick="document.getElementById('plan-change').style.display='none'" >&times;</button>
+				<div class="w3-margin w3-padding w3-round-large w3-border w3-white" id="content">
+					<h5>Update user's Plan Details</h5>
+					<form  enctype='multipart/form-data' method='POST' action="{% url 'update-profile-plan' profile.slug %}">
+						{% csrf_token %}
+						{{ form|crispy }}
+						<button type='submit' class='w3-margin w3-round-large w3-green w3-button' >Save</button>
+					</form>
+				</div>
+				</div>
+			</div>
+		</div>
+		<div id="notification" style='display:none;' class="w3-modal">
+            <div class="w3-display-middle w3-padding" >
+				<button class='w3-right w3-button w3-round-large w3-red w3-padding' onclick="document.getElementById('notification').style.display='none'" >&times;</button>
+				<div class="w3-margin w3-padding w3-round-large w3-border w3-white" id="content">
+					<h5>Send Notification</h5>
+					<form  enctype='multipart/form-data' method='POST' action="{% url 'create-notification' appslug %}">
+						{% csrf_token %}
+						{{ notification_form|crispy }}
+						<button type='submit' class='w3-margin w3-round-large w3-green w3-button' >Send</button>
+					</form>
+				</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	<h3 class='w3-black w3-padding w3-round'>Utility Details</h3>
 	<div>
@@ -57,5 +89,13 @@
 		<p>Emergency Alt Office Address : {{ i.emergency_altofficeaddress }} </p>
 	</div>
 
+	<script>
+		function showForm(obj){
+			document.getElementById('plan-change').style.display = 'block';
+		} 
+		function showNotificationForm(obj){
+			document.getElementById('notification').style.display = 'block';
+		}
+	</script>
 </body>
 </html>

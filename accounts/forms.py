@@ -95,10 +95,19 @@ class PasswordResetForm(forms.Form):
                     html_email_template_name=html_email_template_name,
                 )
 
-from .models import Profile
+from .models import *
 from django import forms
 
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         exclude = ('user', 'xp', 'techsnap_cash')
+
+class NotificationForm(forms.ModelForm):
+    class Meta:
+        model = Notification
+        fields = ('image', 'body')
+        widgets = {
+            'image': forms.FileInput(attrs={'placeholder': 'ex: Basic, Premium, Standard ...', 'class': 'w3-input w3-border w3-round'}),
+            'body': forms.Textarea(attrs={'placeholder': 'enter price for the plan', 'class': 'w3-input w3-border w3-round'}),
+        }

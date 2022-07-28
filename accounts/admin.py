@@ -1,10 +1,10 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Profile,Notifications
+from .models import *
 admin.site.register(Profile)
-admin.site.register(Notifications)
+admin.site.register(Notification)
 
 class NotificationsInline(admin.StackedInline):
-    model = Notifications
+    model = Notification
     extra = 1
