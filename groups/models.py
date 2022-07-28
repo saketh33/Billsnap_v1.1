@@ -4,7 +4,17 @@ from apps.models import *
 
 # Create your models here.
 
+def generate_code():
+    length=10
+    base = string.ascii_lowercase+string.ascii_uppercase+string.digits
+    while True:
+        code = ''.join(random.choices(base, k=length))
+        if Plan.objects.filter(slug=code).count()==0:
+            break
+    return code
+
 class Group(models.Model):
+    slug = models.CharField(max_length=20, default=generate_code, editable=False)
     members = models.ManyToManyField(Profile)
     title = models.CharField(max_length=200)
     app = models.ForeignKey(applists, on_delete=models.CASCADE)

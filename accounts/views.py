@@ -8,7 +8,7 @@ from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
 from django.utils.encoding import force_bytes, force_text, DjangoUnicodeDecodeError
-
+from apps.models import *
 
 from logging.handlers import TimedRotatingFileHandler
 import logging
@@ -20,16 +20,17 @@ logging.basicConfig(
         datefmt='%Y-%m-%dT%H:%M:%S')
 
 class RegistrationView(View):
-    def get(self, request):
-        return render(request, 'register.html')
+    def get(self, request, appslug):
+        return render(request, 'register.html', {'slug': appslug})
 
-    def post(self, request):
+    def post(self, request, appslug):
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
         context = {
             'username': username,
-            'email': email
+            'email': email,
+            'slug': appslug
         }
         if not User.objects.filter(username=username).exists():
             if not User.objects.filter(email=email).exists():
@@ -41,6 +42,9 @@ class RegistrationView(View):
                 user.set_password(password)
                 user.is_active = True
                 user.save()
+
+                profile = Profile.objects.get(user=user)
+                profile.apps.add(applists.objects.get(slug=appslug))
 
                 uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
                 domain = get_current_site(request).domain
@@ -59,7 +63,7 @@ class RegistrationView(View):
                 email.send(fail_silently=False)"""
                 messages.success(
                     request, 'Account successfully created! Check your Email for Account Activation')
-                return redirect('register')
+                return redirect('add-customer-form', appslug)
 
             messages.warning(request, "This Email already exists!")
             return render(request, 'register.html', context)
@@ -227,7 +231,7 @@ from django.utils.encoding import force_bytes, force_text, DjangoUnicodeDecodeEr
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.contrib.sites.shortcuts import get_current_site
 from .utils import token_generator
-
+from plans.forms import UpdateUserPlanForm
 from .models import Profile
 from .forms import ProfileForm
 
@@ -266,7 +270,7 @@ class ShowProfile(DetailView):
         context = super(ShowProfile, self).get_context_data(*args, **kwargs)
         page_profile = get_object_or_404(Profile, slug=self.kwargs['slug'])
         context['profile'] = page_profile
-        context['apps'] = page_profile.apps.all()
+        context['form'] = UpdateUserPlanForm(appslug=self.kwargs['appslug'])
         if self.request.user==page_profile.user:
             self.template_name = 'myprofile.html'
         elif self.request.user!=page_profile.user or self.request.user.is_anonymous:
