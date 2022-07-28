@@ -71,8 +71,9 @@ class Profile(models.Model):
     slug = models.SlugField(max_length=200, editable=False, null=True, blank=True)
 
     admin=models.BooleanField(default=False)
-    plan = models.ForeignKey(Plan, on_delete=models.DO_NOTHING, null=True)
+    plans = models.ManyToManyField(Plan)
     plan_active = models.BooleanField(default=False)
+    paid = models.BooleanField(default=False)
 
     def __str__(self):
         return str(self.user)
@@ -85,10 +86,9 @@ class Profile(models.Model):
     def courseprofile(self):
         return self.course_profile.all()
 
-class Notifications(models.Model):
+class Notification(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='user_notifications')
     image = models.ImageField(upload_to='notifications')
-    mark_as_read = models.BooleanField(default=False)
     body = models.TextField()
     url = models.URLField(null=True, blank=True)
     url_name = models.CharField(max_length=255, default='View', null=True, blank=True)
@@ -99,9 +99,9 @@ class Notifications(models.Model):
         return self.profile.user.username + ' ' + self.body[0:15]
 
     def save(self, *args, **kwargs):
-        super(Notifications, self).save()
+        super(Notification, self).save()
         self.slug = slugify(get_unique_string(self.body, self.notified_time))
-        super(Notifications, self).save()
+        super(Notification, self).save()
 
 @receiver(post_save, sender = User)
 def create_user_profile(sender, instance, created, **kwargs):

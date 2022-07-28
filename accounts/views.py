@@ -19,11 +19,44 @@ logging.basicConfig(
         format="[%(asctime)s] %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s",
         datefmt='%Y-%m-%dT%H:%M:%S')
 
+
+def app_registration(request, appslug):
+    username = request.POST['username']
+    email = request.POST['email']
+    password = request.POST['password']
+    context = {
+        'username': username,
+        'email': email,
+        'slug': appslug
+    }
+    if not User.objects.filter(username=username).exists():
+        if not User.objects.filter(email=email).exists():
+            if len(password) < 6:
+                messages.error(request, 'Password is too short')
+                return render(request, 'register.html')
+
+            user = User.objects.create_user(username=username, email=email)
+            user.set_password(password)
+            user.is_active = True
+            user.save()
+
+            profile = Profile.objects.get(user=user)
+            profile.apps.add(applists.objects.get(slug=appslug))
+            messages.success(
+                request, 'Account successfully created! Check your Email for Account Activation')
+            return redirect('add-customer-form', appslug)
+
+        messages.warning(request, "This Email already exists!")
+        return render(request, 'register.html', context)
+    else:
+        messages.warning(request, "This username already exists!")
+        return render(request, 'register.html', context)
+
 class RegistrationView(View):
-    def get(self, request, appslug):
+    def get(self, request):
         return render(request, 'register.html', {'slug': appslug})
 
-    def post(self, request, appslug):
+    def post(self, request):
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
@@ -43,14 +76,11 @@ class RegistrationView(View):
                 user.is_active = True
                 user.save()
 
-                profile = Profile.objects.get(user=user)
-                profile.apps.add(applists.objects.get(slug=appslug))
-
                 uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
                 domain = get_current_site(request).domain
                 link = reverse('activate', kwargs={
                             'uidb64': uidb64, 'token': token_generator.make_token(user)})
-                """email_subject="Activate your Account"
+                email_subject="Activate your Account"
                 activate_url = 'http://'+domain+link
                 email_body = 'Hi, ' + user.username + \
                     ' Please use this link to verify your account\n' + activate_url
@@ -60,7 +90,7 @@ class RegistrationView(View):
                     'from@example.com',
                     [email],
                 )
-                email.send(fail_silently=False)"""
+                email.send(fail_silently=False)
                 messages.success(
                     request, 'Account successfully created! Check your Email for Account Activation')
                 return redirect('add-customer-form', appslug)
@@ -129,8 +159,8 @@ class LoginView(View):
                     if user:
                         if user.is_active:
                             auth.login(request, user)
-                            is_customer=Profile.objects.get(user=user).admin
-                            if is_customer:
+                            is_admin=Profile.objects.get(user=user).admin
+                            if is_admin:
                                 messages.success(request,"loggedin succesfully")
                                 return redirect("showapps")
                             else:
@@ -234,6 +264,8 @@ from .utils import token_generator
 from plans.forms import UpdateUserPlanForm
 from .models import Profile
 from .forms import ProfileForm
+from dashboard.forms import *
+from .forms import *
 
 # Create your views here.
 def update_profile(request, slug):
@@ -270,9 +302,25 @@ class ShowProfile(DetailView):
         context = super(ShowProfile, self).get_context_data(*args, **kwargs)
         page_profile = get_object_or_404(Profile, slug=self.kwargs['slug'])
         context['profile'] = page_profile
-        context['form'] = UpdateUserPlanForm(appslug=self.kwargs['appslug'])
+        context['form'] = UpdateProfilePlanForm(appslug=self.kwargs['appslug'], profile=page_profile)
+        context['plan'] = page_profile.plans.filter(app__slug=self.kwargs['appslug']).first()
+        context['notification_form'] = NotificationForm()
+        context['appslug'] = self.kwargs['appslug']
         if self.request.user==page_profile.user:
             self.template_name = 'myprofile.html'
         elif self.request.user!=page_profile.user or self.request.user.is_anonymous:
             self.template_name = 'myprofile.html'
         return context
+
+def create_notification(request, slug):
+    profile = Profile.objects.get(user=request.user)
+    form = NotificationForm(request.POST, request.FILES)
+    if form.is_valid():
+        url = 'https://url.com/some-url/'
+        notification = form.save(commit=False)
+        notification.profile = profile
+        notification.url = url
+        notification.save(update_fields=['profile', 'url'])
+        return redirect('show_profile', slug=profile.slug, appslug=slug)
+    print(form.errors)
+    return redirect('show_profile', slug=profile.slug, appslug=slug)
