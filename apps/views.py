@@ -6,6 +6,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from logging.handlers import TimedRotatingFileHandler
+from .forms import *
 from accounts.models import *
 import logging
 logger=logging.getLogger()
@@ -55,3 +56,21 @@ def remove_user(request, slug, userslug):
     profile.apps.remove(app)
 
     return redirect('customerlist', slug=slug)
+
+def update_app(request, appslug):
+    if request.method=='POST':
+        app = applists.objects.get(slug=appslug)
+        form = AppForm(request.POST, request.FILES, instance=app)
+        if form.is_valid():
+            #app.appname = form.cleaned_data.get('appname')
+            app.appimg = form.cleaned_data.get('appimg')
+            app.author = form.cleaned_data.get('author')
+            app.save(update_fields=['author', 'appimg'])
+            return redirect('update-app', appslug)
+
+    app = applists.objects.get(slug=appslug)
+    payload = {
+        'app': app,
+        'form': AppForm(instance=app),
+    }
+    return render(request, 'app_settings.html', payload)

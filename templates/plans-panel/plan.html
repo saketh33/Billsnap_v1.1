@@ -37,7 +37,7 @@
             </div>
         {% endfor %}
     </div>
-    <div class='w3-container w3-padding w3-round w3-half w3-border'>
+    <div class='w3-container w3-margin-top w3-padding w3-round w3-half w3-border'>
         <button id="button" onclick="showForm();" class=' w3-round w3-button w3-blue'>
             Add Customer to {{plan.title}}
         </button>
@@ -48,12 +48,27 @@
             <button style='width:95%;' type='submit' class='w3-margin w3-round w3-green w3-button' >Add</button>
         </form>
     </div>
+    <div class='w3-container w3-margin-top w3-padding w3-round w3-half w3-border'>
+        <button id="update_button" onclick="showUpdatePlanForm();" class=' w3-round w3-button w3-purple'>
+            Edit {{plan.title}} Details
+        </button>
+        <form id="update_plan_form" style="display:none;" enctype='multipart/form-data' method='POST' action="{% url 'update-plan-details' plan.slug %}">
+            <h5 class='w3-center'>Update {{plan.title}}</h5>
+            {% csrf_token %}
+            {{ update_plan_form|crispy }}
+            <button style='width:95%;' type='submit' class='w3-margin w3-round w3-green w3-button' >Update</button>
+        </form>
+    </div>
     </div>
 
     <script>
         function showForm(){
             document.getElementById('plan_form').style.display = "block";
             document.getElementById('button').style.display = "none";
+        }
+        function showUpdatePlanForm(){
+            document.getElementById('update_plan_form').style.display = "block";
+            document.getElementById('update_button').style.display = "none";
         }
         function showUpdateForm(){
             document.getElementById('form').style.display = "block";

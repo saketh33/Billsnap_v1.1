@@ -288,15 +288,17 @@ def update_profile(request, slug):
         else:
             return HttpResponse('siggu undali....')
 
-class UpdateProfile(UpdateView):
-    model = Profile
-    template_name = 'editprofile.html'
-    form_class = ProfileForm
-    success_url = '/'
+def update_profile_save(request, slug, appslug):
+    inst = Profile.objects.get(slug=slug)
+    form = ProfileForm(request.POST, instance=inst)
+    if form.is_valid():
+        form.save()
+        return redirect('show_profile', slug=slug, appslug=appslug)
+
 
 class ShowProfile(DetailView):
     model = Profile
-    template_name = 'myprofile.html'
+    template_name = 'new_profile.html'
 
     def get_context_data(self, *args, **kwargs):
         context = super(ShowProfile, self).get_context_data(*args, **kwargs)
@@ -306,10 +308,11 @@ class ShowProfile(DetailView):
         context['plan'] = page_profile.plans.filter(app__slug=self.kwargs['appslug']).first()
         context['notification_form'] = NotificationForm()
         context['appslug'] = self.kwargs['appslug']
+        context['update_form'] = ProfileForm(instance=page_profile)
         if self.request.user==page_profile.user:
-            self.template_name = 'myprofile.html'
+            self.template_name = 'new_profile.html'
         elif self.request.user!=page_profile.user or self.request.user.is_anonymous:
-            self.template_name = 'myprofile.html'
+            self.template_name = 'new_profile.html'
         return context
 
 def create_notification(request, slug):

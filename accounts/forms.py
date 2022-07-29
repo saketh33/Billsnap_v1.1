@@ -101,7 +101,30 @@ from django import forms
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        exclude = ('user', 'xp', 'techsnap_cash')
+        exclude = ('user', 'apps', 'status', 'info_created_at', 'info_updated_at' , 'slug' ,'admin', 'plans', 'plan_active', 'paid')
+        widgets = {
+            'full_name': forms.TextInput(attrs={'placeholder': 'full name', 'class': 'w3-input w3-border w3-round'}),
+            'utility_name': forms.TextInput(attrs={'class':'w3-input w3-border w3-round'}),
+            'utility_short_name': forms.TextInput(attrs={'class': 'w3-input w3-border w3-round'}),
+            'utility_state': forms.TextInput(attrs={'class': 'w3-input w3-border w3-round'}),
+            'utility_district': forms.TextInput(attrs={'class': 'w3-input w3-border w3-round'}),
+            'utility_country': forms.TextInput(attrs={'class': 'w3-input w3-border w3-round'}),
+            'utility_postalcode': forms.TextInput(attrs={'class': 'w3-input w3-border w3-round'}),
+            'utility_address': forms.TextInput(attrs={'class': 'w3-input w3-border w3-round'}),
+            'contact_person': forms.TextInput(attrs={'class': 'w3-input w3-border w3-round'}),
+            'contact_email': forms.EmailInput(attrs={'class': 'w3-input w3-border w3-round'}),
+            'contact_phnum': forms.TextInput(attrs={'class': 'w3-input w3-border w3-round'}),
+            'contact_mobile': forms.TextInput(attrs={'class': 'w3-input w3-border w3-round'}),
+            'contact_designation': forms.TextInput(attrs={'class': 'w3-input w3-border w3-round'}),
+            'contact_landline': forms.TextInput(attrs={'class': 'w3-input w3-border w3-round'}),
+            'emergency_person': forms.TextInput(attrs={'class': 'w3-input w3-border w3-round'}),
+            'emergency_altperson': forms.TextInput(attrs={'class': 'w3-input w3-border w3-round'}),
+            'emergency_mobile': forms.TextInput(attrs={'class': 'w3-input w3-border w3-round'}),
+            'emergency_altmobile': forms.TextInput(attrs={'class': 'w3-input w3-border w3-round'}),
+            'emergency_officeaddress': forms.Textarea(attrs={'class': 'w3-input w3-border w3-round'}),
+            'emergency_altofficeaddress': forms.Textarea(attrs={'class': 'w3-input w3-border w3-round'}),
+            'se_coins': forms.TextInput(attrs={'class': 'w3-input w3-border w3-round'}),
+        }
 
 class NotificationForm(forms.ModelForm):
     class Meta:

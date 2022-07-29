@@ -42,13 +42,22 @@ def show_group(request, slug):
             users = group.members.all()
             form = SubscribeForm()
             existing_users = Profile.objects.filter(apps=group.app).exclude(group=group)
+            users_ = []
+            for i in users:
+                group_title = 'No Group'
+                g = i.group_set.filter(app=group.app)
+                if g.exists():
+                    group_title = g.first().title
+                user_ = {'username': i.user.username, 'group': group_title}
+                users_.append(user_)
             payload = {
                 'group': group,
                 'users': users,
                 'form': form,
                 'update_form': UpdateUserGroupForm(appslug=group.app.slug),
                 'appslug': group.app.slug,
-                'existing_users': existing_users,
+                'existing_users': users_,
+                'update_group_form': GroupForm(instance=group)
             }
             return render(request, 'groups-panel/group.html', payload)
         
@@ -75,7 +84,7 @@ def show_group(request, slug):
                 student.group = group
                 student.save(update_fields=['group'])
             return redirect('group', slug)"""
-        print(forms.error)
+        print(forms.errors)
         return redirect('group', slug)
 
 def add_customer_to_group(request, slug):
@@ -90,6 +99,15 @@ def add_customer_to_group(request, slug):
 
     group.members.add(user)
     return JsonResponse({})
+
+def update_group(request, groupslug):
+    group = Group.objects.get(slug=groupslug)
+    form = GroupForm(request.POST, instance=group)
+    if form.is_valid():
+        form.save()
+        return redirect('group', groupslug)
+    print(form.errors)
+    return redirect('group', groupslug)
 
 def update_user_group(request, slug, groupslug):
     profile = Profile.objects.get(slug__iexact=slug)
