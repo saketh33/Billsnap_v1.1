@@ -23,4 +23,5 @@ urlpatterns = [
     path('apps/', include('apps.urls')),
     path('dash/', include('dashboard.urls')),
     path('create-notification/<str:slug>/', acc_views.create_notification, name='create-notification'),
+    path('update-profile-save/<str:slug>/<str:appslug>', acc_views.update_profile_save, name='update-profile-save'),
 ]

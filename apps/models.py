@@ -24,7 +24,7 @@ class applists(models.Model):
     appimg=models.ImageField(upload_to = 'app_images',null=True,blank=True)
     date_published= models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField(auto_now=True)
-    slug = models.SlugField(max_length=255, null=True, unique=True, editable=False)
+    slug = models.SlugField(max_length=255, null=True, unique=True)
 
     def __str__(self):
         return str(self.slug)

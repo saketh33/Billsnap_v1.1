@@ -1,0 +1,629 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>billsnap</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
+  </script>
+ <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet" />
+    <link rel="stylesheet" href="{% static "css/create.css"%}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+<link rel="stylesheet" href="{% static "css/styles.css"%}">
+<link rel="stylesheet" href="{% static "w3.css"%}">
+
+<style>
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+</style>
+</head>
+
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg fixed-top p-md-0">
+      <div class="container-fluid w3-green">
+        <div class="d-md-none menu">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+        <div class="d-none d-md-none close">
+     <i class="fa-solid fa-xmark fa-xl"></i>
+</div>
+        <a class="navbar-brand d-none d-md-block mt-1" href="#">
+      <h2 class="h2 w3-text-white">BILL SNAP</h2>
+        </a>
+
+        <div class="d-flex ms-auto gap-4 pe-3">
+       
+      <a>Logout</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+
+<br>
+<br>
+<div class="main w3-margin-top mx-auto">
+  <div class="row">
+    <div class="left d-none d-md-block col-md-4">
+      <div class="menu-frag d-flex flex-column p-3 ps-4 gap-3">
+        <div>
+          <i class='bx bx-grid-alt' ></i>
+          
+          <a href="{% url 'dashboard' appslug %}" >Dashboard</a>
+        </div>
+        <div>
+          <i class='bx bx-analyse' ></i>
+         
+          <a href="estimate.html">Estimates</a>
+        </div>
+        <div>
+          <i class='bx bx-cog' ></i>
+         
+          <a href="{% url 'update-app' appslug %}" >App Settings</a>
+        </div>
+      </div>
+      <hr>
+      <div class="menu-frag mt-3 ps-3">
+        <h4>Customer</h4>
+        <div class="customer-frag d-flex flex-column p-3 pt-1 gap-3">
+          <div>
+            <i class='bx bx-box' ></i>
+            
+            <a href="{% url 'add-customer-form' appslug %}">Add Customer Form</a>
+          </div>
+          <div>
+            <i class='bx bx-box' ></i>
+            <a href="{% url 'customerlist' appslug %}" id="active">Customer List</a>
+          </div>
+          <div>
+            <i class='bx bx-log-out' ></i>
+            <a href="bulk.html">Bulk Upload</a>
+          </div>
+          <div>
+            <i class='bx bx-archive-in' ></i>
+            <a href="{% url 'groups-panel' appslug %}">Manage Group</a>
+          </div>
+          <div>
+            <i class='bx bx-bar-chart' ></i>
+            <a href="pending.html">Pending approvals</a>
+          </div>
+          <div>
+            <i class='bx bx-message' ></i>
+            <a href="message.html">Messaging</a>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="menu-frag mt-3 ps-3">
+        <h4>Payments</h4>
+        <div class="pay-frag d-flex flex-column  p-3 pt-1  gap-3">
+          <div>
+            <i class='bx bx-list-ul' ></i>
+            <a href="transcations.html">Transactions </a>
+          </div>
+          
+          <div>
+            <i class='bx bx-coin-stack' ></i>
+            <a href="{% url 'plans-panel' appslug %}">Plans</a>
+          </div>
+          <div>
+            <i class='bx bx-heart' ></i>
+            <a href="request.html">Requests</a>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <div class="col-md-7 flex-md-fill">
+      <div class="col right" id="customer-list">
+       
+        <div class="profile">
+          <div class="profile-header">
+             <!-- BEGIN profile-header-cover -->
+            
+             <!-- END profile-header-cover -->
+             <!-- BEGIN profile-header-content -->
+             <div class="profile-header-content d-flex">
+                <!-- BEGIN profile-header-img -->
+               <div class="flex-fill flex-start">
+                <div class="profile-header-img">
+                   <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
+                </div>
+                <!-- END profile-header-img -->
+                <!-- BEGIN profile-header-info -->
+                <div class="profile-header-info">
+                   <h4 class="m-t-10 m-b-5" style="color: black;">John </h4>
+                   <p class="m-b-10" style="color: black;">Edit Profile</p>
+                   <p></p>
+                </div>
+                <!-- END profile-header-info -->
+               </div>
+                <!-- BEGIN profile-header-tab -->
+             <div class="d-flex align-items-center justify-content-end me-5">
+               <div class="profile-button w3-blue btn btn-primary w3-margin" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Edit Profile</div>
+               <!-- Edit profile modal-->
+               <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                    <div class="modal-content">
+                      <div class="modal-body">
+                        <div class="modal-header border-bottom-0 pt-0">
+                        <h5 class="modal-title mb-2" id="staticBackdropLabel">Basic Details</h5>
+                        <button type="button" class="btn-close w3-red" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form  enctype='multipart/form-data' method='POST' action="{% url 'update-profile-save' profile.slug appslug %}">
+                            {% csrf_token %}
+                            {{ update_form|crispy }}
+                            <div class="modal-footer">
+                              <button type="button" class="modal-btn btn btn-secondary w3-red " data-bs-dismiss="modal">cancel</button>
+                              <button type="submit" class="modal-btn btn btn-primary w3-blue">Save</button>
+                            </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+               <div class="profile-button w3-blue btn btn-primary w3-margin" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">Edit plans</div>
+               <!-- Edit plan modal-->
+               <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header border-0">
+                        <button type="button" class="btn-close w3-red" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="text-center">
+                           <h6>Update @ admin's plan</h6>
+                        </div>
+                        <form  enctype='multipart/form-data' method='POST' action="{% url 'update-profile-plan' profile.slug %}">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <button type='submit' class='w3-margin w3-round-large w3-green w3-button' >Save</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+               
+               <div class="profile-button w3-blue btn btn-primary w3-margin" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">Notification</div>
+               <!-- Notify modal-->
+               <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Send Notification</h5>
+                        <button type="button" class="btn-close w3-red" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <form  enctype='multipart/form-data' method='POST' action="{% url 'create-notification' appslug %}">
+                            {% csrf_token %}
+                            {{ notification_form|crispy }}
+                            <div class="modal-footer">
+                                <button type="submit" class="modal-btn btn btn-primary w3-blue ">Save and Send</button>
+                                <button type="button" class="modal-btn btn btn-secondary w3-red" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+             </div>
+             <!-- END profile-header-tab -->
+          </div>
+             </div>
+             <!-- END profile-header-content -->
+       </div>
+       <!-- end profile -->
+       <!-- begin profile-content -->
+       <div class="profile-content">
+          <!-- begin tab-content -->
+          <div class="tab-content p-0">
+
+             <!-- begin #profile-about tab -->
+             <div class="tab-pane fade in active show" id="profile-about">
+                <!-- begin table -->
+                <div class="tab">
+                  <button class="tablinks" onclick="openCity(event, 'London')">Utility</button>
+                  <button class="tablinks" onclick="openCity(event, 'Paris')" id="defaultOpen">Personal</button>
+                  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Emergency</button>
+                </div> 
+             </div>
+             <!-- end #profile-about tab -->
+          </div>
+          <!-- end tab-content -->
+       </div>
+       <!-- end profile-content -->
+       <div id="London" class="tabcontent">
+        
+        <!-- begin table -->
+        <div class="table-responsive">
+         <table class="table table-profile">
+            <thead>
+               <tr>
+                  <th></th>
+                  <th>
+                     <h4>{{profile.username}} <small>Lorraine Stokes</small></h4>
+                  </th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr class="divider">
+                  <td colspan="2"></td>
+               </tr>
+               <tr>
+                  <td class="field">Postal Code</td>
+                  <td><i class="fa fa-mobile fa-lg m-r-5"></i>{{ profile.utility_postalcode }}<a href="javascript:;" class="m-l-5">Edit</a></td>
+               </tr>
+               <tr>
+                    <td class="field">Utility District</td>
+                    <td><i class="fa fa-mobile fa-lg m-r-5"></i>{{ profile.utility_district }}<a href="javascript:;" class="m-l-5">Edit</a></td>
+                </tr>
+               <tr>
+                  <td class="field">State</td>
+                  <td><a href="javascript:;">{{ profile.utility_state }}</a></td>
+               </tr>
+               <tr class="divider">
+                  <td colspan="2"></td>
+               </tr>
+               <tr class="divider">
+                  <td colspan="2"></td>
+               </tr>
+               <tr>
+                  <td class="field">Country</td>
+                  <td><a href="javascript:;">{{ profile.utility_country }}</a></td>
+               </tr>
+               <tr>
+                  <td class="field">Address</td>
+                  <td><a href="javascript:;">{{ profile.utility_address }}</a></td>
+               </tr>
+               <tr>
+                  <td class="field">Language</td>
+                  <td>
+                     <select class="form-control input-inline input-xs" name="language">
+                        <option value="" selected="">English</option>
+                     </select>
+                  </td>
+               </tr>
+               <tr class="divider">
+                  <td colspan="2"></td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+       </div>
+       
+       <div id="Tokyo" class="tabcontent">
+        <!-- begin table -->
+        <div class="table-responsive">
+         <table class="table table-profile">
+            <thead>
+               <tr>
+                  <th></th>
+                  <th>
+                     <h4>John Henry <small>Lorraine Stokes</small></h4>
+                  </th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr class="highlight">
+                  <td class="field">Name</td>
+                  <td><a href="javascript:;">{{ profile.emergency_person }} </a></td>
+               </tr>
+               <tr class="divider">
+                  <td colspan="2"></td>
+               </tr>
+               <tr>
+                  <td class="field">Mobile</td>
+                  <td><i class="fa fa-mobile fa-lg m-r-5"></i>{{ profile.emergency_mobile }}<a href="javascript:;" class="m-l-5">Edit</a></td>
+               </tr>
+               <tr>
+                  <td class="field">Alternate Number</td>
+                  <td><a href="javascript:;">{{ profile.emergency_altmobile }}</a></td>
+               </tr>
+               <tr>
+                  <td class="field">Office Address</td>
+                  <td><a href="javascript:;">{{ profile.emergency_officeaddress }}</a></td>
+               </tr>
+               <tr class="divider">
+                  <td colspan="2"></td>
+               </tr>
+               <tr class="highlight">
+                  <td class="field">Alt Office Address</td>
+                  <td><a href="javascript:;">{{ profile.emergency_altofficeaddress }}</a></td>
+               </tr>
+               <tr class="divider">
+                  <td colspan="2"></td>
+               </tr>
+               <tr>
+                  <td class="field">Alt Person</td>
+                  <td><a href="javascript:;">{{ profile.emergency_altperson }}</a></td>
+               </tr>
+               <tr class="divider">
+                  <td colspan="2"></td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+       </div>
+       
+       <div id="Paris" class="tabcontent">
+         
+        <!-- begin table -->
+        <div class="table-responsive">
+         <table class="table table-profile">
+            <thead>
+               <tr>
+                  <th></th>
+                  <th>
+                     <h4>John Henry <small>Lorraine Stokes</small></h4>
+                  </th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr class="highlight">
+                  <td class="field">Name</td>
+                  <td><a href="javascript:;">{{ profile.contact_person }}</a></td>
+               </tr>
+               <tr class="highlight">
+                    <td class="field">Current Plan</td>
+                    <td><a href="javascript:;">
+                        {{plan}} 
+                    {% if profile.plan_active %}
+                    <e class='w3-green w3-padding w3-round'>Active</e>
+                    {% else %}
+                    <e class='w3-red w3-padding w3-round'>Expired</e>
+                    {% endif %}
+        
+                    {% if profile.paid %}
+                    <e class='w3-green w3-padding w3-round'>Paid</e>
+                    {% else %}
+                    <e class='w3-red w3-padding w3-round'>Not Paid</e>
+                    {% endif %}
+                    </a></td>
+                </tr>
+               <tr class="divider">
+                  <td colspan="2"></td>
+               </tr>
+               <tr>
+                  <td class="field">Mobile</td>
+                  <td><i class="fa fa-mobile fa-lg m-r-5"></i>{{ profile.contact_mobile }} <a href="javascript:;" class="m-l-5">Edit</a></td>
+               </tr>
+               <tr>
+                  <td class="field">Home</td>
+                  <td><a href="javascript:;">{{ profile.contact_landline }}</a></td>
+               </tr>
+               <tr>
+                  <td class="field">Office</td>
+                  <td><a href="javascript:;">{{ profile.contact_phnum }}</a></td>
+               </tr>
+               <tr class="divider">
+                  <td colspan="2"></td>
+               </tr>
+               <tr class="highlight">
+                  <td class="field">Designation</td>
+                  <td><a href="javascript:;">{{ profile.contact_designation }}</a></td>
+               </tr>
+               <tr class="divider">
+                  <td colspan="2"></td>
+               </tr>
+               <tr>
+                  <td class="field">Country/Region</td>
+                  <td>
+                     <select class="form-control input-inline input-xs" name="region">
+                        <option value="US" selected="">United State</option>
+                        <option value="AF">Afghanistan</option>
+                        <option value="AL">Albania</option>
+                        <option value="DZ">Algeria</option>
+                        <option value="AS">American Samoa</option>
+                        <option value="AD">Andorra</option>
+                        <option value="AO">Angola</option>
+                        <option value="AI">Anguilla</option>
+                        <option value="AQ">Antarctica</option>
+                        <option value="AG">Antigua and Barbuda</option>
+                     </select>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="field">Email ID</td>
+                  <td><a href="javascript:;">{{ profile.contact_email }}</a></td>
+               </tr>
+               <tr>
+                  <td class="field">Gender</td>
+                  <td>
+                     <select class="form-control input-inline input-xs" name="gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                     </select>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="field">Birthdate</td>
+                  <td>
+                     <select class="form-control input-inline input-xs" name="day">
+                        <option value="04" selected="">04</option>
+                     </select>
+                     -
+                     <select class="form-control input-inline input-xs" name="month">
+                        <option value="11" selected="">11</option>
+                     </select>
+                     -
+                     <select class="form-control input-inline input-xs" name="year">
+                        <option value="1989" selected="">1989</option>
+                     </select>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="field">Language</td>
+                  <td>
+                     <select class="form-control input-inline input-xs" name="language">
+                        <option value="" selected="">English</option>
+                     </select>
+                  </td>
+               </tr>
+               <tr class="divider">
+                  <td colspan="2"></td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+       </div>
+       
+       <script>
+       function openCity(evt, cityName) {
+         var i, tabcontent, tablinks;
+         tabcontent = document.getElementsByClassName("tabcontent");
+         for (i = 0; i < tabcontent.length; i++) {
+           tabcontent[i].style.display = "none";
+         }
+         tablinks = document.getElementsByClassName("tablinks");
+         for (i = 0; i < tablinks.length; i++) {
+           tablinks[i].className = tablinks[i].className.replace(" active", "");
+         }
+         document.getElementById(cityName).style.display = "block";
+         evt.currentTarget.className += " active";
+       }
+       // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+       </script>
+          
+       
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+
+
+  
+<script>
+   function openCity(evt, cityName) {
+     var i, tabcontent, tablinks;
+     tabcontent = document.getElementsByClassName("tabcontent");
+     for (i = 0; i < tabcontent.length; i++) {
+       tabcontent[i].style.display = "none";
+     }
+     tablinks = document.getElementsByClassName("tablinks");
+     for (i = 0; i < tablinks.length; i++) {
+       tablinks[i].className = tablinks[i].className.replace(" active", "");
+     }
+     document.getElementById(cityName).style.display = "block";
+     evt.currentTarget.className += " active";
+   }
+   </script>
+</body>
+
+<script src="js/create.js"></script>
+<script>
+  function myFunction(){
+
+toastr.options = {
+  "positionClass" : "toast-top-center",
+          "closeButton" : true,
+          "debug" : false,
+          "newestOnTop" : false,
+          "progressBar" : true,
+          "preventDuplicates" : false,
+          "onclick" : null,
+          "showDuration" : "300",
+          "hideDuration" : "1000",
+          "timeOut" : "5000",
+          "extendedTimeOut" : "1000",
+          "showEasing" : "swing",
+          "hideEasing" : "linear",
+          "showMethod" : "fadeIn",
+          "hideMethod" : "fadeOut"
+
+}
+Command: toastr["success"]
+           ("Submitted Successfully.....!!!")
+  }
+</script>
+
+<script>
+    "use strict";
+let leftie = document.querySelector('.left')
+let menuh = document.querySelector('.menu')
+let closeh = document.querySelector('.close')
+let right = document.querySelector('.right')
+
+
+menuh.addEventListener('click', function () {
+  menuh.classList.toggle('d-none')
+  closeh.classList.toggle('d-none')
+  leftie.classList.toggle('d-none')
+  right.classList.toggle('overlay')
+
+})
+closeh.addEventListener('click', function () {
+  menuh.classList.toggle('d-none')
+  closeh.classList.toggle('d-none')
+  leftie.classList.toggle('d-none')
+  right.classList.toggle('overlay')
+
+})
+</script>
+
+
+</html>

@@ -71,6 +71,10 @@ class Profile(models.Model):
     slug = models.SlugField(max_length=200, editable=False, null=True, blank=True)
 
     admin=models.BooleanField(default=False)
+
+    plan_start_date = models.DateTimeField(null=True)
+    plan_end_date = models.DateTimeField(null=True)
+
     plans = models.ManyToManyField(Plan)
     plan_active = models.BooleanField(default=False)
     paid = models.BooleanField(default=False)

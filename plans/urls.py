@@ -10,4 +10,5 @@ urlpatterns = [
     path('delete-plan/<str:slug>/<str:appslug>', delete_plan, name='delete-plan'),
     path('plan/<str:slug>', show_plan, name='plan'),
     path('update-plan/<str:slug>', update_user_plan, name='update-plan'),
+    path('update-plan-details/<str:planslug>', update_plan, name='update-plan-details')
 ]

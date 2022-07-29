@@ -13,16 +13,29 @@
         </a>
     </nav>
 
-    <div class='w3-container w3-padding w3-margin-left w3-small w3-margin-right w3-round w3-row w3-border'>
-        <button id="button" onclick="showForm();" class=' w3-round w3-button w3-blue'>
-            Add Customer to {{group.title}} using username
-        </button>
-        <form id="group_form" style="display:none;" enctype='multipart/form-data' method='POST' action="{% url 'group' group.slug %}">
-            <h5 class='w3-center'>Add to {{group.title}}</h5>
-            {% csrf_token %}
-            {{ form|crispy }}
-            <button style='width:95%;' type='submit' class='w3-margin w3-round w3-green w3-button' >Add</button>
-        </form>
+    <div class='w3-row w3-padding w3-margin'>
+        <div class='w3-container w3-padding w3-small w3-half'>
+            <button id="button" onclick="showForm();" class=' w3-round w3-button w3-blue'>
+                Add Customer to {{group.title}} using username
+            </button>
+            <form id="group_form" style="display:none;" enctype='multipart/form-data' method='POST' action="{% url 'group' group.slug %}">
+                <h5 class='w3-center'>Add to {{group.title}}</h5>
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button style='width:95%;' type='submit' class='w3-margin w3-round w3-green w3-button' >Add</button>
+            </form>
+        </div>
+        <div class='w3-container w3-border-left w3-padding w3-small w3-half'>
+            <button id="update_button" onclick="showUpdateGroupForm();" class=' w3-round w3-button w3-purple'>
+                Edit Group Details
+            </button>
+            <form id="update_group_form" style="display:none;" enctype='multipart/form-data' method='POST' action="{% url 'update-group-details' group.slug %}">
+                <h5 class='w3-center'>Update {{group.title}}</h5>
+                {% csrf_token %}
+                {{ update_group_form|crispy }}
+                <button style='width:95%;' type='submit' class='w3-margin w3-round w3-green w3-button' >Add</button>
+            </form>
+        </div>
     </div>
 
     <div class='w3-padding'>
@@ -54,10 +67,11 @@
         <h3>Customers in {{group.app.appname}} not in {{group.title}}</h3>
         {% for user in existing_users %}
         <div class='w3-container w3-small w3-row w3-padding ' >
-            <h3 class='w3-medium w3-left'>@{{user.user.username}}</h3>
-            <button class='w3-right w3-round w3-blue w3-button' onclick="addCustomerApp(this);" value="{{user.user.username}}" url="{% url 'add-member' group.slug %}" >
+            <h3 class='w3-medium w3-left'>@{{user.username}}</h3>
+            <button class='w3-right w3-round w3-blue w3-button' onclick="addCustomerApp(this);" value="{{user.username}}" url="{% url 'add-member' group.slug %}" >
                 Transfer to this group
             </button>
+            <h3 class='w3-medium w3-text-purple w3-center'>{{user.group}}</h3>
         </div>
         {% endfor %}
     </div>
@@ -70,6 +84,10 @@
         }
         function showUpdateForm(){
             document.getElementById('form').style.display = "block";
+        }
+        function showUpdateGroupForm(){
+            document.getElementById('update_group_form').style.display = "block";
+            document.getElementById('update_button').style.display = "none";
         }
         function addCustomerApp(obj){
             var url = obj.getAttribute('url') + '?username=' + obj.value;

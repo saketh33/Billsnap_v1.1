@@ -75,7 +75,8 @@ def show_plan(request, slug):
                 'users': users,
                 'form': form,
                 'update_form': UpdateUserPlanForm(appslug=plan.app.slug),
-                'appslug': plan.app.slug
+                'appslug': plan.app.slug ,
+                'update_plan_form': PlanForm(instance=plan)
             }
             return render(request, 'plans-panel/plan.html', payload)
         
@@ -101,9 +102,17 @@ def show_plan(request, slug):
                 student.plan = plan
                 student.save(update_fields=['plan'])
             return redirect('plan', slug)"""
-        print(forms.error)
+        print(forms.errors)
         return redirect('plan', slug)
 
+def update_plan(request, planslug):
+    plan = Plan.objects.get(slug=planslug)
+    form = PlanForm(request.POST, instance=plan)
+    if form.is_valid():
+        form.save()
+        return redirect('plan', planslug)
+    print(form.errors)
+    return redirect('plan', planslug)
 
 def update_user_plan(request, slug):
     profile = Profile.objects.get(slug__iexact=slug)

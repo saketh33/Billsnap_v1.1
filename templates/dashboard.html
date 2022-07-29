@@ -108,7 +108,7 @@
         <div>
           <i class='bx bx-grid-alt' ></i>
 
-          <a href="dashboard.html" id="active">Dashboard</a>
+          <a href="{% url 'dashboard' slug %}" id="active">Dashboard</a>
         </div>
         <div>
           <i class='bx bx-analyse' ></i>
@@ -118,7 +118,7 @@
         <div>
           <i class='bx bx-cog' ></i>
 
-          <a href="settings.html">App Info</a>
+          <a href="{% url 'update-app' slug %}">App Settings</a>
         </div>
       </div>
       <hr>
