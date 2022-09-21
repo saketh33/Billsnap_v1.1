@@ -33,3 +33,4 @@ pandas
 dj_database_url
 django_heroku
 gunicorn
+django-crispy-forms

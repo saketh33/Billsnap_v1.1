@@ -779,3 +779,6 @@ django.urls.exceptions.NoReverseMatch: Reverse for 'update-group' with arguments
 [2022-07-29T11:56:12] DEBUG [asyncio.__init__:624] Using proactor: IocpProactor
 [2022-07-29T11:56:15] DEBUG [asyncio.__init__:624] Using proactor: IocpProactor
 [2022-07-29T11:56:19] DEBUG [asyncio.__init__:624] Using proactor: IocpProactor
+[2022-09-21T14:14:58] INFO [django.utils.autoreload.trigger_reload:266] C:\Users\10800587\Documents\billapp\accounts\views.py changed, reloading.
+[2022-09-21T14:15:01] INFO [django.utils.autoreload.trigger_reload:266] C:\Users\10800587\Documents\billapp\accounts\views.py changed, reloading.
+[2022-09-21T14:15:18] WARNING [django.request.log_response:241] Not Found: /favicon.ico
